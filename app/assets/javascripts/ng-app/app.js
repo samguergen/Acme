@@ -13,6 +13,7 @@ angular
             controller: 'HomeCtrl'
         });
 
+
     // default fall back route
     $urlRouterProvider.otherwise('/');
 
