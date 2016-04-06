@@ -15,7 +15,11 @@ angular.module('myApp')
         ];
 
         function(csvUrl) {
-          // var readFile = csvUrl;
+          var csvUrl   = "src/utils/some.csv";
+          var Items = $http.get(csvUrl).then(function(response){
+          return csvToArray(response.data);
+          });
+          return Items;
         }
 
         function csvToArray(stringData, stringDelim) {
