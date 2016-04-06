@@ -13,25 +13,25 @@ angular
             controller: 'HomeCtrl'
         })
 
-        .state('dashboard', {
+        .state('orders', {
             abstract: true,
-            url: '/dashboard',
-            templateUrl: 'dashboard/layout.html'
+            url: '/orders',
+            templateUrl: 'orders/layout.html'
         })
-            // the default route when someone hits dashboard
-            .state('dashboard.one', {
+            // the default route when someone hits orders
+            .state('orders.one', {
                 url: '',
-                templateUrl: 'dashboard/one.html'
+                templateUrl: 'orders/one.html'
             })
-            // this is /dashboard/two
-            .state('dashboard.two', {
+            // this is /orders/two
+            .state('orders.two', {
                 url: '/two',
-                templateUrl: 'dashboard/two.html'
+                templateUrl: 'orders/two.html'
             })
-            // this is /dashboard/three
-            .state('dashboard.three', {
+            // this is /orders/three
+            .state('orders.three', {
                 url: '/three',
-                templateUrl: 'dashboard/three.html'
+                templateUrl: 'orders/three.html'
             });
 
 
