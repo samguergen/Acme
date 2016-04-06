@@ -37,9 +37,22 @@ angular.module('myApp')
           }
           console.log(arr);
           return (arr);
-}
+        }
 
-
+        function arrayToJson(csv) {
+          var arr = csvToArray(csv);
+          var objArray = [];
+          for (var i = 1; i < arr.length; i++) {
+              objArray[i - 1] = {};
+              for (var k = 0; k < arr[0].length && k < arr[i].length; k++) {
+                  var key = arr[0][k];
+                  objArray[i - 1][key] = arr[i][k]
+              }
+          }
+          var json = JSON.stringify(objArray);
+          var str = json.replace(/},/g, "},\r\n");
+          return str;
+        }
 
 
     });
