@@ -24,13 +24,13 @@ angular
                 templateUrl: 'orders/one.html'
             })
             // this is /orders/two
-            .state('orders.two', {
-                url: '/two',
-                templateUrl: 'orders/two.html'
+            .state('orders.import', {
+                url: '/import',
+                templateUrl: 'orders/import.html'
             })
             // this is /orders/three
-            .state('orders.three', {
-                url: '/three',
+            .state('orders.order', {
+                url: '/:id',
                 templateUrl: 'orders/three.html'
             });
 
