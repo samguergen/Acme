@@ -19,6 +19,7 @@ angular.module('myApp')
           var Items = $http.get(csvUrl).then(function(response){
           return csvToArray(response.data);
           });
+          console.log(Items);
           return Items;
         }
 
@@ -59,6 +60,7 @@ angular.module('myApp')
           }
           var json = JSON.stringify(objArray);
           var str = json.replace(/},/g, "},\r\n");
+          console.log(str);
           return str;
         }
 
