@@ -14,6 +14,10 @@ angular.module('myApp')
         }
         ];
 
+        function(csvUrl) {
+          // var readFile = csvUrl;
+        }
+
         function csvToArray(stringData, stringDelim) {
           stringDelim = (stringDelim || ",");
           var objPattern = new RegExp((
