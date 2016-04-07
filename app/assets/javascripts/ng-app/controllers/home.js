@@ -116,27 +116,44 @@ angular.module('myApp')
       // for (var i in passing3) {
       //   console.log(passing3[i]);
       // }
-      return $scope.valAge(passing3);
+      return $scope.valEmail(passing3);
     };
 
 // 4) Email address must be valid
-    $scope.valEmail = function(){
-
+    $scope.valEmail = function(arr){
+      var passing4 = [];
+      var emailIndex = $scope.csvIndex['email'];
+      console.log('email index is ', emailIndex);
+      // var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      for (var i in arr) {
+        var row = arr[i];
+        var row = arr[i].toString();
+        var rowArray = row.split(",");
+        console.log('row array is ', rowArray);
+        var email = rowArray[parseInt(emailIndex)];
+        console.log(email);
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        // if (email == '' || !re.test(email) {
+        //    // passing4.push(rowArray);
+        //    console.log('miracle');
+        // };
+      };
     };
 
 // 5) The sum of digits in a zip code may not exceed 20 ("90210": 9+0+2+1+0 = 12)
-    $scope.valSumZip = function(){
+    $scope.valSumZip = function(arr){
 
     };
 
 // 6) Customers from NY may not have .net email addresses
-    $scope.valDotNet = function(){
+    $scope.valDotNet = function(arr){
 
     };
 
 // 7) If the state and zip code of the following record is the same as the
 // current record, it automatically passes.
-    $scope.valSameAsNext = function(){
+    $scope.valSameAsNext = function(arr){
 
     };
 
