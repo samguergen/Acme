@@ -103,9 +103,26 @@ angular.module('myApp')
 
 
 // 3) Everyone ordering must be 21 or older
-    $scope.valAge = function(){
+    $scope.valAge = function(arr){
+      console.log(arr);
+      var passing3 = [];
+      var birthdayIndex = $scope.csvIndex['birthday'];
+      // console.log('type of bday index is ',typeof(birthdayIndex), birthdayIndex);
       var currentYear = new Date().getFullYear();
       var minBirthYear = currentYear - 21;
+      for (var i in arr) {
+        var row = arr[i].toString();
+        var rowArray = row.split(",");
+        console.log(rowArray);
+        console.log(rowArray[6]);
+        // console.log('row array stuff is ', rowArray.length);
+        // var birthYear = rowArray[birthdayIndex];
+        // console.log('birth year is ', birthYear);
+        // var birthYear = new Date(rowArray[birthdayIndex].toString()).getFullYear();
+        // if (rowArray[birthdayIndex] && ((rowArray[birthdayIndex].length == 5) || (rowArray[birthdayIndex].length == 9)) ) {
+        //    passing2.push(rowArray);
+        // };
+      };
 
     };
 
