@@ -38,7 +38,7 @@ angular.module('myApp')
     $scope.test = function(arr) {
       for (var i in arr) {
         console.log('each i is');
-        console.log(i);
+        console.log(arr[i]);
       }
       console.log('length of arrayData is ');
       console.log($scope.arrayData.length);
