@@ -19,6 +19,7 @@ angular.module('myApp')
           return csvToArray(response.data);
           });
           console.log(Items);
+          $scope.stuff = Items;
           return Items;
         }
 
