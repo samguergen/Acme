@@ -14,6 +14,8 @@ angular.module('myApp')
         }
         ];
 
+       $scope.MyFiles=[];
+
         // var csvStr = {
         //   "Id","UserName"
         //   "1","Sam Smith"
@@ -86,15 +88,14 @@ angular.module('myApp')
           return str;
         }
 
-       $scope.MyFiles=[];
+
 
       $scope.handler=function(e,files){
           var reader=new FileReader();
           reader.onload=function(e){
               var string=reader.result;
-              // var obj=$filter('csvToObj')(string);
-              var obj = $scope.csvToObj(string);
-              alert(obj);
+              $scope.obj = $scope.csvToObj(string);
+              alert($scope.obj);
           }
           reader.readAsText(files[0]);
       }
@@ -102,15 +103,17 @@ angular.module('myApp')
 
       $scope.csvToObj =  function(input){
           var rows=input.split('\n');
-          var obj=[];
+          $scope.obj2=[];
           angular.forEach(rows,function(val){
             var o=val.split(';');
-            obj.push({
+            $scope.obj2.push({
               designation:o[1],
               km:o[11]
             });
           });
-          return obj;
+          console.log('the real obj2 is ');
+          console.log($scope.obj2);
+          return $scope.obj2;
         };
 
     });
