@@ -36,18 +36,30 @@ angular.module('myApp')
     };
 
     $scope.test = function(arr) {
-      for (var i in arr) {
-        console.log('each i is');
-        console.log(arr[i]);
-      }
-      console.log('length of arrayData is ');
-      console.log($scope.arrayData.length);
+      $scope.valState(arr);
+      // for (var i in arr) {
+      //   console.log('each i is');
+      //   console.log(arr[i]);
+      // }
+      // console.log('length of arrayData is ');
+      // console.log($scope.arrayData.length);
     };
 
 // 1) No wine can ship to New Jersey, Connecticut, Pennsylvania, Massachusetts,
 // Illinois, Idaho or Oregon
-    $scope.valState = function(){
-
+    $scope.valState = function(arr){
+      // row is an array that contains 2 obj: row[0] contains cust info, row[1] contains year
+      for (var i in arr) {
+        var row = arr[i];
+        // if ((row.includes('New Jersey') || row.includes('Connecticut') || row.includes('Pennsylvania') || row.includes('Massachusetts') || row.includes('Illinois') || row.includes('Idaho') || row.includes('Oregon')) {
+        if (row[0].indexOf('New Jersey')) {
+          console.log('it does!!!');
+          console.log(row[0]);
+        }
+        else {
+          console.log('boooo');
+        }
+      };
     };
 
 // 2) Valid zip codes must be 5 or 9 digits
