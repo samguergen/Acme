@@ -32,29 +32,27 @@ angular.module('myApp')
             arrData[arrData.length - 1].push(strMatchedValue);
         }
         $scope.arrayData = arrData;
-        $scope.arrayPassVal1 = arrData;
+        //removes headers
+        // $scope.arrayData = $scope.arrayData.shift();
         $scope.stringData = arrData.toString();
         return ($scope.test($scope.arrayData));
-        // return ($scope.test($scope.arrayPassVal1));
     };
 
     $scope.test = function(arr) {
-      // $scope.valState(arr);
       $scope.valState(arr);
     };
 
 // 1) No wine can ship to New Jersey, Connecticut, Pennsylvania, Massachusetts,
 // Illinois, Idaho or Oregon
     $scope.valState = function(arr){
+      var rando = [];
       // $scope.passedState = [];
       // row is an array that contains 2 obj: row[0] contains cust info, row[1] contains year
       for (var i in arr) {
         var row = arr[i];
-        if (row[0].indexOf('|NJ|') || row[0].indexOf('|CT|') || row[0].indexOf('|PA|') || row[0].indexOf('|MA|') || row[0].indexOf('|IL|') || row[0].indexOf('|ID|') || row[0].indexOf('|OR|')     ) {
+        if (row[0].indexOf('|NJ|') < 0 || row[0].indexOf('|CT|') < 0|| row[0].indexOf('|PA|') < 0 || row[0].indexOf('|MA|') < 0 || row[0].indexOf('|IL|') < 0 || row[0].indexOf('|ID|') < 0 || row[0].indexOf('|OR|') < 0  ) {
           console.log('it does!!!');
-          var index = i;
-          arr.splice(index, 1);
-          // console.log(row[0]);
+          rando.push(row);
         }
         // else {
         //   console.log('boooo');
@@ -64,7 +62,10 @@ angular.module('myApp')
         // }
       };
       // console.log('passed states are');
-      console.log(arr);
+      console.log('array passing 1');
+      for (var i in rando) {
+        console.log(rando[i]);
+      }
     };
 
 // 2) Valid zip codes must be 5 or 9 digits
