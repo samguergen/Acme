@@ -60,7 +60,7 @@ angular.module('myApp')
         }
       };
       console.log('csv index is ', $scope.csvIndex);
-      console.log('body id is ', bodyArray[0]);
+      console.log('body id is ', bodyArray[$scope.csvIndex['id']]);
     };
 
     $scope.initValidations = function(arr) {
