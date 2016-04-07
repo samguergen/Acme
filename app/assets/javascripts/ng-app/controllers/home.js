@@ -69,37 +69,35 @@ angular.module('myApp')
 // 1) No wine can ship to New Jersey, Connecticut, Pennsylvania, Massachusetts,
 // Illinois, Idaho or Oregon
     $scope.valState = function(arr){
+      var passing = [];
       // row is an array that contains 2 obj: row[0] contains cust info, row[1] contains year
       for (var i in arr) {
         var row = arr[i];
         if (row[0].indexOf('|NJ|') < 0 || row[0].indexOf('|CT|') < 0|| row[0].indexOf('|PA|') < 0 || row[0].indexOf('|MA|') < 0 || row[0].indexOf('|IL|') < 0 || row[0].indexOf('|ID|') < 0 || row[0].indexOf('|OR|') < 0  ) {
-          $scope.passingOrders.push(row);
+          passing.push(row);
         }
       };
       // console.log('passing validation 1');
-      // for (var i in $scope.passingOrders) {
-      //   console.log($scope.passingOrders[i]);
+      // for (var i in passing) {
+      //   console.log(passing[i]);
       // }
-      return $scope.valZip($scope.passingOrders);
+      return $scope.valZip(passing);
     };
 
 // 2) Valid zip codes must be 5 or 9 digits
     $scope.valZip = function(arr){
+      var passing2 = [];
       var zipIndex = $scope.csvIndex['zipcode'];
-      console.log(zipIndex);
       for (var i in arr) {
         var row = arr[i].toString();
         var rowArray = row.split("|");
-        for (var y in rowArray) {
-          // console.log('row array ', rowArray[y]);
-          // if ( (y == zipIndex ) && ((rowArray[y].length == 4) || (rowArray[y].length == 8)) ){
-          //   console.log('passing validation 2');
-          // }
-          // console.log(rowArray[y].length);
-          if ( (y == zipIndex ) && ((rowArray[y].length == 5) || (rowArray[y].length == 9)) ){
-            console.log('passing validation 2', rowArray[y]);
-          }
-        }
+        console.log(rowArray[zipIndex]);
+        // for (var y in rowArray) {
+        //   if ( (y == zipIndex ) && ((rowArray[y].length == 5) || (rowArray[y].length == 9)) ){
+        //     console.log('passing validation 2', rowArray[y]);
+        //     // passing2.push(rowArray);
+        //   }
+        // }
       };
 
     };
