@@ -2,6 +2,9 @@ angular.module('myApp')
     .controller('HomeCtrl', function ($scope, $http) {
 
       $scope.arrayData = [];
+      $scope.passedState = [];
+      $scope.arrayPassVal1 = [];
+
 
       $scope.readCsv = function() {
         alert($scope.fileContent);
@@ -28,34 +31,40 @@ angular.module('myApp')
             }
             arrData[arrData.length - 1].push(strMatchedValue);
         }
-        console.log('the string of arrData is ', arrData.toString());
-        // console.log(' arrdata is ', Array.isArray(arrData));
         $scope.arrayData = arrData;
+        $scope.arrayPassVal1 = arrData;
         $scope.stringData = arrData.toString();
         return ($scope.test($scope.arrayData));
+        // return ($scope.test($scope.arrayPassVal1));
     };
 
     $scope.test = function(arr) {
+      // $scope.valState(arr);
       $scope.valState(arr);
     };
 
 // 1) No wine can ship to New Jersey, Connecticut, Pennsylvania, Massachusetts,
 // Illinois, Idaho or Oregon
     $scope.valState = function(arr){
-      $scope.passedState = [];
+      // $scope.passedState = [];
       // row is an array that contains 2 obj: row[0] contains cust info, row[1] contains year
       for (var i in arr) {
         var row = arr[i];
         if (row[0].indexOf('|NJ|') || row[0].indexOf('|CT|') || row[0].indexOf('|PA|') || row[0].indexOf('|MA|') || row[0].indexOf('|IL|') || row[0].indexOf('|ID|') || row[0].indexOf('|OR|')     ) {
           console.log('it does!!!');
-          console.log(row[0]);
+          var index = i;
+          arr.splice(index, 1);
+          // console.log(row[0]);
         }
-        else {
-          console.log('boooo');
-          $scope.passedState.push(row);
-        }
+        // else {
+        //   console.log('boooo');
+        //   console.log(row);
+        //   $scope.passedState.push(row);
+        //   console.log($scope.passedState);
+        // }
       };
-      alert($scope.passedState);
+      // console.log('passed states are');
+      console.log(arr);
     };
 
 // 2) Valid zip codes must be 5 or 9 digits
