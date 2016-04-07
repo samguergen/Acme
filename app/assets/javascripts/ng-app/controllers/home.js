@@ -112,10 +112,6 @@ angular.module('myApp')
            passing3.push(rowArray);
         };
       };
-      // console.log('passing validation 3');
-      // for (var i in passing3) {
-      //   console.log(passing3[i]);
-      // }
       return $scope.valEmail(passing3);
     };
 
@@ -131,12 +127,15 @@ angular.module('myApp')
         var email = rowArray[parseInt(emailIndex)];
         console.log(email);
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            // return re.test(email);
         if (re.test(email)) {
            passing4.push(rowArray);
-           console.log('miracle');
         };
       };
+      console.log('passing validation 4');
+      for (var i in passing4) {
+        console.log(passing4[i]);
+      }
+      return $scope.valSumZip(passing4);
     };
 
 // 5) The sum of digits in a zip code may not exceed 20 ("90210": 9+0+2+1+0 = 12)
