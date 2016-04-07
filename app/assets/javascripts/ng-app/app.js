@@ -16,22 +16,32 @@ angular
         .state('orders', {
             abstract: true,
             url: '/orders',
-            templateUrl: 'orders/layout.html'
+            templateUrl: 'orders/layout.html',
+            controller: 'HomeCtrl'
         })
 
-        .state('orders.index', {
+        .state('orders.all', {
             url: '',
-            templateUrl: 'orders/one.html'
+            templateUrl: 'orders/all.html',
+            controller: 'HomeCtrl'
         })
-        // this is /orders/two
+
         .state('orders.import', {
             url: '/import',
-            templateUrl: 'orders/import.html'
+            templateUrl: 'orders/import.html',
+            controller: 'HomeCtrl'
         })
-        // this is /orders/three
+
+        .state('orders.valid', {
+            url: '/valid',
+            templateUrl: 'orders/valid.html',
+            controller: 'HomeCtrl'
+        })
+
         .state('orders.order', {
             url: '/:id',
-            templateUrl: 'orders/three.html'
+            templateUrl: 'orders/order.html',
+            controller: 'HomeCtrl'
         });
 
             // the default route when someone hits orders
