@@ -10,7 +10,8 @@
 
   <form id="csvForm">
     <label> Please paste the URL to your file here: </label>
-    <input type="file" name="dataFile" ng-model="csvFile"><br>
+    <!-- <input type="file" name="dataFile" ng-model="csvFile"><br> -->
+    <input type="file" file-change="handler($event,files)" ng-model="MyFiles" />
     <input type="submit" ng-click="readCsv()">
   </form>
 

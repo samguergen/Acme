@@ -14,6 +14,16 @@ angular.module('myApp')
         }
         ];
 
+        // var csvStr = {
+        //   "Id","UserName"
+        //   "1","Sam Smith"
+        //   "2","Fred Frankly"
+        //   "1","Zachary Zupers"
+        // };
+
+        // console.log('result of json conversion example is ');
+        // console.log(arrayToJson(csvStr));
+
         // $scope.urlToString = function(csv) {
         //   console.log(csv);
           // return $http.get(csv).then(function(response){
@@ -76,5 +86,33 @@ angular.module('myApp')
           return str;
         }
 
+       $scope.MyFiles=[];
+
+      $scope.handler=function(e,files){
+          var reader=new FileReader();
+          reader.onload=function(e){
+              var string=reader.result;
+              // var obj=$filter('csvToObj')(string);
+              var obj = $scope.csvToObj(string);
+              alert(obj);
+          }
+          reader.readAsText(files[0]);
+      }
+
+
+      $scope.csvToObj =  function(input){
+          var rows=input.split('\n');
+          var obj=[];
+          angular.forEach(rows,function(val){
+            var o=val.split(';');
+            obj.push({
+              designation:o[1],
+              km:o[11]
+            });
+          });
+          return obj;
+        };
 
     });
+
+

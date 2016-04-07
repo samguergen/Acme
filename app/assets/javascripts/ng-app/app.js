@@ -44,22 +44,6 @@ angular
             controller: 'HomeCtrl'
         });
 
-            // the default route when someone hits orders
-            // .state('orders.one', {
-            //     url: '',
-            //     templateUrl: 'orders/one.html'
-            // })
-            // // this is /orders/two
-            // .state('orders.import', {
-            //     url: '/import',
-            //     templateUrl: 'orders/import.html'
-            // })
-            // // this is /orders/three
-            // .state('orders.order', {
-            //     url: '/:id',
-            //     templateUrl: 'orders/three.html'
-            // });
-
 
     // default fall back route
     $urlRouterProvider.otherwise('/');
@@ -67,6 +51,42 @@ angular
     // enable HTML5 Mode for SEO
     $locationProvider.html5Mode(true);
 
-  });
+  })
+
+  .directive('fileChange',['$parse', function($parse){
+  return{
+    require:'ngModel',
+    restrict:'A',
+    controller: 'HomeCtrl',
+    link:function($scope,element,attrs,ngModel){
+      var attrHandler=$parse(attrs['fileChange']);
+      var handler=function(e){
+        $scope.$apply(function(){
+          attrHandler($scope,{$event:e,files:e.target.files});
+        });
+      };
+      element[0].addEventListener('change',handler,false);
+    }
+  }
+}]);
+
+
+    //   .filter('csvToObj',function(){
+    //   return function(input){
+    //     var rows=input.split('\n');
+    //     var obj=[];
+    //     angular.forEach(rows,function(val){
+    //       var o=val.split(';');
+    //       obj.push({
+    //         designation:o[1],
+    //         ...
+    //         km:o[11]
+    //       });
+    //     });
+    //     return obj;
+    //   };
+    // });
+
+
 
 
