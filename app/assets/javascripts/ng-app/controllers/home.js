@@ -1,6 +1,8 @@
 angular.module('myApp')
     .controller('HomeCtrl', function ($scope, $http) {
 
+      $scope.arrayData = [];
+
       $scope.readCsv = function() {
         alert($scope.fileContent);
       }
@@ -27,12 +29,20 @@ angular.module('myApp')
             arrData[arrData.length - 1].push(strMatchedValue);
         }
         console.log('the string of arrData is ', arrData.toString());
-        console.log(' arrdata is ', Array.isArray(arrData));
+        // console.log(' arrdata is ', Array.isArray(arrData));
         $scope.arrayData = arrData;
         $scope.stringData = arrData.toString();
-        return ($scope.arrayData);
+        return ($scope.test($scope.arrayData));
     };
 
+    $scope.test = function(arr) {
+      for (var i in arr) {
+        console.log('each i is');
+        console.log(i);
+      }
+      console.log('length of arrayData is ');
+      console.log($scope.arrayData.length);
+    };
 
     $scope.valState = function(){
 
