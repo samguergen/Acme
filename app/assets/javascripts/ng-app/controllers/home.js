@@ -123,8 +123,6 @@ angular.module('myApp')
     $scope.valEmail = function(arr){
       var passing4 = [];
       var emailIndex = $scope.csvIndex['email'];
-      console.log('email index is ', emailIndex);
-      // var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
       for (var i in arr) {
         var row = arr[i];
         var row = arr[i].toString();
