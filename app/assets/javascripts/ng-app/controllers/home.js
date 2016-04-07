@@ -40,33 +40,28 @@ angular.module('myApp')
         }
         $scope.arrayData = arrData;
 
-
-
         var header = arrData.shift();
-        $scope.locateHeader(header);
+        $scope.locateHeader(header, arrData);
 
-        // $scope.stringData = arrData.toString();
+
         // return ($scope.initValidations($scope.arrayData));
     };
 
-    $scope.locateHeader = function(head) {
-      var headString = head.toString();
-      var headArray = headString.split("|");
-      console.log('headArray is');
-      console.log(headArray);
+    $scope.locateHeader = function(head, body) {
+      var stringHead = head.toString();
+      var stringData = body.toString();
+      var headArray = stringHead.split("|");
+      var bodyArray = stringData.split("|");
       for (var i in headArray) {
-        // console.log(headArray[i]);
         for (var y in $scope.csvIndex) {
-          console.log('head array', headArray[i]);
-          console.log('csv index', y);
           if (y == headArray[i]) {
-            console.log('matchin');
-            // $scope.csvIndex[y] = i;
+            $scope.csvIndex[y] = i;
           }
         }
-      }
-
-    }
+      };
+      console.log('csv index is ', $scope.csvIndex);
+      console.log('body id is ', bodyArray[0]);
+    };
 
     $scope.initValidations = function(arr) {
       $scope.valState(arr);
