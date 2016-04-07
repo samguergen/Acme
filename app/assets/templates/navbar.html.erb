@@ -2,12 +2,15 @@
   <div class="container">
 
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">Order Verification Service</a>
+      <a class="navbar-brand" ui-sref="home">Order Verification Service</a>
     </div>
 
     <ul class="nav navbar-nav">
-      <li><a href="/">Home</a></li>
-      <li><a href="/orders">All Orders</a></li>
+      <li><a ui-sref="home">Home</a></li>
+      <li><a ui-sref="orders.import">Import CSV</a></li>
+      <li><a ui-sref="orders.index">All Orders</a></li>
+      <li><a ui-sref="valid">Valid Orders</a></li>
+
     </ul>
 
   </div>
