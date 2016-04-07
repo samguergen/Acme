@@ -131,26 +131,47 @@ angular.module('myApp')
            passing4.push(rowArray);
         };
       };
-      console.log('passing validation 4');
-      for (var i in passing4) {
-        console.log(passing4[i]);
-      }
+      // console.log('passing validation 4');
+      // for (var i in passing4) {
+      //   console.log(passing4[i]);
+      // }
       return $scope.valSumZip(passing4);
     };
 
 // 5) The sum of digits in a zip code may not exceed 20 ("90210": 9+0+2+1+0 = 12)
     $scope.valSumZip = function(arr){
+      var passing5 = [];
+      var zipIndex = $scope.csvIndex['zipcode'];
+      for (var i in arr) {
+        var row = arr[i];
+        var row = arr[i].toString();
+        var rowArray = row.split(",");
+        console.log('row array is ', rowArray);
+        var zip = rowArray[parseInt(zipIndex)];
+        console.log(zip);
+        if () {
+           passing5.push(rowArray);
+        };
+      };
+      // console.log('passing validation 5');
+      // for (var i in passing5) {
+      //   console.log(passing5[i]);
+      // }
+      return $scope.valDotNet(passing5);
 
     };
 
 // 6) Customers from NY may not have .net email addresses
     $scope.valDotNet = function(arr){
+      var passing6 = [];
+      var emailIndex = $scope.csvIndex['email'];
 
     };
 
 // 7) If the state and zip code of the following record is the same as the
 // current record, it automatically passes.
     $scope.valSameAsNext = function(arr){
+      var passing7 = [];
 
     };
 
