@@ -45,6 +45,7 @@ angular.module('myApp')
         // return ($scope.initValidations($scope.arrayData));
     };
 
+
     $scope.locatePositions = function(head, body) {
       var stringHead = head.toString();
       var stringData = body.toString();
@@ -66,6 +67,7 @@ angular.module('myApp')
       $scope.valState(arr);
     };
 
+
 // 1) No wine can ship to New Jersey, Connecticut, Pennsylvania, Massachusetts,
 // Illinois, Idaho or Oregon
     $scope.valState = function(arr){
@@ -79,6 +81,7 @@ angular.module('myApp')
       };
       return $scope.valZip(passing);
     };
+
 
 // 2) Valid zip codes must be 5 or 9 digits
     $scope.valZip = function(arr){
@@ -98,8 +101,10 @@ angular.module('myApp')
       return $scope.valAge(passing2);
     };
 
-// 2) Valid zip codes must be 5 or 9 digits
+
+// 3) Everyone ordering must be 21 or older
     $scope.valAge = function(){
+      var currentYear = new Date().getFullYear();
 
     };
 
