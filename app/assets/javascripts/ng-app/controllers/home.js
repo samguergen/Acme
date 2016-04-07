@@ -77,10 +77,6 @@ angular.module('myApp')
           passing.push(row);
         }
       };
-      // console.log('passing validation 1');
-      // for (var i in passing) {
-      //   console.log(passing[i]);
-      // }
       return $scope.valZip(passing);
     };
 
@@ -91,21 +87,15 @@ angular.module('myApp')
       for (var i in arr) {
         var row = arr[i].toString();
         var rowArray = row.split("|");
-        // console.log(rowArray[zipIndex]);
         if (rowArray[zipIndex] && ((rowArray[zipIndex].length == 5) || (rowArray[zipIndex].length == 9)) ) {
            passing2.push(rowArray);
         };
-        // for (var y in rowArray) {
-        //   if ( (y == zipIndex ) && ((rowArray[y].length == 5) || (rowArray[y].length == 9)) ){
-        //     console.log('passing validation 2', rowArray[y]);
-        //     // passing2.push(rowArray);
-        //   }
-        // }
       };
-      console.log('passing validation 2');
-      for (var i in passing2) {
-        console.log(passing2[i]);
-      }
+      // console.log('passing validation 2');
+      // for (var i in passing2) {
+      //   console.log(passing2[i]);
+      // }
+      return $scope.valAge(passing2);
     };
 
 // 2) Valid zip codes must be 5 or 9 digits
