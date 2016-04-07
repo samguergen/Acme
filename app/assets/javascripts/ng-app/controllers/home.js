@@ -3,8 +3,15 @@ angular.module('myApp')
 
       $scope.arrayData = [];
       $scope.passedState = [];
-      $scope.arrayPassVal1 = [];
 
+      $scope.csvIndex = {
+        'id': 0,
+        'name': 0,
+        'email': 0,
+        'birthday': 0,
+        'state': 0,
+        'zipcode': 0,
+      };
 
       $scope.readCsv = function() {
         alert($scope.fileContent);
@@ -45,10 +52,20 @@ angular.module('myApp')
     $scope.locateHeader = function(head) {
       var headString = head.toString();
       var headArray = headString.split("|");
-      console.log('headstring is');
+      console.log('headArray is');
+      console.log(headArray);
       for (var i in headArray) {
-        console.log(headArray[i]);
+        // console.log(headArray[i]);
+        for (var y in $scope.csvIndex) {
+          console.log('head array', headArray[i]);
+          console.log('csv index', y);
+          if (y == headArray[i]) {
+            console.log('matchin');
+            // $scope.csvIndex[y] = i;
+          }
+        }
       }
+
     }
 
     $scope.initValidations = function(arr) {
