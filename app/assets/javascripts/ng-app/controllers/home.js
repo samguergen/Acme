@@ -41,13 +41,13 @@ angular.module('myApp')
         $scope.arrayData = arrData;
 
         var header = arrData.shift();
-        $scope.locateHeader(header, arrData);
+        $scope.locatePositions(header, arrData);
 
 
         // return ($scope.initValidations($scope.arrayData));
     };
 
-    $scope.locateHeader = function(head, body) {
+    $scope.locatePositions = function(head, body) {
       var stringHead = head.toString();
       var stringData = body.toString();
       var headArray = stringHead.split("|");
@@ -59,12 +59,20 @@ angular.module('myApp')
           }
         }
       };
-      console.log('csv index is ', $scope.csvIndex);
-      console.log('body id is ', bodyArray[$scope.csvIndex['id']]);
+      // console.log('csv index is ', $scope.csvIndex);
+      // console.log('body id is ', bodyArray[$scope.csvIndex['id']]);
+
+      return ($scope.initValidations(body));
+
     };
 
     $scope.initValidations = function(arr) {
       $scope.valState(arr);
+      // $scope.valStateBetter(arr);
+    };
+
+    $scope.valStateBetter = function(arr) {
+
     };
 
 // 1) No wine can ship to New Jersey, Connecticut, Pennsylvania, Massachusetts,
@@ -80,16 +88,23 @@ angular.module('myApp')
         }
       };
 
-      console.log('array passing 1');
-      for (var i in passingOrders) {
-        console.log(passingOrders[i]);
-      }
+      // console.log('array passing 1');
+      // for (var i in passingOrders) {
+      //   console.log(passingOrders[i]);
+      // }
 
       return $scope.valZip(passingOrders);
     };
 
 // 2) Valid zip codes must be 5 or 9 digits
     $scope.valZip = function(arr){
+      for (var i in arr) {
+        var row = arr[i].toString();
+        var rowArray = row.split("|");
+        for (var y in rowArray) {
+          console.log('row array ', rowArray[y]);
+        }
+      };
 
     };
 
