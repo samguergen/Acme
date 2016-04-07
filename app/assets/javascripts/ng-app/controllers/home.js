@@ -104,27 +104,24 @@ angular.module('myApp')
 
 // 3) Everyone ordering must be 21 or older
     $scope.valAge = function(arr){
-      console.log(arr);
+      // console.log(arr);
       var passing3 = [];
       var birthdayIndex = $scope.csvIndex['birthday'];
       var yearIndex = parseInt(birthdayIndex) + 1;
-      // console.log('type of bday index is ',typeof(birthdayIndex), birthdayIndex);
       var currentYear = new Date().getFullYear();
       var minBirthYear = currentYear - 21;
       for (var i in arr) {
         var row = arr[i].toString();
         var rowArray = row.split(",");
-        console.log(rowArray[yearIndex]);
-        // console.log(rowArray[birthdayIndex]);
-        // console.log('row array stuff is ', rowArray.length);
-        // var birthYear = rowArray[birthdayIndex];
-        // console.log('birth year is ', birthYear);
-        // var birthYear = new Date(rowArray[birthdayIndex].toString()).getFullYear();
-        // if (rowArray[birthdayIndex] && ((rowArray[birthdayIndex].length == 5) || (rowArray[birthdayIndex].length == 9)) ) {
-        //    passing2.push(rowArray);
-        // };
+        // console.log(rowArray[yearIndex]);
+        if (rowArray[yearIndex] && ((rowArray[yearIndex].length == 5) || (rowArray[yearIndex].length == 9)) ) {
+           passing3.push(rowArray);
+        };
       };
-
+      console.log('passing validation 3');
+      for (var i in passing3) {
+        console.log(passing3[i]);
+      }
     };
 
 // 4) Email address must be valid
