@@ -16,12 +16,12 @@ angular.module('myApp')
 
         $scope.openUrl = function(csvUrl) {
           console.log('inside open url func');
-          var Items = $http.get(csvUrl).then(function(response){
-          return csvToArray(response.data);
-          });
-          console.log(Items);
-          $scope.stuff = Items;
-          return Items;
+          // var Items = $http.get(csvUrl).then(function(response){
+          // return csvToArray(response.data);
+          // });
+          // console.log(Items);
+          // $scope.stuff = Items;
+          // return Items;
         }
 
         $scope.csvToArray = function (stringData, stringDelim) {

@@ -1,6 +1,16 @@
 <div class="container">
-    <h1>The Home View!</h1>
-    <ul>
-        <li ng-repeat="thing in things">{{thing}}</li>
-    </ul>
+  <h4>Welcome to the Order Verification Service!</h4>
+
+  <ol>Validate your order to make sure:
+    <li> No wine can ship to New Jersey, Connecticut, Pennsylvania, Massachusetts,
+    Illinois, Idaho or Oregon
+    <li> Valid zip codes must be 5 or 9 digits
+    <li> Everyone ordering must be 21 or older
+    <li> Email address must be valid
+    <li> The sum of digits in a zip code may not exceed 20 ("90210": 9+0+2+1+0 = 12)
+    <li> Customers from NY may not have .net email addresses
+    <li> If the state and zip code of the following record is the same as the
+    current record, it automatically passes.
+  </ol>
+
 </div>
