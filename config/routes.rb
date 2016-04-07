@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  root 'application#index'
+  root 'application#index', anchor: false
   get '*path' => 'application#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
