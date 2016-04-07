@@ -44,34 +44,43 @@ angular.module('myApp')
       console.log($scope.arrayData.length);
     };
 
+// 1) No wine can ship to New Jersey, Connecticut, Pennsylvania, Massachusetts,
+// Illinois, Idaho or Oregon
     $scope.valState = function(){
 
     };
 
+// 2) Valid zip codes must be 5 or 9 digits
     $scope.valZip = function(){
 
     };
 
+// 2) Valid zip codes must be 5 or 9 digits
     $scope.valAge = function(){
 
     };
 
+// 4) Email address must be valid
     $scope.valEmail = function(){
 
     };
 
+// 5) The sum of digits in a zip code may not exceed 20 ("90210": 9+0+2+1+0 = 12)
     $scope.valSumZip = function(){
 
     };
 
+// 6) Customers from NY may not have .net email addresses
     $scope.valDotNet = function(){
 
     };
 
+// 7) If the state and zip code of the following record is the same as the
+// current record, it automatically passes.
     $scope.valSameAsNext = function(){
 
     };
 
-    });
+});
 
 
