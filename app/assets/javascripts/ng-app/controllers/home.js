@@ -94,17 +94,12 @@ angular.module('myApp')
            passing2.push(rowArray);
         };
       };
-      // console.log('passing validation 2');
-      // for (var i in passing2) {
-      //   console.log(passing2[i]);
-      // }
       return $scope.valAge(passing2);
     };
 
 
 // 3) Everyone ordering must be 21 or older
     $scope.valAge = function(arr){
-      // console.log(arr);
       var passing3 = [];
       var birthdayIndex = $scope.csvIndex['birthday'];
       var yearIndex = parseInt(birthdayIndex) + 1;
@@ -113,15 +108,15 @@ angular.module('myApp')
       for (var i in arr) {
         var row = arr[i].toString();
         var rowArray = row.split(",");
-        // console.log(rowArray[yearIndex]);
         if (rowArray[yearIndex] && ((rowArray[yearIndex].length == 5) || (rowArray[yearIndex].length == 9)) ) {
            passing3.push(rowArray);
         };
       };
-      console.log('passing validation 3');
-      for (var i in passing3) {
-        console.log(passing3[i]);
-      }
+      // console.log('passing validation 3');
+      // for (var i in passing3) {
+      //   console.log(passing3[i]);
+      // }
+      return $scope.valAge(passing3);
     };
 
 // 4) Email address must be valid
