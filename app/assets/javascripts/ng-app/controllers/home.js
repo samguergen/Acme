@@ -145,23 +145,21 @@ angular.module('myApp')
         var row = arr[i];
         var row = arr[i].toString();
         var rowArray = row.split(",");
-        // console.log('row array is ', rowArray);
         var zip = rowArray[parseInt(zipIndex)];
-        // console.log(zip);
         var zipString = zip.toString();
         var sum = 0;
         for (var i = 0; i < zipString.length; i++) {
           sum += parseInt(zipString.charAt(i), 10);
-        }
+        };
         if (sum <= maxSumZip) {
             passing5.push(rowArray);
         };
       };
-      console.log('passing validation 5');
-      for (var i in passing5) {
-        console.log(passing5[i]);
-      }
-      // return $scope.valDotNet(passing5);
+      // console.log('passing validation 5');
+      // for (var i in passing5) {
+      //   console.log(passing5[i]);
+      // }
+      return $scope.valDotNet(passing5);
 
     };
 
