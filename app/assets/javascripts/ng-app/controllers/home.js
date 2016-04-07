@@ -105,6 +105,7 @@ angular.module('myApp')
 // 3) Everyone ordering must be 21 or older
     $scope.valAge = function(){
       var currentYear = new Date().getFullYear();
+      var minBirthYear = currentYear - 21;
 
     };
 
