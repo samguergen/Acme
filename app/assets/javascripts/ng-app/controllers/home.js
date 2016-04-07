@@ -3,6 +3,9 @@ angular.module('myApp')
 
       $scope.theFile = [];
 
+      $scope.readCsv = function() {
+        alert($scope.fileContent);
+      }
 
     });
 
