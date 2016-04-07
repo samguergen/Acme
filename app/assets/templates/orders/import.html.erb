@@ -2,29 +2,12 @@
 
 <p> JSON it, baby </p>
 
-<!--   <form id="csvForm">
+  <form id="csvForm">
     <label> Please paste the URL to your file here: </label>
-     <input type="file" ng-model="theFile" id="csvFileInput" accept=".csv">
-    <input type="submit" ng-click="readFichier(theFile)">
-  </form> -->
+      <input type="file" file-reader="fileContent" />
+  </form>
 
-  <p>Hello {{name}}!</p>
-    <input type="file" file-reader="fileContent" />
+
     <div>{{fileContent}}</div>
-
-<!--   <ng-csv-import content="csv.content"
-  header="csv.header"
-  separator="csv.separator"
-  result="csv.result"></ng-csv-import> -->
-
-  {{ MyFiles }} <br>
-
-  obj is
-
-  {{ obj }} <br>
-
-  obj2 is
-
-  {{ obj2 }}
 
 </div>
