@@ -138,6 +138,7 @@ angular.module('myApp')
 
 // 5) The sum of digits in a zip code may not exceed 20 ("90210": 9+0+2+1+0 = 12)
     $scope.valSumZip = function(arr){
+      var maxSumZip = 20;
       var passing5 = [];
       var zipIndex = $scope.csvIndex['zipcode'];
       for (var i in arr) {
@@ -147,14 +148,19 @@ angular.module('myApp')
         console.log('row array is ', rowArray);
         var zip = rowArray[parseInt(zipIndex)];
         console.log(zip);
-        // if () {
-        //     passing5.push(rowArray);
-        // };
+        var zipString = zip.toString();
+        var sum = 0;
+        for (var i = 0; i < zipString.length; i++) {
+          sum += parseInt(zipString.charAt(i), 10);
+        }
+        if (sum <= maxSumZip) {
+            passing5.push(rowArray);
+        };
       };
-      // console.log('passing validation 5');
-      // for (var i in passing5) {
-      //   console.log(passing5[i]);
-      // }
+      console.log('passing validation 5');
+      for (var i in passing5) {
+        console.log(passing5[i]);
+      }
       return $scope.valDotNet(passing5);
 
     };
