@@ -1,123 +1,54 @@
 angular.module('myApp')
-    .controller('HomeCtrl', function ($scope, $http, CSVConverterService) {
-        $scope.things = ['Angular', 'Rails 4.1', 'UI Router', 'Together!!'];
+    .controller('HomeCtrl', function ($scope, $http) {
 
-        $scope.csvFile = "";
+      $scope.theFile = [];
 
-        $scope.orders = [
-        { id: 1,
-          name: "Little Sim"
-        },
-        {
-          id: 2,
-          name: "Ashley DummyGirl"
-        }
-        ];
-
-       $scope.MyFiles=[];
-
-        // var csvStr = {
-        //   "Id","UserName"
-        //   "1","Sam Smith"
-        //   "2","Fred Frankly"
-        //   "1","Zachary Zupers"
-        // };
-
-        // console.log('result of json conversion example is ');
-        // console.log(arrayToJson(csvStr));
-
-        // $scope.urlToString = function(csv) {
-        //   console.log(csv);
-          // return $http.get(csv).then(function(response){
-          //  response.data});
-        // }
-
-        $scope.readCsv = function() {
-
-        }
-
-        $scope.openUrl = function(csvUrl) {
-          console.log('inside open url func');
-          var Items = $http.get(csvUrl).then(function(response){
-          return csvToArray(response.data);
-          });
-          console.log(Items);
-          $scope.stuff = Items;
-          return Items;
-        }
-
-        $scope.csvToArray = function (stringData, stringDelim) {
-          stringDelim = (stringDelim || ",");
-          var objPattern = new RegExp((
-          "(\\" + stringDelim + "|\\r?\\n|\\r|^)" +
-          "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
-          "([^\"\\" + stringDelim + "\\r\\n]*))"), "gi");
-          var arr = [[]];
-          var arrMatches = null;
-
-          while (arrMatches = objPattern.exec(stringData)) {
-              var stringMatchDelim = arrMatches[1];
-              if (stringMatchDelim.length && (stringMatchDelim != stringDelim)) {
-                  arr.push([]);
-              }
-              if (arrMatches[2]) {
-                  var stringMatchVal = arrMatches[2].replace(
-                  new RegExp("\"\"", "g"), "\"");
-              } else {
-                  var stringMatchVal = arrMatches[3];
-              }
-              arr[arr.length - 1].push(stringMatchVal);
-          }
-          console.log(arr);
-          return (arr);
-        }
-
-        $scope.arrayToJson = function (csv) {
-          var arr = csvToArray(csv);
-          var objArray = [];
-          for (var i = 1; i < arr.length; i++) {
-              objArray[i - 1] = {};
-              for (var k = 0; k < arr[0].length && k < arr[i].length; k++) {
-                  var key = arr[0][k];
-                  objArray[i - 1][key] = arr[i][k]
-              }
-          }
-          var json = JSON.stringify(objArray);
-          var str = json.replace(/},/g, "},\r\n");
-          console.log(str);
-          return str;
-        }
-
-
-
-      $scope.handler=function(e,files){
-          var reader=new FileReader();
-          reader.onload=function(e){
-              var string=reader.result;
-              $scope.obj = $scope.csvToObj(string);
-              alert($scope.obj);
-          }
-          reader.readAsText(files[0]);
+      $scope.handleFiles = function(files) {
+        alert(typeof(files));
+        alert(files);
+      // Check for the various File API support.
+      if (window.FileReader) {
+          // FileReader are supported.
+          // $scope.getAsText(files[0]);
+          $scope.getAsText(files[0]);
+      } else {
+          alert('FileReader are not supported in this browser.');
       }
+    };
 
+    $scope.getAsText = function(fileToRead) {
+      var reader = new FileReader();
+      // Read file into memory as UTF-8
+      reader.readAsText(fileToRead);
+      // Handle errors load
+      reader.onload = $scope.loadHandler;
+      reader.onerror = $scope.errorHandler;
+    };
 
-      $scope.csvToObj =  function(input){
-          var rows=input.split('\n');
-          $scope.obj2=[];
-          angular.forEach(rows,function(val){
-            var o=val.split(';');
-            $scope.obj2.push({
-              designation:o[1],
-              km:o[11]
-            });
-          });
-          console.log('the real obj2 is ');
-          console.log($scope.obj2);
-          return $scope.obj2;
-        };
+    $scope.loadHandler = function(event) {
+      var csv = event.target.result;
+      processData(csv);
+    };
 
+    $scope.processData = function(csv) {
+        var allTextLines = csv.split(/\r\n|\n/);
+        var lines = [];
+        for (var i=0; i<allTextLines.length; i++) {
+            var data = allTextLines[i].split(';');
+                var tarr = [];
+                for (var j=0; j<data.length; j++) {
+                    tarr.push(data[j]);
+                }
+                lines.push(tarr);
+        }
+      console.log(lines);
+    };
 
-      // console.log(CSVConverterService.ex());
+    $scope.errorHandler = function(evt) {
+      if(evt.target.error.name == "NotReadableError") {
+          alert("Cannot read file !");
+      }
+    }
 
     });
 
