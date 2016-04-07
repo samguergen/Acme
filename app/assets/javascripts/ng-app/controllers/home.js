@@ -33,6 +33,35 @@ angular.module('myApp')
         return ($scope.arrayData);
     };
 
+
+    $scope.valState = function(){
+
+    };
+
+    $scope.valZip = function(){
+
+    };
+
+    $scope.valAge = function(){
+
+    };
+
+    $scope.valEmail = function(){
+
+    };
+
+    $scope.valSumZip = function(){
+
+    };
+
+    $scope.valDotNet = function(){
+
+    };
+
+    $scope.valSameAsNext = function(){
+
+    };
+
     });
 
 
