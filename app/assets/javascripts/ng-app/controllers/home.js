@@ -1,5 +1,5 @@
 angular.module('myApp')
-    .controller('HomeCtrl', function ($scope) {
+    .controller('HomeCtrl', function ($scope, $http) {
         $scope.things = ['Angular', 'Rails 4.1', 'UI Router', 'Together!!'];
 
         $scope.csvFile = "";
@@ -14,7 +14,7 @@ angular.module('myApp')
         }
         ];
 
-        function(csvUrl) {
+        $scope.openUrl = function(csvUrl) {
           var Items = $http.get(csvUrl).then(function(response){
           return csvToArray(response.data);
           });
@@ -22,7 +22,7 @@ angular.module('myApp')
           return Items;
         }
 
-        function csvToArray(stringData, stringDelim) {
+        $scope.csvToArray = function (stringData, stringDelim) {
           stringDelim = (stringDelim || ",");
           var objPattern = new RegExp((
           "(\\" + stringDelim + "|\\r?\\n|\\r|^)" +
@@ -30,6 +30,7 @@ angular.module('myApp')
           "([^\"\\" + stringDelim + "\\r\\n]*))"), "gi");
           var arr = [[]];
           var arrMatches = null;
+
           while (arrMatches = objPattern.exec(stringData)) {
               var stringMatchDelim = arrMatches[1];
               if (stringMatchDelim.length && (stringMatchDelim != stringDelim)) {
@@ -47,7 +48,7 @@ angular.module('myApp')
           return (arr);
         }
 
-        function arrayToJson(csv) {
+        $scope.arrayToJson = function (csv) {
           var arr = csvToArray(csv);
           var objArray = [];
           for (var i = 1; i < arr.length; i++) {
