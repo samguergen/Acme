@@ -32,44 +32,52 @@ angular.module('myApp')
             arrData[arrData.length - 1].push(strMatchedValue);
         }
         $scope.arrayData = arrData;
-        //removes headers
-        // $scope.arrayData = $scope.arrayData.shift();
-        $scope.stringData = arrData.toString();
-        return ($scope.test($scope.arrayData));
+
+
+
+        var header = arrData.shift();
+        $scope.locateHeader(header);
+
+        // $scope.stringData = arrData.toString();
+        // return ($scope.initValidations($scope.arrayData));
     };
 
-    $scope.test = function(arr) {
+    $scope.locateHeader = function(head) {
+      var headString = head.toString();
+      var headArray = headString.split("|");
+      console.log('headstring is');
+      for (var i in headArray) {
+        console.log(headArray[i]);
+      }
+    }
+
+    $scope.initValidations = function(arr) {
       $scope.valState(arr);
     };
 
 // 1) No wine can ship to New Jersey, Connecticut, Pennsylvania, Massachusetts,
 // Illinois, Idaho or Oregon
     $scope.valState = function(arr){
-      var rando = [];
-      // $scope.passedState = [];
+      var passingOrders = [];
       // row is an array that contains 2 obj: row[0] contains cust info, row[1] contains year
       for (var i in arr) {
         var row = arr[i];
         if (row[0].indexOf('|NJ|') < 0 || row[0].indexOf('|CT|') < 0|| row[0].indexOf('|PA|') < 0 || row[0].indexOf('|MA|') < 0 || row[0].indexOf('|IL|') < 0 || row[0].indexOf('|ID|') < 0 || row[0].indexOf('|OR|') < 0  ) {
           console.log('it does!!!');
-          rando.push(row);
+          passingOrders.push(row);
         }
-        // else {
-        //   console.log('boooo');
-        //   console.log(row);
-        //   $scope.passedState.push(row);
-        //   console.log($scope.passedState);
-        // }
       };
-      // console.log('passed states are');
+
       console.log('array passing 1');
-      for (var i in rando) {
-        console.log(rando[i]);
+      for (var i in passingOrders) {
+        console.log(passingOrders[i]);
       }
+
+      return $scope.valZip(passingOrders);
     };
 
 // 2) Valid zip codes must be 5 or 9 digits
-    $scope.valZip = function(){
+    $scope.valZip = function(arr){
 
     };
 
