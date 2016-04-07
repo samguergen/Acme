@@ -1,5 +1,5 @@
 angular.module('myApp')
-    .controller('HomeCtrl', function ($scope, $http) {
+    .controller('HomeCtrl', function ($scope, $http, CSVConverterService) {
         $scope.things = ['Angular', 'Rails 4.1', 'UI Router', 'Together!!'];
 
         $scope.csvFile = "";
@@ -115,6 +115,9 @@ angular.module('myApp')
           console.log($scope.obj2);
           return $scope.obj2;
         };
+
+
+      // console.log(CSVConverterService.ex());
 
     });
 

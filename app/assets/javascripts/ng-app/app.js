@@ -68,24 +68,39 @@ angular
       element[0].addEventListener('change',handler,false);
     }
   }
-}]);
+ }])
+
+  .service('CSVConverterService', function () {
+
+    this.ex = function() {
+        alert('working');
+    }
+
+    this.convertToArray = function (csvString) {
+        alert(csvString);
+           // Your parser logic here or call to the third party
+    };
+
+    //var csv is the CSV file with headers
+    this.csvJSON = function(csv) {
+      var lines=csv.split("\n");
+      var result = [];
+      var headers=lines[0].split(",");
+      for(var i=1;i<lines.length;i++){
+          var obj = {};
+          var currentline=lines[i].split(",");
+          for(var j=0;j<headers.length;j++){
+              obj[headers[j]] = currentline[j];
+          }
+          result.push(obj);
+      }
+      //return result; //JavaScript object
+      return JSON.stringify(result); //JSON
+    }
+
+});
 
 
-    //   .filter('csvToObj',function(){
-    //   return function(input){
-    //     var rows=input.split('\n');
-    //     var obj=[];
-    //     angular.forEach(rows,function(val){
-    //       var o=val.split(';');
-    //       obj.push({
-    //         designation:o[1],
-    //         ...
-    //         km:o[11]
-    //       });
-    //     });
-    //     return obj;
-    //   };
-    // });
 
 
 
