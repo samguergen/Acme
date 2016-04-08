@@ -106,6 +106,10 @@ angular
 
       var validOrders = [];
       var nonValidOrders = [];
+      var allOrders = [];
+      this.validOrdersJson = [];
+      this.invalidOrdersJson = [];
+      this.allOrdersJson = [];
 
 
       //json version of valid orders
@@ -363,20 +367,23 @@ angular
     allOrders = validOrders.concat(nonValidOrders);
 
 
-    allOrdersJson = [];
-    validOrdersJson = [];
-    invalidOrdersJson = [];
+    // allOrdersJson = [];
+    // validOrdersJson = [];
+    // invalidOrdersJson = [];
 
     for (var i in allOrders) {
-      allOrdersJson.push(angular.toJson(allOrders[i]))
+      this.allOrdersJson.push(angular.toJson(allOrders[i]))
     }
     for (var i in validOrders) {
-      validOrdersJson.push(angular.toJson(validOrders[i]))
+      this.validOrdersJson.push(angular.toJson(validOrders[i]))
     }
     for (var i in nonValidOrders) {
-      invalidOrdersJson.push(angular.toJson(nonValidOrders[i]))
+      this.invalidOrdersJson.push(angular.toJson(nonValidOrders[i]))
     }
 
+    console.log('FINAL ISSSS ', this.allOrdersJson );
+    console.log('VALID ISSSS ', this.validOrdersJson );
+    console.log('INVALID ISSSS ', this.invalidOrdersJson );
   };
 
  };

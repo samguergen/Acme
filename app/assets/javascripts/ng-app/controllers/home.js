@@ -8,6 +8,8 @@ angular.module('myApp')
         Validations.triggerValidations(fileContent);
       }
 
+      // $scope.allOrderz = Validations.
+
       // return Validations.triggerValidations();
 
 
