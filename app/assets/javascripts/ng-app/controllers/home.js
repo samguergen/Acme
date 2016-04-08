@@ -47,15 +47,11 @@ angular.module('myApp')
 
 
     $scope.locateColumns = function(head, body) {
-      var stringHead = head.toString();
-      var stringData = body.toString();
-      var headArray = stringHead.split("|");
-      var bodyArray = stringData.split("|");
+      var headArray = head.toString().split("|");
+      var bodyArray = body.toString().split("|");
       for (var i in headArray) {
         for (var y in $scope.csvIndex) {
-          if (y == headArray[i]) {
-            $scope.csvIndex[y] = i;
-          }
+          if (y == headArray[i]) { $scope.csvIndex[y] = i;}
         }
       };
       return ($scope.initValidations(body));
