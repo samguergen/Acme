@@ -288,6 +288,9 @@ angular.module('myApp')
 
     $scope.allOrders = $scope.validOrders.concat($scope.nonValidOrders);
 
+    console.log('type of all orders', typeof($scope.allOrders), 'each', typeof($scope.allOrders[1]));
+    console.log('type of valid orders', typeof($scope.validOrders), 'each', typeof($scope.validOrders[1]));
+    console.log('type of rejected orders', typeof($scope.nonValidOrders), 'each', typeof($scope.nonValidOrders[1]));
   };
 
  };
