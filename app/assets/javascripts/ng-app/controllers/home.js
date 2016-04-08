@@ -200,14 +200,20 @@ angular.module('myApp')
 //converts orders to JSON
   $scope.toJson = function(arr) {
     for (var i in arr) {
+      var row = arr[i];
+      var validity = {'valid': true};
       var prettyJson = angular.toJson(arr[i], true);
       console.log(prettyJson);
+      row.push(validity);
+      // row.push("valid: true");
+      console.log('now it is ', row);
     }
   }
 
   $scope.displayAll = function(arr) {
     $scope.CSVToArray(arr);
-    $scope.toJson($scope.arrData);
+    // $scope.toJson($scope.arrData);
+    $scope.addValid($scope.arrData);
   };
 
 });
