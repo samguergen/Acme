@@ -5,7 +5,8 @@ angular.module('myApp')
       $scope.invalidOrders = [];
       $scope.autoPassingOrders = [];
       $scope.allOrders = [];
-
+      $scope.validOrders = [];
+      $scope.nonValidOrders = [];
 
 
       //init csvIndex to contain index for all data columns.
@@ -228,6 +229,7 @@ angular.module('myApp')
       // row.push("valid: true");
       // console.log('now it is ', row);
     };
+    console.log('invalids are ', $scope.invalidOrders);
     $scope.buildOrderObj(arr);
   }
 
@@ -246,7 +248,7 @@ angular.module('myApp')
    "valid": false,
   };
 
-  $scope.buildOrderObj = function(orders, valid) {
+  $scope.buildOrderObj = function(orders) {
     var idIndex = csvIndex['id'];
     var nameIndex = csvIndex['name'];
     var stateIndex = csvIndex['state'];
@@ -255,8 +257,8 @@ angular.module('myApp')
 
     for (var i in orders) {
       console.log('rderz are ', orders[i]);
+
       var bdayFullAgain = orders[i][birthdayIndex]+ "," + orders[i][parseInt(birthdayIndex) + 1];
-      // console.log('passing orderz are ', orders[i], orders[i][zipid]);
       var orderObj = {
        "order_id": orders[i][idIndex],
        "name": orders[i][nameIndex],
@@ -266,18 +268,9 @@ angular.module('myApp')
         "valid": true,
     };
     console.log(orderObj);
-    $scope.allOrders.push(orderObj);
+    $scope.validOrders.push(orderObj);
    };
 
-// for (var i in $scope.allOrders) {
-//   console.log($scope.allOrders[i]);
-// }
-// console.log($scope.allOrders);
-    // if (valid) {
-    //   for (var i in orders) {
-    //     orders[i].push
-    //   }
-    // }
   }
 
 });
