@@ -260,7 +260,7 @@ angular.module('myApp')
    "valid": false,
   };
 
-  $scope.buildOrderObj = function(orders, invalidOrders) {
+  $scope.buildOrderObj = function(orders, invOrders) {
     var idIndex = csvIndex['id'];
     var nameIndex = csvIndex['name'];
     var emailIndex = csvIndex['email'];
@@ -270,7 +270,9 @@ angular.module('myApp')
 
     console.log('orderz are ', orders,  typeof(orders), Array.isArray(orders));
     console.log(' other orderz are ', $scope.validOrders);
-    console.log('invalid orderz are ', $scope.invalidOrders,  typeof($scope.invalidOrders), Array.isArray($scope.invalidOrders));
+    var test = $scope.invalidOrders.toString().split("|");
+    console.log('REAL invalid orderz are ', invOrders,  typeof(invOrders), Array.isArray(invOrders));
+    console.log('invalid orderz are ', test,  typeof(test), Array.isArray(test));
 
     if (orders) {
       console.log('there are VALID orders');
@@ -292,10 +294,11 @@ angular.module('myApp')
     return $scope.validOrders;
     };
 
-    if (invalidOrders) {
+    if (invOrders) {
       console.log('there are INVALID orders');
-      for (var i in invalidOrders) {
-        var rowArray = invalidOrders[i].split("|");
+      console.log(invOrders);
+      for (var i in invOrders) {
+        var rowArray = invOrders[i].split("|");
         var orderObj = {
        "order_id": parseInt(rowArray[idIndex]),
        "name": rowArray[nameIndex],
