@@ -81,6 +81,7 @@ angular.module('myApp')
       //promise so $scope.samasnext validates independantly?
       // $scope.sameAsNext(arr);
       $scope.valState(arr);
+      console.log('all of the records are ', arr.length);
     };
 
 
@@ -239,8 +240,8 @@ angular.module('myApp')
     //     var rowArray = order[i].split("|");
     // }
 
-    console.log('arr is ', arr);
-    console.log('inv order is ', $scope.invalidOrders);
+    console.log('arr is ', arr, arr.length);
+    console.log('inv order is ', $scope.invalidOrders, $scope.invalidOrders.length);
     $scope.buildOrderObj(arr);
   }
 
