@@ -204,8 +204,8 @@ angular.module('myApp')
       var validity = {'valid': true};
       var prettyJson = angular.toJson(arr[i], true);
       console.log(prettyJson);
-      row.push(validity);
-      // row.push("valid: true");
+      // row.push(validity);
+      row.push("valid: true");
       console.log('now it is ', row);
     }
   }
@@ -213,7 +213,7 @@ angular.module('myApp')
   $scope.displayAll = function(arr) {
     $scope.CSVToArray(arr);
     // $scope.toJson($scope.arrData);
-    $scope.addValid($scope.arrData);
+    // $scope.addValid($scope.arrData);
   };
 
 });
