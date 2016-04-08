@@ -130,12 +130,22 @@ angular
       var minBirthYear = currentYear - 21;
       var maxSumZip = 20;
 
+//init order obj with required structure
+      var orderObj = {
+       "order_id": 2075,
+       "name": "Vinton Cerf",
+       "state": "NJ",
+       "zipcode": 08999,
+       "birthday": "June 23, 1943",
+       "valid": false,
+      };
+
       this.triggerValidations = function(csv) {
         return this.CSVToArray(csv);
       }
 
 
-  //parses CSV file as array
+      //parses CSV file as array
       this.CSVToArray = function(strData, strDelimiter) {
         strDelimiter = (strDelimiter || ",");
         var objPattern = new RegExp((
@@ -164,7 +174,7 @@ angular
     };
 
 
-//dynamically pushes to csvIndex, guarantees that data columns will be probably captured even though order may be different or new columns will be added.
+    //dynamically pushes to csvIndex, guarantees that data columns will be probably captured even though order may be different or new columns will be added.
     this.locateColumns = function(head, body) {
       var headArray = head.toString().split("|");
       var bodyArray = body.toString().split("|");
@@ -177,7 +187,7 @@ angular
     };
 
 
-// 1) No wine can ship to NJ, CT, PA, MA, IL, ID and OR
+    // 1) No wine can ship to NJ, CT, PA, MA, IL, ID and OR
     this.valState = function(arr){
       var passing = [];
       var stateIndex = csvIndex['state'];
@@ -196,7 +206,7 @@ angular
     };
 
 
-// 2) Valid zip codes must be 5 or 9 digits
+    // 2) Valid zip codes must be 5 or 9 digits
     this.valZip = function(arr){
       var passing2 = [];
       var zipIndex = csvIndex['zipcode'];
@@ -320,15 +330,7 @@ angular
     this.buildOrderObj(arr, invalidOrders);
   }
 
-  var orderObj = {
-   "order_id": 2075,
-   "name": "Vinton Cerf",
-   "state": "NJ",
-   "zipcode": 08999,
-   "birthday": "June 23, 1943",
-   "valid": false,
-  };
-
+//actually builds the order obj with required structure, to prepare for json conversion
   this.buildOrderObj = function(orders, invOrders) {
     var idIndex = csvIndex['id'];
     var nameIndex = csvIndex['name'];
@@ -337,6 +339,7 @@ angular
     var stateIndex = csvIndex['state'];
     var zipcodeIndex = csvIndex['zipcode'];
 
+    //checks if any valid orders, pushes valid: true attr
     if (orders.length > 0 ) {
       for (var i in orders) {
         var rowArray = orders[i];
@@ -353,6 +356,7 @@ angular
      };
     }
 
+//checks if any invalid orders, pushes valid: false attr
     if (invOrders.length > 0 ) {
       for (var i in invOrders) {
         var row = invOrders[i].toString();
@@ -366,28 +370,26 @@ angular
        "valid": false,
         };
 
-    if (typeof(orderObj['name']) == 'undefined' ) {
-      continue
+      //double checks for any badly structured objs
+      if (typeof(orderObj['name']) == 'undefined' ) {
+        continue
+      };
+      nonValidOrders.push(orderObj);
+
+      };
+
+      //concats valid and invalid orders to store all orders with good structure.
+      allOrders = validOrders.concat(nonValidOrders);
+
+      for (var i in allOrders) {
+        this.allOrdersJson.push(angular.toJson(allOrders[i])) }
+      for (var i in validOrders) {
+        this.validOrdersJson.push(angular.toJson(validOrders[i])) }
+      for (var i in nonValidOrders) {
+        this.invalidOrdersJson.push(angular.toJson(nonValidOrders[i])) }
     };
-    nonValidOrders.push(orderObj);
-
-    };
-
-    allOrders = validOrders.concat(nonValidOrders);
-
-    for (var i in allOrders) {
-      this.allOrdersJson.push(angular.toJson(allOrders[i]))
-    }
-    for (var i in validOrders) {
-      this.validOrdersJson.push(angular.toJson(validOrders[i]))
-    }
-    for (var i in nonValidOrders) {
-      this.invalidOrdersJson.push(angular.toJson(nonValidOrders[i]))
-    }
-
   };
 
- };
 
 });
 
