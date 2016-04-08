@@ -7,11 +7,12 @@
       <input type="file" file-reader="fileContent" />
       <input type="submit" ng-click="readCsv()">
       <input type="submit" value="filter valid" ng-click="CSVToArray(fileContent)">
-      <input type="submit" value="convert to json" ng-click="displayAll(fileContent)">
+      <!-- <input type="submit" value="convert to json" ng-click="Validations.displayAll(fileContent)"> -->
+      <input type="submit" value="convert" ng-click="trigger(fileContent)">
   </form>
 
 
-    <!-- <div>{{fileContent}}</div> -->
+    <div>{{fileContent}}</div>
 
 <!--  <h2> PASSING ORDERS ARE </h2>
 
