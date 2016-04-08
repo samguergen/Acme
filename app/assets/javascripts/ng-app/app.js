@@ -42,7 +42,8 @@ angular
         .state('orders.order', {
             templateUrl: function ($stateParams){
               return 'orders/order.' + $stateParams.filterBy + '.html';
-  }
+            }
+        });
 
         // .state('orders.order', {
         //     url: '/:id',
