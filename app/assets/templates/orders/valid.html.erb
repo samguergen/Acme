@@ -1,7 +1,12 @@
 <h2>Your Valid Orders</h2>
 
+results:
 <div ng-repeat="val in validOrderz">
-    {{ val['order_id'] | json }}<br>
-    {{ val['name'] | json }}<br>
-    {{ val['valid'] | json }}<br>
+  {
+    {{ val['order_id'] | json }},
+    {{ val['name'] | json }},
+    {{ val['valid'] | json }}
+  }
+  <br>
+
 </div>
