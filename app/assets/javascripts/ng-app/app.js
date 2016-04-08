@@ -100,10 +100,10 @@ angular
       var passingOrders = [];
       var invalidOrders = [];
       var autoPassingOrders = [];
-
       var validOrders = [];
       var nonValidOrders = [];
       var allOrders = [];
+
       this.validOrdersJson = [];
       this.invalidOrdersJson = [];
       this.allOrdersJson = [];
@@ -131,7 +131,6 @@ angular
       var maxSumZip = 20;
 
       this.triggerValidations = function(csv) {
-        // console.log('csv isss ', csv);
         return this.CSVToArray(csv);
       }
 
@@ -174,12 +173,7 @@ angular
           if (y == headArray[i]) { csvIndex[y] = i;}
         }
       };
-      return (this.initValidations(body));
-    };
-
-     //triggering validations
-    this.initValidations = function(arr) {
-      this.valState(arr);
+      return (this.valState(body));
     };
 
 
