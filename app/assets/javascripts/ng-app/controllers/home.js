@@ -292,15 +292,30 @@ angular.module('myApp')
         var birthdayIndex = csvIndex['birthday'];
 
         for (var i in invalidOrders) {
-          // console.log(invalidOrders[i][stateIndex]);
           console.log(invalidOrders[i]);
+          var bdayFullAgain = invalidOrders[i][birthdayIndex]+ "," + invalidOrders[i][parseInt(birthdayIndex) + 1];
           var row = invalidOrders[i].toString();
           var rowArray = row.split("|");
+          var id = rowArray[parseInt(idIndex)];
           var state = rowArray[parseInt(stateIndex)];
-          console.log('state is ', state);
-        }
-      }
+          var name = rowArray[parseInt(nameIndex)];
+          var state = rowArray[parseInt(stateIndex)];
+          var zipcode = rowArray[parseInt(zipcodeIndex)];
+          var birthday = bdayFullAgain;
+          // console.log('state is ', state);
+          var orderObj = {
+         "order_id": parseInt(invalidOrders[i][idIndex]),
+         "name": invalidOrders[i][nameIndex],
+         "state": invalidOrders[i][stateIndex],
+         "zipcode": parseInt(invalidOrders[i][zipcodeIndex]),
+         "birthday": bdayFullAgain,
+         "valid": false,
+          };
+      console.log(orderObj);
+      $scope.nonValidOrders.push(orderObj);
+      };
     };
+  };
 
 });
 
