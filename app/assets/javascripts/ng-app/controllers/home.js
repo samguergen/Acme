@@ -41,12 +41,12 @@ angular.module('myApp')
         $scope.arrayData = arrData;
 
         var header = arrData.shift();
-        $scope.locatePositions(header, arrData);
+        $scope.locateColumns(header, arrData);
         // return ($scope.initValidations($scope.arrayData));
     };
 
 
-    $scope.locatePositions = function(head, body) {
+    $scope.locateColumns = function(head, body) {
       var stringHead = head.toString();
       var stringData = body.toString();
       var headArray = stringHead.split("|");
@@ -58,10 +58,9 @@ angular.module('myApp')
           }
         }
       };
-      // console.log('csv index is ', $scope.csvIndex);
-      // console.log('body id is ', bodyArray[$scope.csvIndex['id']]);
       return ($scope.initValidations(body));
     };
+
 
     $scope.initValidations = function(arr) {
       $scope.valState(arr);
@@ -129,10 +128,6 @@ angular.module('myApp')
            passing4.push(rowArray);
         };
       };
-      // console.log('passing validation 4');
-      // for (var i in passing4) {
-      //   console.log(passing4[i]);
-      // }
       return $scope.valSumZip(passing4);
     };
 
@@ -155,15 +150,15 @@ angular.module('myApp')
             passing5.push(rowArray);
         };
       };
-      return $scope.valDotNet(passing5);
+      return $scope.valRestrict(passing5);
     };
 
 // 6) Customers from NY may not have .net email addresses
-    $scope.valDotNet = function(arr){
-      var passing6 = [];
+    $scope.valRestrict = function(arr){
       var restrict = {
         'state':'NY',
         'email': '.net'}
+      var passing6 = [];
       var stateIndex = $scope.csvIndex['state'];
       var emailIndex = $scope.csvIndex['email'];
       for (var i in arr) {
@@ -177,18 +172,32 @@ angular.module('myApp')
             passing6.push(rowArray);
         };
       };
-      console.log('passing validation 6');
-      for (var i in passing6) {
-        console.log(passing6[i]);
-      }
-      // return $scope.valSameAsNext(passing6);
+      // console.log('passing validation 6');
+      // for (var i in passing6) {
+      //   console.log(passing6[i]);
+      // }
+      return $scope.valSameAsNext(passing6);
     };
 
 // 7) If the state and zip code of the following record is the same as the
 // current record, it automatically passes.
     $scope.valSameAsNext = function(arr){
       var passing7 = [];
+      var stateIndex = $scope.csvIndex['state'];
+      var zipIndex = $scope.csvIndex['zipcode'];
+      for (var i in arr) {
+        var row = arr[i].toString();
+        var rowArray = row.split("|");
+        var state = rowArray[parseInt(stateIndex)];
+        var nextState = rowArray[parseInt(stateIndex) + 1];
+        var zip = rowArray[parseInt(zipIndex)];
+        var nextZip = rowArray[parseInt(zipIndex) + 1];
+        if ((state == nextState) && (zip == nextZip)) {
 
+           passing7.push(rowArray);
+        };
+      };
+      return passing7;
     };
 
 });
