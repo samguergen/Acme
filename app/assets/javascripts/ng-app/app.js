@@ -297,7 +297,6 @@ angular
         };
       };
       passingOrders = passing6;
-            console.log('haaa', passing6);
       return this.toJson(passing6);
     };
 
@@ -363,10 +362,6 @@ angular
 
     allOrders = validOrders.concat(nonValidOrders);
 
-    console.log('type of all orders', typeof(allOrders), 'each', typeof(allOrders[1]));
-    console.log('type of valid orders', typeof(validOrders), 'each', typeof(validOrders[1]));
-    console.log('type of rejected orders', typeof(nonValidOrders), 'each', typeof(nonValidOrders[1]));
-    console.log('and now..');
 
     allOrdersJson = [];
     validOrdersJson = [];
