@@ -94,7 +94,7 @@ angular.module('myApp')
 
 
     // 1) No wine can ship to NJ, CT, PA, MA, IL, ID and OR
-    this.valState = function(arr){
+    this.valState = function(arr) {
       var passing = [];
       var stateIndex = csvIndex['state'];
       for (var i in arr) {
@@ -113,7 +113,7 @@ angular.module('myApp')
 
 
     // 2) Valid zip codes must be 5 or 9 digits
-    this.valZip = function(arr){
+    this.valZip = function(arr) {
       var passing2 = [];
       var zipIndex = csvIndex['zipcode'];
       for (var i in arr) {
@@ -131,7 +131,7 @@ angular.module('myApp')
 
 
     // 3) Everyone ordering must be 21 or older
-    this.valAge = function(arr){
+    this.valAge = function(arr) {
       var passing3 = [];
       var birthdayIndex = csvIndex['birthday'];
       var yearIndex = parseInt(birthdayIndex) + 1;
@@ -149,7 +149,7 @@ angular.module('myApp')
     };
 
     // 4) Email address must be valid
-    this.valEmail = function(arr){
+    this.valEmail = function(arr) {
       var passing4 = [];
       var emailIndex = csvIndex['email'];
       for (var i in arr) {
@@ -168,7 +168,7 @@ angular.module('myApp')
     };
 
     // 5) The sum of digits in a zip code may not exceed 20 ("90210": 9+0+2+1+0 = 12)
-    this.valSumZip = function(arr){
+    this.valSumZip = function(arr) {
       var passing5 = [];
       var zipIndex = csvIndex['zipcode'];
       for (var i in arr) {
@@ -191,7 +191,7 @@ angular.module('myApp')
     };
 
     // 6) Customers from NY may not have .net email addresses
-    this.valRestrict = function(arr){
+    this.valRestrict = function(arr) {
       var passing6 = [];
       var stateIndex = csvIndex['state'];
       var emailIndex = csvIndex['email'];
@@ -213,7 +213,7 @@ angular.module('myApp')
 
 
     // 7) If the state and zip code of the following record is the same as the current record, it automatically passes.
-    this.sameAsNext = function(arr){
+    this.sameAsNext = function(arr) {
       var passingAuto = [];
       var stateIndex = csvIndex['state'];
       var zipIndex = csvIndex['zipcode'];
