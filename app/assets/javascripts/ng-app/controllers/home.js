@@ -4,6 +4,9 @@ angular.module('myApp')
       $scope.passingOrders = [];
       $scope.invalidOrders = [];
       $scope.autoPassingOrders = [];
+      $scope.allOrders = [];
+
+
 
       //init csvIndex to contain index for all data columns.
       var csvIndex = {
@@ -22,6 +25,7 @@ angular.module('myApp')
       var stateRestrict = ['NJ','CT','PA','MA','IL','ID','OR'];
       var currentYear = new Date().getFullYear();
       var minBirthYear = currentYear - 21;
+      var maxSumZip = 20;
 
       $scope.readCsv = function() {
         alert($scope.fileContent);
@@ -152,7 +156,6 @@ angular.module('myApp')
 
 // 5) The sum of digits in a zip code may not exceed 20 ("90210": 9+0+2+1+0 = 12)
     $scope.valSumZip = function(arr){
-      var maxSumZip = 20;
       var passing5 = [];
       var zipIndex = csvIndex['zipcode'];
       for (var i in arr) {
@@ -215,15 +218,16 @@ angular.module('myApp')
       return passingAuto;
     };
 
-//converts orders to JSON
+//converts passing orders to JSON
   $scope.toJson = function(arr) {
     for (var i in arr) {
       var row = arr[i];
       var prettyJson = angular.toJson(arr[i], true);
-      console.log(prettyJson);
+      // console.log(prettyJson);
       // row.push("valid: true");
       // console.log('now it is ', row);
-    }
+    };
+    $scope.buildOrderObj(arr);
   }
 
   $scope.displayAll = function(arr) {
@@ -232,8 +236,32 @@ angular.module('myApp')
     // $scope.addValid($scope.arrData);
   };
 
-  $scope.buildOrderObj = function(orders, valid) {
+  $scope.orderObj = {
+   "order_id": 2075,
+   "name": "Vinton Cerf",
+   "state": "NJ",
+   "zipcode": 08999,
+   "birthday": "June 23, 1943",
+   "valid": false,
+  };
 
+  $scope.buildOrderObj = function(orders, valid) {
+    var zipId = csvIndex['id'];
+
+    for (var i in orders) {
+      console.log('passing orderz are ', orders[i], orders[i][zipId]);
+   //    orderObj = {
+   // "order_id": 2075,
+   // "name": "Vinton Cerf",
+   // "state": "NJ",
+   // "zipcode": 08999,
+   // "birthday": "June 23, 1943",
+   // "valid": false,
+   //  }
+   };
+
+
+        $scope.allOrders.push(orderObj);
     // if (valid) {
     //   for (var i in orders) {
     //     orders[i].push
