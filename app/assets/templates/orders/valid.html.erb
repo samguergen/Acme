@@ -3,9 +3,9 @@
 results:
 <div ng-repeat="val in validOrderz">
   {
-    {{ val['order_id'] | json }},
-    {{ val['name'] | json }},
-    {{ val['valid'] | json }}
+    "order_id": {{ val['order_id'] | json }},
+    "name": {{ val['name'] | json }},
+    "valid": {{ val['valid'] | json }}
   }
   <br>
 
