@@ -72,7 +72,7 @@ angular.module('myApp')
           if (y == headArray[i]) { csvIndex[y] = i;}
         }
       };
-      console.log('csv index is ', csvIndex);
+      // console.log('csv index is ', csvIndex);
       return ($scope.initValidations(body));
     };
 
@@ -240,8 +240,8 @@ angular.module('myApp')
     //     var rowArray = order[i].split("|");
     // }
 
-    console.log('arr is ', arr, arr.length);
-    console.log('inv order is ', $scope.invalidOrders, $scope.invalidOrders.length, Array.isArray($scope.invalidOrders));
+    // console.log('first param is ', arr);
+    console.log('second param is ', $scope.invalidOrders);
     $scope.buildOrderObj(arr, $scope.invalidOrders);
   }
 
@@ -268,7 +268,12 @@ angular.module('myApp')
     var stateIndex = csvIndex['state'];
     var zipcodeIndex = csvIndex['zipcode'];
 
+    console.log('orderz are ', orders,  typeof(orders), Array.isArray(orders));
+    console.log(' other orderz are ', $scope.validOrders);
+    console.log('invalid orderz are ', $scope.invalidOrders,  typeof($scope.invalidOrders), Array.isArray($scope.invalidOrders));
+
     if (orders) {
+      console.log('there are VALID orders');
       for (var i in orders) {
         var bdayFullAgain = orders[i][birthdayIndex]+ "," + orders[i][parseInt(birthdayIndex) + 1];
         var orderObj = {
@@ -279,16 +284,16 @@ angular.module('myApp')
          "birthday": bdayFullAgain,
          "valid": true,
       };
-      // console.log(orderObj);
       $scope.validOrders.push(orderObj);
      };
-    for (var i in $scope.validOrders) {
-      console.log('each valid order is ', $scope.validOrders[i]);
-    };
+    // for (var i in $scope.validOrders) {
+    //   console.log('each valid order is ', $scope.validOrders[i]);
+    // };
     return $scope.validOrders;
     };
 
     if (invalidOrders) {
+      console.log('there are INVALID orders');
       for (var i in invalidOrders) {
         var rowArray = invalidOrders[i].split("|");
         var orderObj = {
@@ -304,10 +309,10 @@ angular.module('myApp')
     };
     for (var i in $scope.nonValidOrders) {
       console.log('each non valid order is ', $scope.nonValidOrders[i]);
-      // console.log('non valid orders are ', nonValidOrders);
-    }
+    };
     return $scope.nonValidOrders;
   };
+
  };
 
 });
