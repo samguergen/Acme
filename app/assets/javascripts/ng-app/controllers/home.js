@@ -174,7 +174,7 @@ angular.module('myApp')
         };
       };
       $scope.passingOrders = passing6;
-      return $scope.passingOrders;
+      return $scope.toJson(passing6);
     };
 
 // 7) If the state and zip code of the following record is the same as the
@@ -196,6 +196,15 @@ angular.module('myApp')
       };
       return passingAuto;
     };
+
+  $scope.toJson = function(arr) {
+    console.log(arr);
+    console.log(typeof(arr));
+    for (var i in arr) {
+      var pretty = angular.toJson(arr[i], true);
+      console.log(pretty);
+    }
+  }
 
 });
 
