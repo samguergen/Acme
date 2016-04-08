@@ -198,11 +198,9 @@ angular.module('myApp')
     };
 
   $scope.toJson = function(arr) {
-    console.log(arr);
-    console.log(typeof(arr));
     for (var i in arr) {
-      var pretty = angular.toJson(arr[i], true);
-      console.log(pretty);
+      var prettyJson = angular.toJson(arr[i], true);
+      console.log(prettyJson);
     }
   }
 
