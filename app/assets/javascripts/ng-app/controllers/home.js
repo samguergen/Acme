@@ -249,19 +249,22 @@ angular.module('myApp')
     var zipId = csvIndex['id'];
 
     for (var i in orders) {
-      console.log('passing orderz are ', orders[i], orders[i][zipId]);
-   //    orderObj = {
-   // "order_id": 2075,
-   // "name": "Vinton Cerf",
-   // "state": "NJ",
-   // "zipcode": 08999,
-   // "birthday": "June 23, 1943",
-   // "valid": false,
-   //  }
+      // console.log('passing orderz are ', orders[i], orders[i][zipId]);
+      var orderObj = {
+   "order_id": orders[i][csvIndex['id']],
+   "name": orders[i][csvIndex['state']],
+   "state": orders[i][csvIndex['state']],
+   "zipcode": orders[i][csvIndex['zip']],
+   "birthday": "June 23, 1943",
+   "valid": true,
+    }
+    $scope.allOrders.push(orderObj);
    };
 
-
-        $scope.allOrders.push(orderObj);
+for (var i in $scope.allOrders) {
+  console.log($scope.allOrders[i]);
+}
+// console.log($scope.allOrders);
     // if (valid) {
     //   for (var i in orders) {
     //     orders[i].push
