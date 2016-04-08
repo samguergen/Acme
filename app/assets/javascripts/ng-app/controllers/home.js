@@ -285,29 +285,24 @@ angular.module('myApp')
     };
 
     if (invalidOrders) {
-        var idIndex = csvIndex['id'];
-        var nameIndex = csvIndex['name'];
-        var stateIndex = csvIndex['state'];
-        var zipcodeIndex = csvIndex['zipcode'];
-        var birthdayIndex = csvIndex['birthday'];
+        var idIndex = parseInt(csvIndex['id']);
+        var nameIndex = parseInt(csvIndex['name']);
+        var emailIndex = parseInt(csvIndex['email']);
+        var stateIndex = parseInt(csvIndex['state']);
+        var zipcodeIndex = parseInt(csvIndex['zipcode']);
+        var birthdayIndex = parseInt(csvIndex['birthday']);
 
         for (var i in invalidOrders) {
-          console.log(invalidOrders[i]);
-          var bdayFullAgain = invalidOrders[i][birthdayIndex]+ "," + invalidOrders[i][parseInt(birthdayIndex) + 1];
           var row = invalidOrders[i].toString();
           var rowArray = row.split("|");
-          var id = rowArray[parseInt(idIndex)];
-          var state = rowArray[parseInt(stateIndex)];
-          var name = rowArray[parseInt(nameIndex)];
-          var state = rowArray[parseInt(stateIndex)];
-          var zipcode = rowArray[parseInt(zipcodeIndex)];
-          var birthday = bdayFullAgain;
-          // console.log('state is ', state);
+          console.log(invalidOrders[i]);
+          // var bdayFullAgain = invalidOrders[i][birthdayIndex]+ "," + invalidOrders[i][parseInt(birthdayIndex) + 1];
+
           var orderObj = {
-         "order_id": parseInt(invalidOrders[i][idIndex]),
-         "name": invalidOrders[i][nameIndex],
-         "state": invalidOrders[i][stateIndex],
-         "zipcode": parseInt(invalidOrders[i][zipcodeIndex]),
+         "order_id": parseInt(rowArray[idIndex]),
+         "name": rowArray[nameIndex],
+         "state": rowArray[stateIndex],
+         "zipcode": parseInt(rowArray[zipcodeIndex]),
          "birthday": bdayFullAgain,
          "valid": false,
           };
