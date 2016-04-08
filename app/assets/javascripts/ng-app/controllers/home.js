@@ -14,6 +14,11 @@ angular.module('myApp')
         'zipcode': 0,
       };
 
+      var stateRestrict = ['NJ','CT','PA','MA','IL','ID','OR'];
+      var restrict = {
+        'state':'NY',
+        'email': '.net'}
+
       $scope.readCsv = function() {
         alert($scope.fileContent);
       }
@@ -67,7 +72,6 @@ angular.module('myApp')
 // 1) No wine can ship to New Jersey, Connecticut, Pennsylvania, Massachusetts,
 // Illinois, Idaho or Oregon
     $scope.valState = function(arr){
-      var stateRestrict = ['NJ','CT','PA','MA','IL','ID','OR'];
       var passing = [];
       var stateIndex = $scope.csvIndex['state'];
       for (var i in arr) {
@@ -153,9 +157,6 @@ angular.module('myApp')
 
 // 6) Customers from NY may not have .net email addresses
     $scope.valRestrict = function(arr){
-      var restrict = {
-        'state':'NY',
-        'email': '.net'}
       var passing6 = [];
       var stateIndex = $scope.csvIndex['state'];
       var emailIndex = $scope.csvIndex['email'];
