@@ -4,12 +4,12 @@ angular.module('myApp')
       $scope.passingOrders = [];
       $scope.invalidOrders = [];
       $scope.autoPassingOrders = [];
-      $scope.allOrders = [];
+
       $scope.validOrders = [];
       $scope.nonValidOrders = [];
 
-      //json version of valid orders
 
+      //json version of valid orders
 
       //init csvIndex to contain index for all data columns.
       var csvIndex = {
@@ -281,10 +281,13 @@ angular.module('myApp')
     if (typeof(orderObj['name']) == 'undefined' ) {
       continue
     };
+
     $scope.nonValidOrders.push(orderObj);
+
     };
-    for (var i in $scope.nonValidOrders) {
-    };
+
+    $scope.allOrders = $scope.validOrders.concat($scope.nonValidOrders);
+
   };
 
  };
