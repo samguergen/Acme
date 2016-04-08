@@ -296,6 +296,8 @@ angular.module('myApp')
           console.log(invalidOrders[i]);
           var row = invalidOrders[i].toString();
           var rowArray = row.split("|");
+          var state = rowArray[parseInt(stateIndex)];
+          console.log('state is ', state);
         }
       }
     };
