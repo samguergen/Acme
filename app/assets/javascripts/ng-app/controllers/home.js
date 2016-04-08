@@ -155,20 +155,15 @@ angular.module('myApp')
             passing5.push(rowArray);
         };
       };
-      // console.log('passing validation 5');
-      // for (var i in passing5) {
-      //   console.log(passing5[i]);
-      // }
       return $scope.valDotNet(passing5);
-
     };
 
 // 6) Customers from NY may not have .net email addresses
     $scope.valDotNet = function(arr){
+      var passing6 = [];
       var restrict = {
         'state':'NY',
         'email': '.net'}
-      var passing6 = [];
       var stateIndex = $scope.csvIndex['state'];
       var emailIndex = $scope.csvIndex['email'];
       for (var i in arr) {
@@ -177,12 +172,16 @@ angular.module('myApp')
         var rowArray = row.split(",");
         var state = rowArray[parseInt(stateIndex)];
         var email = rowArray[parseInt(emailIndex)];
-        if ((state == restrict['state']) && (email.toString().includes(restrict['email']))) {
-            console.log('miracle');
-            // passing5.push(rowArray);
+        if (!(state == restrict['state']) && !(email.toString().includes(restrict['email']))) {
+            // console.log(rowArray);
+            passing6.push(rowArray);
         };
       };
-
+      console.log('passing validation 6');
+      for (var i in passing6) {
+        console.log(passing6[i]);
+      }
+      // return $scope.valSameAsNext(passing6);
     };
 
 // 7) If the state and zip code of the following record is the same as the
