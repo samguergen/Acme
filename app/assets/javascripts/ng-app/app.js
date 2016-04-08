@@ -17,31 +17,31 @@ angular
             abstract: true,
             url: '/orders',
             templateUrl: 'orders/layout.html',
-            // controller: 'HomeCtrl'
         })
 
         .state('orders.all', {
             url: '',
             templateUrl: 'orders/all.html',
-            // controller: 'HomeCtrl'
         })
 
         .state('orders.import', {
             url: '/import',
             templateUrl: 'orders/import.html',
-            // controller: 'HomeCtrl'
         })
 
         .state('orders.valid', {
             url: '/valid',
             templateUrl: 'orders/valid.html',
-            // controller: 'HomeCtrl'
+        })
+
+        .state('orders.invalid', {
+            url: '/invalid',
+            templateUrl: 'orders/invalid.html',
         })
 
         .state('orders.order', {
             url: '/:id',
             templateUrl: 'orders/order.html',
-            // controller: 'HomeCtrl'
         });
 
 
