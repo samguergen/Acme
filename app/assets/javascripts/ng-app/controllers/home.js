@@ -6,12 +6,13 @@ angular.module('myApp')
         $location.path('/orders');
       }
 
-      $scope.allOrderz = Validations.allOrdersJson;
-      $scope.validOrderz = Validations.validOrdersJson;
-      $scope.invalidOrderz = Validations.invalidOrdersJson;
+      $scope.allOrderzJson = Validations.allOrdersJson;
+      $scope.validOrderzJson = Validations.validOrdersJson;
+      $scope.invalidOrderzJson = Validations.invalidOrdersJson;
 
-
-
+      $scope.allOrderz = Validations.allOrders;
+      $scope.validOrderz = Validations.validOrders;
+      $scope.invalidOrderz = Validations.nonValidOrders;
 
 });
 

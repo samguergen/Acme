@@ -5,9 +5,9 @@ angular.module('myApp')
     var passingOrders = [];
     var invalidOrders = [];
     var autoPassingOrders = [];
-    var validOrders = [];
-    var nonValidOrders = [];
-    var allOrders = [];
+    this.validOrders = [];
+    this.nonValidOrders = [];
+    this.allOrders = [];
 
     this.validOrdersJson = [];
     this.invalidOrdersJson = [];
@@ -255,7 +255,7 @@ angular.module('myApp')
            "birthday": bdayFullAgain,
            "valid": true,
         };
-        validOrders.push(orderObj);
+        this.validOrders.push(orderObj);
        };
       }
 
@@ -277,18 +277,18 @@ angular.module('myApp')
         if (typeof(orderObj['name']) == 'undefined' ) {
           continue
         };
-        nonValidOrders.push(orderObj);
+        this.nonValidOrders.push(orderObj);
       };
 
       //concats valid and invalid orders to store all orders with good structure.
-      allOrders = validOrders.concat(nonValidOrders);
+      this.allOrders = this.validOrders.concat(this.nonValidOrders);
 
-      for (var i in allOrders) {
-        this.allOrdersJson.push(angular.toJson(allOrders[i])) }
-      for (var i in validOrders) {
-        this.validOrdersJson.push(angular.toJson(validOrders[i])) }
-      for (var i in nonValidOrders) {
-        this.invalidOrdersJson.push(angular.toJson(nonValidOrders[i])) }
+      for (var i in this.allOrders) {
+        this.allOrdersJson.push(angular.toJson(this.allOrders[i])) }
+      for (var i in this.validOrders) {
+        this.validOrdersJson.push(angular.toJson(this.validOrders[i])) }
+      for (var i in this.nonValidOrders) {
+        this.invalidOrdersJson.push(angular.toJson(this.nonValidOrders[i])) }
     };
   };
 
