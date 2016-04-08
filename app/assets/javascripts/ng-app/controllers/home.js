@@ -205,6 +205,11 @@ angular.module('myApp')
     }
   }
 
+  $scope.displayAll = function(arr) {
+    $scope.CSVToArray(arr);
+    $scope.toJson($scope.arrData);
+  };
+
 });
 
 
