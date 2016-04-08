@@ -69,6 +69,7 @@ angular.module('myApp')
           if (y == headArray[i]) { csvIndex[y] = i;}
         }
       };
+      console.log('csv index is ', csvIndex);
       return ($scope.initValidations(body));
     };
 
@@ -247,23 +248,27 @@ angular.module('myApp')
 
   $scope.buildOrderObj = function(orders, valid) {
     var zipId = csvIndex['id'];
+    var name = csvIndex['name']
+    console.log('name is ', name);
 
     for (var i in orders) {
+      console.log('rderz are ', orders[i]);
       // console.log('passing orderz are ', orders[i], orders[i][zipId]);
       var orderObj = {
    "order_id": orders[i][csvIndex['id']],
-   "name": orders[i][csvIndex['state']],
+   "name": orders[i][csvIndex['name']],
    "state": orders[i][csvIndex['state']],
    "zipcode": orders[i][csvIndex['zip']],
    "birthday": "June 23, 1943",
    "valid": true,
     }
+    console.log(orderObj);
     $scope.allOrders.push(orderObj);
    };
 
-for (var i in $scope.allOrders) {
-  console.log($scope.allOrders[i]);
-}
+// for (var i in $scope.allOrders) {
+//   console.log($scope.allOrders[i]);
+// }
 // console.log($scope.allOrders);
     // if (valid) {
     //   for (var i in orders) {
