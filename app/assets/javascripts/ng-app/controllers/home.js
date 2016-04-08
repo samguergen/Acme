@@ -18,8 +18,6 @@ angular.module('myApp')
       // $scope.invalidOrderzJson = Validations.invalidOrdersJson;
 
 
-
-console.log('all orderz are ', $scope.allOrderz);
 });
 
 

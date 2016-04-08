@@ -284,7 +284,6 @@ angular.module('myApp')
 
       //concats valid and invalid orders to store all orders with good structure.
       this.allOrders = this.validOrders.concat(this.nonValidOrders);
-      console.log('all orders are ', this.allOrders);
 
       for (var i in this.allOrders) {
         this.allOrdersJson.push(angular.toJson(this.allOrders[i])) }
