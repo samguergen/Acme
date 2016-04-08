@@ -1,10 +1,16 @@
 <h2>Your Valid Orders</h2>
 
-<div ng-click="toJson()" ng-repeat="order in validOrders">
+<!-- <div ng-click="toJson()" ng-repeat="order in validOrders">
 
   {{ order }} <br>
 
-</div>
+</div> -->
+
+ <h2> PASSING ORDERS ARE </h2>
+
+    <div ng-repeat="valid in validOrders">
+      {{ valid }}
+  </div>
 
 
-{{ passingOrders }}
+{{ validOrders }}

@@ -72,7 +72,6 @@ angular.module('myApp')
           if (y == headArray[i]) { csvIndex[y] = i;}
         }
       };
-      // console.log('csv index is ', csvIndex);
       return ($scope.initValidations(body));
     };
 
@@ -81,7 +80,6 @@ angular.module('myApp')
       //promise so $scope.samasnext validates independantly?
       // $scope.sameAsNext(arr);
       $scope.valState(arr);
-      console.log('all of the records are ', arr.length);
     };
 
 
@@ -225,30 +223,11 @@ angular.module('myApp')
 
 //converts passing orders to JSON
   $scope.toJson = function(arr) {
-    // for (var i in arr) {
-    //   var row = arr[i];
-    //   var prettyJson = angular.toJson(arr[i], true);
-    //   // console.log(prettyJson);
-    //   // row.push("valid: true");
-    //   // console.log('now it is ', row);
-    // };
-    // console.log('invalids are ', $scope.invalidOrders);
-    // var prettyInvalids = $scope.invalidOrders,
-
-    // for (var order in $scope.invalidOrders) {
-    //     // var row = order[i].toString();
-    //     var rowArray = order[i].split("|");
-    // }
-
-    // console.log('first param is ', arr);
-    console.log('second param is ', $scope.invalidOrders);
     $scope.buildOrderObj(arr, $scope.invalidOrders);
   }
 
   $scope.displayAll = function(arr) {
     $scope.CSVToArray(arr);
-    // $scope.toJson($scope.arrData);
-    // $scope.addValid($scope.arrData);
   };
 
   $scope.orderObj = {
@@ -268,18 +247,11 @@ angular.module('myApp')
     var stateIndex = csvIndex['state'];
     var zipcodeIndex = csvIndex['zipcode'];
 
-    console.log('orderz are ', orders,  typeof(orders), Array.isArray(orders));
-    console.log(' other orderz are ', $scope.validOrders);
-    var test = $scope.invalidOrders.toString().split("|");
-    console.log('REAL invalid orderz are ', invOrders,  typeof(invOrders), Array.isArray(invOrders));
-    console.log('invalid orderz are ', test,  typeof(test), Array.isArray(test));
+    // var test = $scope.invalidOrders.toString().split("|");
 
     if (orders.length > 0 ) {
-      console.log('there are VALID orders');
-      console.log(orders);
       for (var i in orders) {
         var rowArray = orders[i];
-        console.log('type of rowArray in orders is ', typeof(rowArray), rowArray.length);
         var bdayFullAgain = orders[i][birthdayIndex]+ "," + orders[i][parseInt(birthdayIndex) + 1];
         var orderObj = {
          "order_id": parseInt(orders[i][idIndex]),
@@ -291,20 +263,12 @@ angular.module('myApp')
       };
       $scope.validOrders.push(orderObj);
      };
-    // for (var i in $scope.validOrders) {
-    //   console.log('each valid order is ', $scope.validOrders[i]);
-    // };
-    // return $scope.validOrders;
     }
 
     if (invOrders.length > 0 ) {
-      console.log('there are INVALID orders');
-      console.log(invOrders);
       for (var i in invOrders) {
         var row = invOrders[i].toString();
-        console.log('typeof row', typeof(row));
         var rowArray = row.split("|");
-        console.log('type of rowArray in invOrders is ', typeof(rowArray), rowArray.length);
         var orderObj = {
        "order_id": parseInt(rowArray[idIndex]),
        "name": rowArray[nameIndex],
@@ -315,17 +279,12 @@ angular.module('myApp')
         };
 
     if (typeof(orderObj['name']) == 'undefined' ) {
-      console.log('stop here');
       continue
     };
-    console.log('whaat', orderObj);
     $scope.nonValidOrders.push(orderObj);
     };
-    console.log('now here ');
     for (var i in $scope.nonValidOrders) {
-      console.log('each non valid order is ', $scope.nonValidOrders[i]);
     };
-    // return $scope.nonValidOrders;
   };
 
  };
