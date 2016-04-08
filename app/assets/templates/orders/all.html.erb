@@ -3,12 +3,13 @@
 {
 "results": [
   <div class="orders-list" ng-repeat="ord in allOrderz">
+    <a ui-sref="">
     {
       "order_id": {{ ord['order_id'] | json }} ,
       "name": {{ ord['name'] | json }} ,
       "valid": {{ ord['valid'] | json }}
     },
-    <br>
+    </a><br>
   </div>
  ] <br>
 }

@@ -3,12 +3,13 @@
 {
 "results": [
   <div ng-repeat="invalid in invalidOrderz">
+    <a ui-sref="">
     {
       "order_id": {{ invalid['order_id'] | json }} ,
       "name": {{ invalid['name'] | json }} ,
       "valid": {{ invalid['valid'] | json }}
     },
-    <br>
+    </a><br>
   </div>
  ] <br>
 }
