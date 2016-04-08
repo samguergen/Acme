@@ -274,7 +274,7 @@ angular.module('myApp')
     console.log('REAL invalid orderz are ', invOrders,  typeof(invOrders), Array.isArray(invOrders));
     console.log('invalid orderz are ', test,  typeof(test), Array.isArray(test));
 
-    if (orders) {
+    if (orders.length > 1 ) {
       console.log('there are VALID orders');
       for (var i in orders) {
         var bdayFullAgain = orders[i][birthdayIndex]+ "," + orders[i][parseInt(birthdayIndex) + 1];
@@ -291,14 +291,15 @@ angular.module('myApp')
     // for (var i in $scope.validOrders) {
     //   console.log('each valid order is ', $scope.validOrders[i]);
     // };
-    return $scope.validOrders;
-    };
+    // return $scope.validOrders;
+    }
 
-    if (invOrders) {
+    if (invOrders.length > 1 ) {
       console.log('there are INVALID orders');
       console.log(invOrders);
       for (var i in invOrders) {
         var rowArray = invOrders[i].split("|");
+        console.log('type of rowArray in invOrders is ', typeof(rowArray));
         var orderObj = {
        "order_id": parseInt(rowArray[idIndex]),
        "name": rowArray[nameIndex],
@@ -313,7 +314,7 @@ angular.module('myApp')
     for (var i in $scope.nonValidOrders) {
       console.log('each non valid order is ', $scope.nonValidOrders[i]);
     };
-    return $scope.nonValidOrders;
+    // return $scope.nonValidOrders;
   };
 
  };
