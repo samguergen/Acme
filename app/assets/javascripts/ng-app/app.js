@@ -96,83 +96,82 @@ angular
 
 .service('Validations', function () {
 
-      var arrayData = [];
-      var passingOrders = [];
-      var invalidOrders = [];
-      var autoPassingOrders = [];
-      var validOrders = [];
-      var nonValidOrders = [];
-      var allOrders = [];
+    var arrayData = [];
+    var passingOrders = [];
+    var invalidOrders = [];
+    var autoPassingOrders = [];
+    var validOrders = [];
+    var nonValidOrders = [];
+    var allOrders = [];
 
-      this.validOrdersJson = [];
-      this.invalidOrdersJson = [];
-      this.allOrdersJson = [];
-
-
-      //json version of valid orders
-
-      //init csvIndex to contain index for all data columns.
-      var csvIndex = {
-        'id': 0,
-        'name': 0,
-        'email': 0,
-        'birthday': 0,
-        'state': 0,
-        'zipcode': 0,
-      };
-
-      //set restrictions atop so easily modifiable
-      var restrict = {
-        'state':'NY',
-        'email': '.net'}
-      var stateRestrict = ['NJ','CT','PA','MA','IL','ID','OR'];
-      var currentYear = new Date().getFullYear();
-      var minBirthYear = currentYear - 21;
-      var maxSumZip = 20;
-
-//init order obj with required structure
-      var orderObj = {
-       "order_id": 2075,
-       "name": "Vinton Cerf",
-       "state": "NJ",
-       "zipcode": 08999,
-       "birthday": "June 23, 1943",
-       "valid": false,
-      };
-
-      this.triggerValidations = function(csv) {
-        return this.CSVToArray(csv);
-      }
+    this.validOrdersJson = [];
+    this.invalidOrdersJson = [];
+    this.allOrdersJson = [];
 
 
-      //parses CSV file as array
-      this.CSVToArray = function(strData, strDelimiter) {
-        strDelimiter = (strDelimiter || ",");
-        var objPattern = new RegExp((
-        "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
-        "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
-        "([^\"\\" + strDelimiter + "\\r\\n]*))"), "gi");
-        var arrData = [[]];
-        var arrMatches = null;
-        while (arrMatches = objPattern.exec(strData)) {
-            var strMatchedDelimiter = arrMatches[1];
-            if (strMatchedDelimiter.length && (strMatchedDelimiter != strDelimiter)) {
-                arrData.push([]);
-            }
-            if (arrMatches[2]) {
-                var strMatchedValue = arrMatches[2].replace(
-                new RegExp("\"\"", "g"), "\"");
-            } else {
-                var strMatchedValue = arrMatches[3];
-            }
-            arrData[arrData.length - 1].push(strMatchedValue);
-        }
-        arrayData = arrData;
+    //json version of valid orders
 
-        var header = arrData.shift();
-        this.locateColumns(header, arrData);
+    //init csvIndex to contain index for all data columns.
+    var csvIndex = {
+      'id': 0,
+      'name': 0,
+      'email': 0,
+      'birthday': 0,
+      'state': 0,
+      'zipcode': 0,
     };
 
+    //set restrictions atop so easily modifiable
+    var restrict = {
+      'state':'NY',
+      'email': '.net'}
+    var stateRestrict = ['NJ','CT','PA','MA','IL','ID','OR'];
+    var currentYear = new Date().getFullYear();
+    var minBirthYear = currentYear - 21;
+    var maxSumZip = 20;
+
+//init order obj with required structure
+    var orderObj = {
+     "order_id": 2075,
+     "name": "Vinton Cerf",
+     "state": "NJ",
+     "zipcode": 08999,
+     "birthday": "June 23, 1943",
+     "valid": false,
+    };
+
+    this.triggerValidations = function(csv) {
+      return this.CSVToArray(csv);
+    }
+
+
+    //parses CSV file as array
+    this.CSVToArray = function(strData, strDelimiter) {
+      strDelimiter = (strDelimiter || ",");
+      var objPattern = new RegExp((
+      "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+      "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+      "([^\"\\" + strDelimiter + "\\r\\n]*))"), "gi");
+      var arrData = [[]];
+      var arrMatches = null;
+      while (arrMatches = objPattern.exec(strData)) {
+          var strMatchedDelimiter = arrMatches[1];
+          if (strMatchedDelimiter.length && (strMatchedDelimiter != strDelimiter)) {
+              arrData.push([]);
+          }
+          if (arrMatches[2]) {
+              var strMatchedValue = arrMatches[2].replace(
+              new RegExp("\"\"", "g"), "\"");
+          } else {
+              var strMatchedValue = arrMatches[3];
+          }
+          arrData[arrData.length - 1].push(strMatchedValue);
+      }
+      arrayData = arrData;
+
+      var header = arrData.shift();
+      this.locateColumns(header, arrData);
+    };
 
     //dynamically pushes to csvIndex, guarantees that data columns will be probably captured even though order may be different or new columns will be added.
     this.locateColumns = function(head, body) {
@@ -224,7 +223,7 @@ angular
     };
 
 
-// 3) Everyone ordering must be 21 or older
+    // 3) Everyone ordering must be 21 or older
     this.valAge = function(arr){
       var passing3 = [];
       var birthdayIndex = csvIndex['birthday'];
@@ -242,7 +241,7 @@ angular
       return this.valEmail(passing3);
     };
 
-// 4) Email address must be valid
+    // 4) Email address must be valid
     this.valEmail = function(arr){
       var passing4 = [];
       var emailIndex = csvIndex['email'];
@@ -261,7 +260,7 @@ angular
       return this.valSumZip(passing4);
     };
 
-// 5) The sum of digits in a zip code may not exceed 20 ("90210": 9+0+2+1+0 = 12)
+    // 5) The sum of digits in a zip code may not exceed 20 ("90210": 9+0+2+1+0 = 12)
     this.valSumZip = function(arr){
       var passing5 = [];
       var zipIndex = csvIndex['zipcode'];
@@ -284,7 +283,7 @@ angular
       return this.valRestrict(passing5);
     };
 
-// 6) Customers from NY may not have .net email addresses
+    // 6) Customers from NY may not have .net email addresses
     this.valRestrict = function(arr){
       var passing6 = [];
       var stateIndex = csvIndex['state'];
@@ -306,8 +305,7 @@ angular
     };
 
 
-// 7) If the state and zip code of the following record is the same as the
-// current record, it automatically passes.
+    // 7) If the state and zip code of the following record is the same as the current record, it automatically passes.
     this.sameAsNext = function(arr){
       var passingAuto = [];
       var stateIndex = csvIndex['state'];
@@ -326,56 +324,55 @@ angular
     };
 
     //converts passing orders to JSON
-  this.toJson = function(arr) {
-    this.buildOrderObj(arr, invalidOrders);
-  }
-
-//actually builds the order obj with required structure, to prepare for json conversion
-  this.buildOrderObj = function(orders, invOrders) {
-    var idIndex = csvIndex['id'];
-    var nameIndex = csvIndex['name'];
-    var emailIndex = csvIndex['email'];
-    var birthdayIndex = csvIndex['birthday'];
-    var stateIndex = csvIndex['state'];
-    var zipcodeIndex = csvIndex['zipcode'];
-
-    //checks if any valid orders, pushes valid: true attr
-    if (orders.length > 0 ) {
-      for (var i in orders) {
-        var rowArray = orders[i];
-        var bdayFullAgain = orders[i][birthdayIndex]+ "," + orders[i][parseInt(birthdayIndex) + 1];
-        var orderObj = {
-         "order_id": parseInt(orders[i][idIndex]),
-         "name": orders[i][nameIndex],
-         "state": orders[i][stateIndex],
-         "zipcode": parseInt(orders[i][zipcodeIndex]),
-         "birthday": bdayFullAgain,
-         "valid": true,
-      };
-      validOrders.push(orderObj);
-     };
+    this.toJson = function(arr) {
+      this.buildOrderObj(arr, invalidOrders);
     }
 
-//checks if any invalid orders, pushes valid: false attr
-    if (invOrders.length > 0 ) {
-      for (var i in invOrders) {
-        var row = invOrders[i].toString();
-        var rowArray = row.split("|");
-        var orderObj = {
-       "order_id": parseInt(rowArray[idIndex]),
-       "name": rowArray[nameIndex],
-       "state": rowArray[stateIndex],
-       "zipcode": parseInt(rowArray[zipcodeIndex]),
-       "birthday": rowArray[birthdayIndex],
-       "valid": false,
+    //actually builds the order obj with required structure, to prepare for json conversion
+    this.buildOrderObj = function(orders, invOrders) {
+      var idIndex = csvIndex['id'];
+      var nameIndex = csvIndex['name'];
+      var emailIndex = csvIndex['email'];
+      var birthdayIndex = csvIndex['birthday'];
+      var stateIndex = csvIndex['state'];
+      var zipcodeIndex = csvIndex['zipcode'];
+
+      //checks if any valid orders, pushes valid: true attr
+      if (orders.length > 0 ) {
+        for (var i in orders) {
+          var rowArray = orders[i];
+          var bdayFullAgain = orders[i][birthdayIndex]+ "," + orders[i][parseInt(birthdayIndex) + 1];
+          var orderObj = {
+           "order_id": parseInt(orders[i][idIndex]),
+           "name": orders[i][nameIndex],
+           "state": orders[i][stateIndex],
+           "zipcode": parseInt(orders[i][zipcodeIndex]),
+           "birthday": bdayFullAgain,
+           "valid": true,
         };
+        validOrders.push(orderObj);
+       };
+      }
 
-      //double checks for any badly structured objs
-      if (typeof(orderObj['name']) == 'undefined' ) {
-        continue
-      };
-      nonValidOrders.push(orderObj);
+      //checks if any invalid orders, pushes valid: false attr
+      if (invOrders.length > 0 ) {
 
+        for (var i in invOrders) {
+          var row = invOrders[i].toString();
+          var rowArray = row.split("|");
+          var orderObj = {
+         "order_id": parseInt(rowArray[idIndex]),
+         "name": rowArray[nameIndex],
+         "state": rowArray[stateIndex],
+         "zipcode": parseInt(rowArray[zipcodeIndex]),
+         "birthday": rowArray[birthdayIndex],
+         "valid": false,
+          };
+        //double checks for any badly structured objs
+        if (typeof(orderObj['name']) == 'undefined' ) {
+          continue
+        };
+        nonValidOrders.push(orderObj);
       };
 
       //concats valid and invalid orders to store all orders with good structure.
