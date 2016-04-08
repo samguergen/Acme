@@ -2,6 +2,7 @@ angular.module('myApp')
     .controller('HomeCtrl', function ($scope, $http) {
 
       $scope.passingOrders = [];
+      $scope.autoPassingOrders = [];
       $scope.arrayData = [];
 
       $scope.csvIndex = {
@@ -63,6 +64,7 @@ angular.module('myApp')
 
 
     $scope.initValidations = function(arr) {
+      // $scope.sameAsNext(arr);
       $scope.valState(arr);
     };
 
@@ -168,21 +170,20 @@ angular.module('myApp')
         var state = rowArray[parseInt(stateIndex)];
         var email = rowArray[parseInt(emailIndex)];
         if (!(state == restrict['state']) && !(email.toString().includes(restrict['email']))) {
-            // console.log(rowArray);
             passing6.push(rowArray);
         };
       };
-      // console.log('passing validation 6');
-      // for (var i in passing6) {
-      //   console.log(passing6[i]);
-      // }
-      return $scope.valSameAsNext(passing6);
+      console.log('passing validation 6');
+      for (var i in passing6) {
+        console.log(passing6[i]);
+      }
+      return passing6;
     };
 
 // 7) If the state and zip code of the following record is the same as the
 // current record, it automatically passes.
-    $scope.valSameAsNext = function(arr){
-      var passing7 = [];
+    $scope.sameAsNext = function(arr){
+      var passingAuto = [];
       var stateIndex = $scope.csvIndex['state'];
       var zipIndex = $scope.csvIndex['zipcode'];
       for (var i in arr) {
@@ -194,10 +195,14 @@ angular.module('myApp')
         var nextZip = rowArray[parseInt(zipIndex) + 1];
         if ((state == nextState) && (zip == nextZip)) {
 
-           passing7.push(rowArray);
+           passingAuto.push(rowArray);
         };
       };
-      return passing7;
+      console.log('passing validation auto');
+      for (var i in passingAuto) {
+        console.log(passingAuto[i]);
+      }
+      return passingAuto;
     };
 
 });
