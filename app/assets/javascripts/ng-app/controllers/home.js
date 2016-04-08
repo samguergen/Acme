@@ -88,8 +88,8 @@ angular.module('myApp')
       var passing2 = [];
       var zipIndex = $scope.csvIndex['zipcode'];
       for (var i in arr) {
-        var row = arr[i].toString();
-        var rowArray = row.split("|");
+        // var row = arr[i].toString();
+        var rowArray = arr[i].toString().split("|");
         if (rowArray[zipIndex] && ((rowArray[zipIndex].length == 5) || (rowArray[zipIndex].length == 9)) ) {
            passing2.push(rowArray);
         };
@@ -120,7 +120,6 @@ angular.module('myApp')
       var passing4 = [];
       var emailIndex = $scope.csvIndex['email'];
       for (var i in arr) {
-        var row = arr[i];
         var row = arr[i].toString();
         var rowArray = row.split(",");
         var email = rowArray[parseInt(emailIndex)];
@@ -138,7 +137,6 @@ angular.module('myApp')
       var passing5 = [];
       var zipIndex = $scope.csvIndex['zipcode'];
       for (var i in arr) {
-        var row = arr[i];
         var row = arr[i].toString();
         var rowArray = row.split(",");
         var zip = rowArray[parseInt(zipIndex)];
@@ -163,7 +161,6 @@ angular.module('myApp')
       var stateIndex = $scope.csvIndex['state'];
       var emailIndex = $scope.csvIndex['email'];
       for (var i in arr) {
-        var row = arr[i];
         var row = arr[i].toString();
         var rowArray = row.split(",");
         var state = rowArray[parseInt(stateIndex)];
