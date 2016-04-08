@@ -263,9 +263,10 @@ angular.module('myApp')
   $scope.buildOrderObj = function(orders, invalidOrders) {
     var idIndex = csvIndex['id'];
     var nameIndex = csvIndex['name'];
+    var emailIndex = csvIndex['email'];
+    var birthdayIndex = csvIndex['birthday'];
     var stateIndex = csvIndex['state'];
     var zipcodeIndex = csvIndex['zipcode'];
-    var birthdayIndex = csvIndex['birthday'];
 
     if (orders) {
       for (var i in orders) {
@@ -285,20 +286,14 @@ angular.module('myApp')
     };
 
     if (invalidOrders) {
-        var idIndex = parseInt(csvIndex['id']);
-        var nameIndex = parseInt(csvIndex['name']);
-        var emailIndex = parseInt(csvIndex['email']);
-        var stateIndex = parseInt(csvIndex['state']);
-        var zipcodeIndex = parseInt(csvIndex['zipcode']);
-        var birthdayIndex = parseInt(csvIndex['birthday']);
         for (var i in invalidOrders) {
           var rowArray = invalidOrders[i].split("|");
           console.log('row array is ', rowArray, 'length is ', rowArray.length);
           console.log('id in row array is ', rowArray[idIndex]);
           console.log('name in row array is ', rowArray[nameIndex]);
+          console.log('email in row array is ', rowArray[emailIndex]);
           console.log('state in row array is ', rowArray[stateIndex]);
-          // console.log(' zip in row array is ', rowArray[zipCodeIndex]);
-
+          console.log(' zip in row array is ', rowArray[zipcodeIndex]);
 
           var bdayFullAgain = invalidOrders[i][birthdayIndex]+ "," + invalidOrders[i][parseInt(birthdayIndex) + 1];
           console.log('an elem is row array is ', bdayFullAgain);
@@ -309,8 +304,8 @@ angular.module('myApp')
          "order_id": parseInt(rowArray[idIndex]),
          "name": rowArray[nameIndex],
          "state": rowArray[stateIndex],
-         "zipcode": 0,
-         "birthday": bdayFullAgain,
+         "zipcode": parseInt(rowArray[zipcodeIndex]),
+         "birthday": "",
          "valid": false,
           };
       console.log(orderObj);
