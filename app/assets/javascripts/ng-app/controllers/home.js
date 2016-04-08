@@ -1,10 +1,9 @@
 angular.module('myApp')
     .controller('HomeCtrl', function ($scope, $http) {
-
-      $scope.passingOrders = [];
-      $scope.autoPassingOrders = [];
       $scope.arrayData = [];
+      $scope.passingOrders = [];
       $scope.invalidOrders = [];
+      $scope.autoPassingOrders = [];
 
       //init csvIndex to contain index for all data columns.
       var csvIndex = {
@@ -232,6 +231,15 @@ angular.module('myApp')
     // $scope.toJson($scope.arrData);
     // $scope.addValid($scope.arrData);
   };
+
+  $scope.buildOrderObj = function(orders, valid) {
+
+    // if (valid) {
+    //   for (var i in orders) {
+    //     orders[i].push
+    //   }
+    // }
+  }
 
 });
 
