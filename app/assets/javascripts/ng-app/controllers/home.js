@@ -222,14 +222,23 @@ angular.module('myApp')
 
 //converts passing orders to JSON
   $scope.toJson = function(arr) {
-    for (var i in arr) {
-      var row = arr[i];
-      var prettyJson = angular.toJson(arr[i], true);
-      // console.log(prettyJson);
-      // row.push("valid: true");
-      // console.log('now it is ', row);
-    };
-    console.log('invalids are ', $scope.invalidOrders);
+    // for (var i in arr) {
+    //   var row = arr[i];
+    //   var prettyJson = angular.toJson(arr[i], true);
+    //   // console.log(prettyJson);
+    //   // row.push("valid: true");
+    //   // console.log('now it is ', row);
+    // };
+    // console.log('invalids are ', $scope.invalidOrders);
+    // var prettyInvalids = $scope.invalidOrders,
+
+    // for (var order in $scope.invalidOrders) {
+    //     // var row = order[i].toString();
+    //     var rowArray = order[i].split("|");
+    // }
+
+    console.log('arr is ', arr);
+    console.log('inv order is ', $scope.invalidOrders);
     $scope.buildOrderObj(arr);
   }
 
@@ -256,14 +265,14 @@ angular.module('myApp')
     var birthdayIndex = csvIndex['birthday'];
 
     for (var i in orders) {
-      console.log('rderz are ', orders[i]);
+      // console.log('rderz are ', orders[i]);
 
       var bdayFullAgain = orders[i][birthdayIndex]+ "," + orders[i][parseInt(birthdayIndex) + 1];
       var orderObj = {
-       "order_id": orders[i][idIndex],
+       "order_id": parseInt(orders[i][idIndex]),
        "name": orders[i][nameIndex],
        "state": orders[i][stateIndex],
-       "zipcode": orders[i][zipcodeIndex],
+       "zipcode": parseInt(orders[i][zipcodeIndex]),
        "birthday": bdayFullAgain,
         "valid": true,
     };
