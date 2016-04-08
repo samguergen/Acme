@@ -1,15 +1,14 @@
 <h2>Your Rejected Orders</h2>
 
 {
-"results":
-<div ng-repeat="invalid in invalidOrderz">
-  {
-    "order_id": {{ invalid['order_id'] | json }},
-    "name": {{ invalid['name'] | json }},
-    "valid": {{ invalid['valid'] | json }}
-  }
-  <br>
-
-</div>
-
+"results": [
+  <div ng-repeat="invalid in invalidOrderz">
+    {
+      "order_id": {{ invalid['order_id'] | json }} ,
+      "name": {{ invalid['name'] | json }} ,
+      "valid": {{ invalid['valid'] | json }}
+    },
+    <br>
+  </div>
+ ] <br>
 }
