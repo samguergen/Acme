@@ -276,7 +276,10 @@ angular.module('myApp')
 
     if (orders.length > 1 ) {
       console.log('there are VALID orders');
+      console.log(orders);
       for (var i in orders) {
+        var rowArray = orders[i];
+        console.log('type of rowArray in orders is ', typeof(rowArray), rowArray.length);
         var bdayFullAgain = orders[i][birthdayIndex]+ "," + orders[i][parseInt(birthdayIndex) + 1];
         var orderObj = {
          "order_id": parseInt(orders[i][idIndex]),
@@ -298,8 +301,10 @@ angular.module('myApp')
       console.log('there are INVALID orders');
       console.log(invOrders);
       for (var i in invOrders) {
-        var rowArray = invOrders[i].split("|");
-        console.log('type of rowArray in invOrders is ', typeof(rowArray));
+        var row = invOrders[i].toString();
+        console.log('typeof row', typeof(row));
+        var rowArray = row.split("|");
+        console.log('type of rowArray in invOrders is ', typeof(rowArray), rowArray.length);
         var orderObj = {
        "order_id": parseInt(rowArray[idIndex]),
        "name": rowArray[nameIndex],
@@ -311,6 +316,7 @@ angular.module('myApp')
     // console.log(orderObj);
     $scope.nonValidOrders.push(orderObj);
     };
+    console.log('now here ');
     for (var i in $scope.nonValidOrders) {
       console.log('each non valid order is ', $scope.nonValidOrders[i]);
     };
