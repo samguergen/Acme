@@ -1,6 +1,7 @@
 <h2>Your Rejected Orders</h2>
 
-results:
+{
+"results":
 <div ng-repeat="invalid in invalidOrderz">
   {
     "order_id": {{ invalid['order_id'] | json }},
@@ -10,3 +11,5 @@ results:
   <br>
 
 </div>
+
+}
