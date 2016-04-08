@@ -1,5 +1,14 @@
 angular.module('myApp')
     .controller('HomeCtrl', function ($scope, $http, Validations) {
+
+      // return Validations.test();
+      $scope.trigger = function(csv){
+        return Validations.triggerValidations(csv);
+      }
+
+      // return Validations.triggerValidations();
+
+
 //       $scope.arrayData = [];
 //       $scope.passingOrders = [];
 //       $scope.invalidOrders = [];

@@ -54,6 +54,10 @@ angular
   })
 
 .service('Validations', function () {
+
+  this.test = function(){
+    console.log('hello');
+  }
       var arrayData = [];
       var passingOrders = [];
       var invalidOrders = [];
@@ -83,6 +87,10 @@ angular
       var currentYear = new Date().getFullYear();
       var minBirthYear = currentYear - 21;
       var maxSumZip = 20;
+
+      this.triggerValidations = function(csv) {
+        return this.CSVToArray(csv);
+      }
 
 
   //parses CSV file as array
