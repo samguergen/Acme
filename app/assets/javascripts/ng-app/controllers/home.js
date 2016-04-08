@@ -270,7 +270,6 @@ angular.module('myApp')
 
     if (orders) {
       for (var i in orders) {
-        // console.log('rderz are ', orders[i]);
         var bdayFullAgain = orders[i][birthdayIndex]+ "," + orders[i][parseInt(birthdayIndex) + 1];
         var orderObj = {
          "order_id": parseInt(orders[i][idIndex]),
@@ -286,27 +285,19 @@ angular.module('myApp')
     };
 
     if (invalidOrders) {
-        for (var i in invalidOrders) {
-          var rowArray = invalidOrders[i].split("|");
-          console.log('row array is ', rowArray, 'length is ', rowArray.length);
-          console.log('id in row array is ', rowArray[idIndex]);
-          console.log('name in row array is ', rowArray[nameIndex]);
-          console.log('email in row array is ', rowArray[emailIndex]);
-          console.log('state in row array is ', rowArray[stateIndex]);
-          console.log(' zip in row array is ', rowArray[zipcodeIndex]);
-          console.log(' birthday in row array is ', rowArray[birthdayIndex]);
-
-          var orderObj = {
-         "order_id": parseInt(rowArray[idIndex]),
-         "name": rowArray[nameIndex],
-         "state": rowArray[stateIndex],
-         "zipcode": parseInt(rowArray[zipcodeIndex]),
-         "birthday": rowArray[birthdayIndex],
-         "valid": false,
-          };
-      console.log(orderObj);
-      $scope.nonValidOrders.push(orderObj);
-      };
+      for (var i in invalidOrders) {
+        var rowArray = invalidOrders[i].split("|");
+        var orderObj = {
+       "order_id": parseInt(rowArray[idIndex]),
+       "name": rowArray[nameIndex],
+       "state": rowArray[stateIndex],
+       "zipcode": parseInt(rowArray[zipcodeIndex]),
+       "birthday": rowArray[birthdayIndex],
+       "valid": false,
+        };
+    console.log(orderObj);
+    $scope.nonValidOrders.push(orderObj);
+    };
     };
   };
 
