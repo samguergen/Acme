@@ -304,6 +304,26 @@ angular
       return this.toJson(passing6);
     };
 
+
+// 7) If the state and zip code of the following record is the same as the
+// current record, it automatically passes.
+    this.sameAsNext = function(arr){
+      var passingAuto = [];
+      var stateIndex = csvIndex['state'];
+      var zipIndex = csvIndex['zipcode'];
+      for (var i in arr) {
+        var row = arr[i].toString();
+        var rowArray = row.split("|");
+        var state = rowArray[parseInt(stateIndex)];
+        var nextState = rowArray[parseInt(stateIndex) + 1];
+        var zip = rowArray[parseInt(zipIndex)];
+        var nextZip = rowArray[parseInt(zipIndex) + 1];
+        if ((state == nextState) && (zip == nextZip)) {
+           passingAuto.push(rowArray);
+        };
+      };
+    };
+
     //converts passing orders to JSON
   this.toJson = function(arr) {
     this.buildOrderObj(arr, invalidOrders);
@@ -366,11 +386,6 @@ angular
 
     allOrders = validOrders.concat(nonValidOrders);
 
-
-    // allOrdersJson = [];
-    // validOrdersJson = [];
-    // invalidOrdersJson = [];
-
     for (var i in allOrders) {
       this.allOrdersJson.push(angular.toJson(allOrders[i]))
     }
@@ -381,9 +396,9 @@ angular
       this.invalidOrdersJson.push(angular.toJson(nonValidOrders[i]))
     }
 
-    console.log('FINAL ISSSS ', this.allOrdersJson );
-    console.log('VALID ISSSS ', this.validOrdersJson );
-    console.log('INVALID ISSSS ', this.invalidOrdersJson );
+    // console.log('FINAL ISSSS ', this.allOrdersJson );
+    // console.log('VALID ISSSS ', this.validOrdersJson );
+    // console.log('INVALID ISSSS ', this.invalidOrdersJson );
   };
 
  };
