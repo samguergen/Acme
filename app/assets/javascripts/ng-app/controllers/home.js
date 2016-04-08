@@ -5,7 +5,8 @@ angular.module('myApp')
       $scope.autoPassingOrders = [];
       $scope.arrayData = [];
 
-      $scope.csvIndex = {
+      //init csvIndex to contain index for all data columns.
+      var csvIndex = {
         'id': 0,
         'name': 0,
         'email': 0,
@@ -14,15 +15,19 @@ angular.module('myApp')
         'zipcode': 0,
       };
 
-      var stateRestrict = ['NJ','CT','PA','MA','IL','ID','OR'];
+      //set restrictions atop so easily modifiable
       var restrict = {
         'state':'NY',
         'email': '.net'}
+      var stateRestrict = ['NJ','CT','PA','MA','IL','ID','OR'];
+      var currentYear = new Date().getFullYear();
+      var minBirthYear = currentYear - 21;
 
       $scope.readCsv = function() {
         alert($scope.fileContent);
       }
 
+  //parses CSV file as array
       $scope.CSVToArray = function(strData, strDelimiter) {
         strDelimiter = (strDelimiter || ",");
         var objPattern = new RegExp((
@@ -51,29 +56,30 @@ angular.module('myApp')
     };
 
 
+//dynamically pushes to csvIndex, guarantees that data columns will be probably captured even though order may be different or new columns will be added.
     $scope.locateColumns = function(head, body) {
       var headArray = head.toString().split("|");
       var bodyArray = body.toString().split("|");
       for (var i in headArray) {
-        for (var y in $scope.csvIndex) {
-          if (y == headArray[i]) { $scope.csvIndex[y] = i;}
+        for (var y in csvIndex) {
+          if (y == headArray[i]) { csvIndex[y] = i;}
         }
       };
       return ($scope.initValidations(body));
     };
 
-
+  //triggering validations
     $scope.initValidations = function(arr) {
+      //promise so $scope.samasnext validates independantly?
       // $scope.sameAsNext(arr);
       $scope.valState(arr);
     };
 
 
-// 1) No wine can ship to New Jersey, Connecticut, Pennsylvania, Massachusetts,
-// Illinois, Idaho or Oregon
+// 1) No wine can ship to NJ, CT, PA, MA, IL, ID and OR
     $scope.valState = function(arr){
       var passing = [];
-      var stateIndex = $scope.csvIndex['state'];
+      var stateIndex = csvIndex['state'];
       for (var i in arr) {
         var row = arr[i].toString();
         var rowArray = row.split("|");
@@ -89,7 +95,7 @@ angular.module('myApp')
 // 2) Valid zip codes must be 5 or 9 digits
     $scope.valZip = function(arr){
       var passing2 = [];
-      var zipIndex = $scope.csvIndex['zipcode'];
+      var zipIndex = csvIndex['zipcode'];
       for (var i in arr) {
         var row = arr[i].toString();
         var rowArray = row.split("|");
@@ -104,10 +110,8 @@ angular.module('myApp')
 // 3) Everyone ordering must be 21 or older
     $scope.valAge = function(arr){
       var passing3 = [];
-      var birthdayIndex = $scope.csvIndex['birthday'];
+      var birthdayIndex = csvIndex['birthday'];
       var yearIndex = parseInt(birthdayIndex) + 1;
-      var currentYear = new Date().getFullYear();
-      var minBirthYear = currentYear - 21;
       for (var i in arr) {
         var row = arr[i].toString();
         var rowArray = row.split(",");
@@ -121,7 +125,7 @@ angular.module('myApp')
 // 4) Email address must be valid
     $scope.valEmail = function(arr){
       var passing4 = [];
-      var emailIndex = $scope.csvIndex['email'];
+      var emailIndex = csvIndex['email'];
       for (var i in arr) {
         var row = arr[i].toString();
         var rowArray = row.split(",");
@@ -138,7 +142,7 @@ angular.module('myApp')
     $scope.valSumZip = function(arr){
       var maxSumZip = 20;
       var passing5 = [];
-      var zipIndex = $scope.csvIndex['zipcode'];
+      var zipIndex = csvIndex['zipcode'];
       for (var i in arr) {
         var row = arr[i].toString();
         var rowArray = row.split(",");
@@ -158,8 +162,8 @@ angular.module('myApp')
 // 6) Customers from NY may not have .net email addresses
     $scope.valRestrict = function(arr){
       var passing6 = [];
-      var stateIndex = $scope.csvIndex['state'];
-      var emailIndex = $scope.csvIndex['email'];
+      var stateIndex = csvIndex['state'];
+      var emailIndex = csvIndex['email'];
       for (var i in arr) {
         var row = arr[i].toString();
         var rowArray = row.split(",");
@@ -177,8 +181,8 @@ angular.module('myApp')
 // current record, it automatically passes.
     $scope.sameAsNext = function(arr){
       var passingAuto = [];
-      var stateIndex = $scope.csvIndex['state'];
-      var zipIndex = $scope.csvIndex['zipcode'];
+      var stateIndex = csvIndex['state'];
+      var zipIndex = csvIndex['zipcode'];
       for (var i in arr) {
         var row = arr[i].toString();
         var rowArray = row.split("|");
