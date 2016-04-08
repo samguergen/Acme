@@ -136,7 +136,7 @@ angular
 
      //triggering validations
     this.initValidations = function(arr) {
-      ths.valState(arr);
+      this.valState(arr);
     };
 
 
