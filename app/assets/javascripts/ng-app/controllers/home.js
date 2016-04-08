@@ -70,7 +70,6 @@ angular.module('myApp')
       var stateRestrict = ['NJ','CT','PA','MA','IL','ID','OR'];
       var passing = [];
       var stateIndex = $scope.csvIndex['state'];
-      // row is an array that contains 2 obj: row[0] contains cust info, row[1] contains year
       for (var i in arr) {
         var row = arr[i].toString();
         var rowArray = row.split("|");
@@ -88,8 +87,8 @@ angular.module('myApp')
       var passing2 = [];
       var zipIndex = $scope.csvIndex['zipcode'];
       for (var i in arr) {
-        // var row = arr[i].toString();
-        var rowArray = arr[i].toString().split("|");
+        var row = arr[i].toString();
+        var rowArray = row.split("|");
         if (rowArray[zipIndex] && ((rowArray[zipIndex].length == 5) || (rowArray[zipIndex].length == 9)) ) {
            passing2.push(rowArray);
         };
@@ -190,10 +189,6 @@ angular.module('myApp')
            passingAuto.push(rowArray);
         };
       };
-      // console.log('passing validation auto');
-      // for (var i in passingAuto) {
-      //   console.log(passingAuto[i]);
-      // }
       return passingAuto;
     };
 
