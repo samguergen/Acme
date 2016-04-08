@@ -292,10 +292,24 @@ angular.module('myApp')
     console.log('type of valid orders', typeof($scope.validOrders), 'each', typeof($scope.validOrders[1]));
     console.log('type of rejected orders', typeof($scope.nonValidOrders), 'each', typeof($scope.nonValidOrders[1]));
     console.log('and now..');
-    $scope.allOrdersJson = angular.toJson($scope.allOrders);
-    $scope.validOrdersJson = angular.toJson($scope.validOrders);
-    $scope.invalidOrdersJson = angular.toJson($scope.invalidOrders);
-    console.log(angular.toJson($scope.allOrders));
+    // $scope.allOrdersJson = angular.toJson($scope.allOrders);
+    // $scope.validOrdersJson = angular.toJson($scope.validOrders);
+    // $scope.invalidOrdersJson = angular.toJson($scope.invalidOrders);
+    // console.log(angular.toJson($scope.allOrders));
+
+    $scope.allOrdersJson = [];
+    $scope.validOrdersJson = [];
+    $scope.invalidOrdersJson = [];
+
+    for (var i in $scope.allOrders) {
+      $scope.allOrdersJson.push(angular.toJson($scope.allOrders[i]))
+    }
+    for (var i in $scope.validOrders) {
+      $scope.validOrdersJson.push(angular.toJson($scope.validOrders[i]))
+    }
+    for (var i in $scope.nonValidOrders) {
+      $scope.invalidOrdersJson.push(angular.toJson($scope.nonValidOrders[i]))
+    }
 
   };
 
