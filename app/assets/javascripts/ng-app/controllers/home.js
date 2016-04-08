@@ -165,8 +165,23 @@ angular.module('myApp')
 
 // 6) Customers from NY may not have .net email addresses
     $scope.valDotNet = function(arr){
+      var restrict = {
+        'state':'NY',
+        'email': '.net'}
       var passing6 = [];
+      var stateIndex = $scope.csvIndex['state'];
       var emailIndex = $scope.csvIndex['email'];
+      for (var i in arr) {
+        var row = arr[i];
+        var row = arr[i].toString();
+        var rowArray = row.split(",");
+        var state = rowArray[parseInt(stateIndex)];
+        var email = rowArray[parseInt(emailIndex)];
+        if ((state == restrict['state']) && (email.toString().includes(restrict['email']))) {
+            console.log('miracle');
+            // passing5.push(rowArray);
+        };
+      };
 
     };
 
