@@ -279,9 +279,13 @@ angular.module('myApp')
          "birthday": bdayFullAgain,
          "valid": true,
       };
-      console.log(orderObj);
+      // console.log(orderObj);
       $scope.validOrders.push(orderObj);
      };
+    for (var i in $scope.validOrders) {
+      console.log('each valid order is ', $scope.validOrders[i]);
+    };
+    return $scope.validOrders;
     };
 
     if (invalidOrders) {
@@ -295,11 +299,16 @@ angular.module('myApp')
        "birthday": rowArray[birthdayIndex],
        "valid": false,
         };
-    console.log(orderObj);
+    // console.log(orderObj);
     $scope.nonValidOrders.push(orderObj);
     };
-    };
+    for (var i in $scope.nonValidOrders) {
+      console.log('each non valid order is ', $scope.nonValidOrders[i]);
+      // console.log('non valid orders are ', nonValidOrders);
+    }
+    return $scope.nonValidOrders;
   };
+ };
 
 });
 
