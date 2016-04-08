@@ -8,6 +8,8 @@ angular.module('myApp')
       $scope.validOrders = [];
       $scope.nonValidOrders = [];
 
+      //json version of valid orders
+
 
       //init csvIndex to contain index for all data columns.
       var csvIndex = {
