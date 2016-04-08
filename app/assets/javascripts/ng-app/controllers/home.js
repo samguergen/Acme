@@ -247,22 +247,22 @@ angular.module('myApp')
   };
 
   $scope.buildOrderObj = function(orders, valid) {
-    var id = csvIndex['name'];
-    var name = csvIndex['name'];
-    var state = csvIndex['state'];
-    var zipcode = csvIndex['zipcode'];
-    var birthday = csvIndex['birthday'];
+    var idIndex = csvIndex['name'];
+    var nameIndex = csvIndex['name'];
+    var stateIndex = csvIndex['state'];
+    var zipcodeIndex = csvIndex['zipcode'];
+    var birthdayIndex = csvIndex['birthday'];
 
     for (var i in orders) {
       console.log('rderz are ', orders[i]);
-      // console.log('passing orderz are ', orders[i], orders[i][zipId]);
+      // console.log('passing orderz are ', orders[i], orders[i][zipid]);
       var orderObj = {
-       "order_id": orders[i][id],
-       "name": orders[i][name],
-       "state": orders[i][state],
-       "zipcode": orders[i][zipcode],
-       "birthday": orders[i][birthday],
-        "valid": "yes",
+       "order_id": orders[i][idIndex],
+       "name": orders[i][nameIndex],
+       "state": orders[i][stateIndex],
+       "zipcode": orders[i][zipcodeIndex],
+       "birthday": orders[i][birthdayIndex],
+        "valid": true,
     };
     console.log(orderObj);
     $scope.allOrders.push(orderObj);
