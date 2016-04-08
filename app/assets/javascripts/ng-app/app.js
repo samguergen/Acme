@@ -40,9 +40,14 @@ angular
         })
 
         .state('orders.order', {
-            url: '/:id',
-            templateUrl: 'orders/order.html',
-        });
+            templateUrl: function ($stateParams){
+              return 'orders/order.' + $stateParams.filterBy + '.html';
+  }
+
+        // .state('orders.order', {
+        //     url: '/:id',
+        //     templateUrl: 'orders/order.html',
+        // });
 
     // default fall back route
     $urlRouterProvider.otherwise('/');
