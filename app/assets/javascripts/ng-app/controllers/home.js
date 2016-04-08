@@ -292,9 +292,10 @@ angular.module('myApp')
         var birthdayIndex = csvIndex['birthday'];
 
         for (var i in invalidOrders) {
+          // console.log(invalidOrders[i][stateIndex]);
+          console.log(invalidOrders[i]);
           var row = invalidOrders[i].toString();
           var rowArray = row.split("|");
-          console.log(invalidOrders[i][nameIndex]);
         }
       }
     };
