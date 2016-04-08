@@ -247,7 +247,7 @@ angular.module('myApp')
   };
 
   $scope.buildOrderObj = function(orders, valid) {
-    var idIndex = csvIndex['name'];
+    var idIndex = csvIndex['id'];
     var nameIndex = csvIndex['name'];
     var stateIndex = csvIndex['state'];
     var zipcodeIndex = csvIndex['zipcode'];
@@ -261,7 +261,7 @@ angular.module('myApp')
        "name": orders[i][nameIndex],
        "state": orders[i][stateIndex],
        "zipcode": orders[i][zipcodeIndex],
-       "birthday": orders[i][birthdayIndex],
+       "birthday": orders[i][birthdayIndex] + orders[i][parseInt(birthdayIndex) + 1],
         "valid": true,
     };
     console.log(orderObj);
