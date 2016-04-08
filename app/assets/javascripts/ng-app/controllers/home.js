@@ -294,22 +294,22 @@ angular.module('myApp')
         for (var i in invalidOrders) {
           var rowArray = invalidOrders[i].split("|");
           console.log('row array is ', rowArray, 'length is ', rowArray.length);
-          console.log('an elem is row array is ', rowArray[emailIndex]);
-          // var bdayFullAgain = invalidOrders[i][birthdayIndex]+ "," + invalidOrders[i][parseInt(birthdayIndex) + 1];
-          var realRowArray = rowArray[0];
-          console.log('row string is ', rowString.name);
-          // console.log('checking name ', nameIndex);
+          console.log('id in row array is ', rowArray[idIndex]);
+          console.log('name in row array is ', rowArray[nameIndex]);
+          console.log('state in row array is ', rowArray[stateIndex]);
+          // console.log(' zip in row array is ', rowArray[zipCodeIndex]);
+
+
+          var bdayFullAgain = invalidOrders[i][birthdayIndex]+ "," + invalidOrders[i][parseInt(birthdayIndex) + 1];
+          console.log('an elem is row array is ', bdayFullAgain);
+
           // console.log('just to check ', rowArray, rowArray[0],  rowArray.length, 'is rowarray an array?', Array.isArray(rowArray[0]), 'typeof is ', typeof(rowArray[0]));
-          // console.log('just for try', rowArray[0].name);
-          // console.log(rowArray[stateIndex]);
-          // console.log(rowArray[nameIndex]);
-          // console.log(rowArray[birthdayIndex]);
 
           var orderObj = {
          "order_id": parseInt(rowArray[idIndex]),
          "name": rowArray[nameIndex],
          "state": rowArray[stateIndex],
-         "zipcode": parseInt(rowArray[zipcodeIndex]),
+         "zipcode": 0,
          "birthday": bdayFullAgain,
          "valid": false,
           };
