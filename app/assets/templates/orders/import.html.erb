@@ -10,10 +10,18 @@
   </form>
 
 
-    <div>{{fileContent}}</div>
+    <!-- <div>{{fileContent}}</div> -->
 
     <h2> PASSING ORDERS ARE </h2>
 
-    {{ passingOrders }}
+    <!-- {{ passingOrders }} -->
+
+    <div ng-repeat="order in passingOrders">
+
+  {{ order }} <br>
+
+  {{ order.name }}
+
+</div>
 
 </div>

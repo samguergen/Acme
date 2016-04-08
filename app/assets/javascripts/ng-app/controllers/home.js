@@ -197,6 +197,7 @@ angular.module('myApp')
       return passingAuto;
     };
 
+//converts orders to JSON
   $scope.toJson = function(arr) {
     for (var i in arr) {
       var prettyJson = angular.toJson(arr[i], true);
