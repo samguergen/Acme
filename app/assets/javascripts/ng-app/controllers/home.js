@@ -43,7 +43,6 @@ angular.module('myApp')
 
         var header = arrData.shift();
         $scope.locateColumns(header, arrData);
-        // return ($scope.initValidations($scope.arrayData));
     };
 
 
@@ -177,11 +176,8 @@ angular.module('myApp')
             passing6.push(rowArray);
         };
       };
-      console.log('passing validation 6');
-      for (var i in passing6) {
-        console.log(passing6[i]);
-      }
-      return passing6;
+      $scope.passingOrders = passing6;
+      return $scope.passingOrders;
     };
 
 // 7) If the state and zip code of the following record is the same as the
