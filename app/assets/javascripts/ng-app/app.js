@@ -96,9 +96,6 @@ angular
 
 .service('Validations', function () {
 
-  this.test = function(){
-    console.log('hello');
-  }
       var arrayData = [];
       var passingOrders = [];
       var invalidOrders = [];
@@ -358,7 +355,6 @@ angular
          "birthday": bdayFullAgain,
          "valid": true,
       };
-            console.log('order obj valid', orderObj);
       validOrders.push(orderObj);
      };
     }
@@ -379,7 +375,6 @@ angular
     if (typeof(orderObj['name']) == 'undefined' ) {
       continue
     };
-    console.log('order obj invalid', orderObj);
     nonValidOrders.push(orderObj);
 
     };
@@ -396,9 +391,6 @@ angular
       this.invalidOrdersJson.push(angular.toJson(nonValidOrders[i]))
     }
 
-    // console.log('FINAL ISSSS ', this.allOrdersJson );
-    // console.log('VALID ISSSS ', this.validOrdersJson );
-    // console.log('INVALID ISSSS ', this.invalidOrdersJson );
   };
 
  };
