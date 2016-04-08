@@ -89,6 +89,7 @@ angular
       var maxSumZip = 20;
 
       this.triggerValidations = function(csv) {
+        // console.log('csv isss ', csv);
         return this.CSVToArray(csv);
       }
 
@@ -155,6 +156,7 @@ angular
           invalidOrders.push(row);
         };
       };
+      console.log('haaa', passing);
       return this.valZip(passing);
     };
 

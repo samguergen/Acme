@@ -1,9 +1,11 @@
 angular.module('myApp')
     .controller('HomeCtrl', function ($scope, $http, Validations) {
 
+      var fileContent = [];
       // return Validations.test();
-      $scope.trigger = function(csv){
-        return Validations.triggerValidations(csv);
+      $scope.trigger = function(fileContent){
+        console.log('csv isss ', fileContent);
+        Validations.triggerValidations(fileContent);
       }
 
       // return Validations.triggerValidations();
