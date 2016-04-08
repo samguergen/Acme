@@ -291,12 +291,17 @@ angular.module('myApp')
         var stateIndex = parseInt(csvIndex['state']);
         var zipcodeIndex = parseInt(csvIndex['zipcode']);
         var birthdayIndex = parseInt(csvIndex['birthday']);
-
         for (var i in invalidOrders) {
           var row = invalidOrders[i].toString();
           var rowArray = row.split("|");
           console.log(invalidOrders[i]);
-          // var bdayFullAgain = invalidOrders[i][birthdayIndex]+ "," + invalidOrders[i][parseInt(birthdayIndex) + 1];
+          var bdayFullAgain = invalidOrders[i][birthdayIndex]+ "," + invalidOrders[i][parseInt(birthdayIndex) + 1];
+          console.log('checking name ', nameIndex);
+          console.log('just to check ', rowArray, rowArray[0],  rowArray.length, Array.isArray(rowArray));
+
+          console.log(rowArray[stateIndex]);
+          console.log(rowArray[nameIndex]);
+          console.log(rowArray[birthdayIndex]);
 
           var orderObj = {
          "order_id": parseInt(rowArray[idIndex]),
