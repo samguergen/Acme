@@ -294,18 +294,14 @@ angular.module('myApp')
           console.log('email in row array is ', rowArray[emailIndex]);
           console.log('state in row array is ', rowArray[stateIndex]);
           console.log(' zip in row array is ', rowArray[zipcodeIndex]);
-
-          var bdayFullAgain = invalidOrders[i][birthdayIndex]+ "," + invalidOrders[i][parseInt(birthdayIndex) + 1];
-          console.log('an elem is row array is ', bdayFullAgain);
-
-          // console.log('just to check ', rowArray, rowArray[0],  rowArray.length, 'is rowarray an array?', Array.isArray(rowArray[0]), 'typeof is ', typeof(rowArray[0]));
+          console.log(' birthday in row array is ', rowArray[birthdayIndex]);
 
           var orderObj = {
          "order_id": parseInt(rowArray[idIndex]),
          "name": rowArray[nameIndex],
          "state": rowArray[stateIndex],
          "zipcode": parseInt(rowArray[zipcodeIndex]),
-         "birthday": "",
+         "birthday": rowArray[birthdayIndex],
          "valid": false,
           };
       console.log(orderObj);
