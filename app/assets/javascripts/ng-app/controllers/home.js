@@ -255,13 +255,14 @@ angular.module('myApp')
 
     for (var i in orders) {
       console.log('rderz are ', orders[i]);
+      var bdayFullAgain = orders[i][birthdayIndex]+ "," + orders[i][parseInt(birthdayIndex) + 1];
       // console.log('passing orderz are ', orders[i], orders[i][zipid]);
       var orderObj = {
        "order_id": orders[i][idIndex],
        "name": orders[i][nameIndex],
        "state": orders[i][stateIndex],
        "zipcode": orders[i][zipcodeIndex],
-       "birthday": orders[i][birthdayIndex] + orders[i][parseInt(birthdayIndex) + 1],
+       "birthday": bdayFullAgain,
         "valid": true,
     };
     console.log(orderObj);
