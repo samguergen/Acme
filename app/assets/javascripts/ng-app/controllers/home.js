@@ -1,8 +1,9 @@
 angular.module('myApp')
-    .controller('HomeCtrl', function ($scope, $http, Validations) {
+    .controller('HomeCtrl', function ($scope, $http, $location, Validations) {
 
       $scope.trigger = function(fileContent){
         Validations.triggerValidations(fileContent);
+        $location.path('/orders');
       }
 
       $scope.allOrderz = Validations.allOrdersJson;
