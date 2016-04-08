@@ -13,8 +13,10 @@ angular.module('myApp')
     this.invalidOrdersJson = [];
     this.allOrdersJson = [];
 
+    this.allOrderz = [];
+    this.validOrderz = [];
+    this.invalidOrderz = [];
 
-    //json version of valid orders
 
     //init csvIndex to contain index for all data columns.
     var csvIndex = {
@@ -282,6 +284,7 @@ angular.module('myApp')
 
       //concats valid and invalid orders to store all orders with good structure.
       this.allOrders = this.validOrders.concat(this.nonValidOrders);
+      console.log('all orders are ', this.allOrders);
 
       for (var i in this.allOrders) {
         this.allOrdersJson.push(angular.toJson(this.allOrders[i])) }
@@ -289,7 +292,15 @@ angular.module('myApp')
         this.validOrdersJson.push(angular.toJson(this.validOrders[i])) }
       for (var i in this.nonValidOrders) {
         this.invalidOrdersJson.push(angular.toJson(this.nonValidOrders[i])) }
+
+      for (var i in this.allOrders) {
+        this.allOrderz.push(this.allOrders[i]) }
+      for (var i in this.validOrders) {
+        this.validOrderz.push(this.validOrders[i]) }
+      for (var i in this.nonValidOrders) {
+        this.invalidOrderz.push(this.nonValidOrders[i]) }
     };
+
   };
 
 

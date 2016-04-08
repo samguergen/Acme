@@ -3,17 +3,23 @@ angular.module('myApp')
 
       $scope.trigger = function(fileContent){
         Validations.triggerValidations(fileContent);
+        $scope.retrieveValues();
         $location.path('/orders');
       }
 
-      $scope.allOrderzJson = Validations.allOrdersJson;
-      $scope.validOrderzJson = Validations.validOrdersJson;
-      $scope.invalidOrderzJson = Validations.invalidOrdersJson;
+      $scope.retrieveValues = function() {
+        $scope.allOrderz = Validations.allOrderz;
+        $scope.validOrderz = Validations.validOrderz;
+        $scope.invalidOrderz = Validations.invalidOrderz;
+      };
 
-      $scope.allOrderz = Validations.allOrders;
-      $scope.validOrderz = Validations.validOrders;
-      $scope.invalidOrderz = Validations.nonValidOrders;
+      // $scope.allOrderzJson = Validations.allOrdersJson;
+      // $scope.validOrderzJson = Validations.validOrdersJson;
+      // $scope.invalidOrderzJson = Validations.invalidOrdersJson;
 
+
+
+console.log('all orderz are ', $scope.allOrderz);
 });
 
 
