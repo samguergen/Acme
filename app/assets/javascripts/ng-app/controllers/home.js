@@ -115,7 +115,7 @@ angular.module('myApp')
       for (var i in arr) {
         var row = arr[i].toString();
         var rowArray = row.split(",");
-        if (rowArray[yearIndex] && ((rowArray[yearIndex].length == 5) || (rowArray[yearIndex].length == 9)) ) {
+        if (rowArray[yearIndex] < minBirthYear ) {
            passing3.push(rowArray);
         };
       };
