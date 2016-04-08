@@ -197,7 +197,6 @@ angular
           invalidOrders.push(row);
         };
       };
-      console.log('haaa', passing);
       return this.valZip(passing);
     };
 
@@ -298,6 +297,7 @@ angular
         };
       };
       passingOrders = passing6;
+            console.log('haaa', passing6);
       return this.toJson(passing6);
     };
 
@@ -305,10 +305,6 @@ angular
   this.toJson = function(arr) {
     this.buildOrderObj(arr, invalidOrders);
   }
-
-  this.displayAll = function(arr) {
-    this.CSVToArray(arr);
-  };
 
   var orderObj = {
    "order_id": 2075,
@@ -339,6 +335,7 @@ angular
          "birthday": bdayFullAgain,
          "valid": true,
       };
+            console.log('order obj valid', orderObj);
       validOrders.push(orderObj);
      };
     }
@@ -359,7 +356,7 @@ angular
     if (typeof(orderObj['name']) == 'undefined' ) {
       continue
     };
-
+    console.log('order obj invalid', orderObj);
     nonValidOrders.push(orderObj);
 
     };
