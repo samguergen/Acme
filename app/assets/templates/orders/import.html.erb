@@ -1,0 +1,26 @@
+<h2>Import Your CSV file here</h2>
+
+<p> JSON it, baby </p>
+
+  <form id="csvForm">
+    <label> Please paste the URL to your file here: </label>
+      <input type="file" file-reader="fileContent" />
+      <input type="submit" ng-click="readCsv()">
+      <input type="submit" value="filter valid" ng-click="CSVToArray(fileContent)">
+      <input type="submit" value="convert to json" ng-click="displayAll(fileContent)">
+  </form>
+
+
+    <!-- <div>{{fileContent}}</div> -->
+
+<!--  <h2> PASSING ORDERS ARE </h2>
+
+    <div ng-repeat="order in validOrders">
+      {{ order }}
+  </div> -->
+
+
+
+
+</div>
+</div>
