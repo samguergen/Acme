@@ -44,7 +44,6 @@ angular
             templateUrl: 'orders/order.html',
         });
 
-
     // default fall back route
     $urlRouterProvider.otherwise('/');
 
