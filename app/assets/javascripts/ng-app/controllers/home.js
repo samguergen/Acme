@@ -241,8 +241,8 @@ angular.module('myApp')
     // }
 
     console.log('arr is ', arr, arr.length);
-    console.log('inv order is ', $scope.invalidOrders, $scope.invalidOrders.length);
-    $scope.buildOrderObj(arr);
+    console.log('inv order is ', $scope.invalidOrders, $scope.invalidOrders.length, Array.isArray($scope.invalidOrders));
+    $scope.buildOrderObj(arr, $scope.invalidOrders);
   }
 
   $scope.displayAll = function(arr) {
@@ -260,30 +260,44 @@ angular.module('myApp')
    "valid": false,
   };
 
-  $scope.buildOrderObj = function(orders) {
+  $scope.buildOrderObj = function(orders, invalidOrders) {
     var idIndex = csvIndex['id'];
     var nameIndex = csvIndex['name'];
     var stateIndex = csvIndex['state'];
     var zipcodeIndex = csvIndex['zipcode'];
     var birthdayIndex = csvIndex['birthday'];
 
-    for (var i in orders) {
-      // console.log('rderz are ', orders[i]);
-
-      var bdayFullAgain = orders[i][birthdayIndex]+ "," + orders[i][parseInt(birthdayIndex) + 1];
-      var orderObj = {
-       "order_id": parseInt(orders[i][idIndex]),
-       "name": orders[i][nameIndex],
-       "state": orders[i][stateIndex],
-       "zipcode": parseInt(orders[i][zipcodeIndex]),
-       "birthday": bdayFullAgain,
-        "valid": true,
+    if (orders) {
+      for (var i in orders) {
+        // console.log('rderz are ', orders[i]);
+        var bdayFullAgain = orders[i][birthdayIndex]+ "," + orders[i][parseInt(birthdayIndex) + 1];
+        var orderObj = {
+         "order_id": parseInt(orders[i][idIndex]),
+         "name": orders[i][nameIndex],
+         "state": orders[i][stateIndex],
+         "zipcode": parseInt(orders[i][zipcodeIndex]),
+         "birthday": bdayFullAgain,
+         "valid": true,
+      };
+      console.log(orderObj);
+      $scope.validOrders.push(orderObj);
+     };
     };
-    console.log(orderObj);
-    $scope.validOrders.push(orderObj);
-   };
 
-  }
+    if (invalidOrders) {
+        var idIndex = csvIndex['id'];
+        var nameIndex = csvIndex['name'];
+        var stateIndex = csvIndex['state'];
+        var zipcodeIndex = csvIndex['zipcode'];
+        var birthdayIndex = csvIndex['birthday'];
+
+        for (var i in invalidOrders) {
+          var row = invalidOrders[i].toString();
+          var rowArray = row.split("|");
+          console.log(invalidOrders[i][nameIndex]);
+        }
+      }
+    };
 
 });
 
