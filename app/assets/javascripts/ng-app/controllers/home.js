@@ -292,16 +292,18 @@ angular.module('myApp')
         var zipcodeIndex = parseInt(csvIndex['zipcode']);
         var birthdayIndex = parseInt(csvIndex['birthday']);
         for (var i in invalidOrders) {
-          var row = invalidOrders[i].toString();
-          var rowArray = row.split("|");
-          console.log(invalidOrders[i]);
-          var bdayFullAgain = invalidOrders[i][birthdayIndex]+ "," + invalidOrders[i][parseInt(birthdayIndex) + 1];
-          console.log('checking name ', nameIndex);
-          console.log('just to check ', rowArray, rowArray[0],  rowArray.length, Array.isArray(rowArray));
-
-          console.log(rowArray[stateIndex]);
-          console.log(rowArray[nameIndex]);
-          console.log(rowArray[birthdayIndex]);
+          var rowArray = invalidOrders[i].split("|");
+          console.log('row array is ', rowArray, 'length is ', rowArray.length);
+          console.log('an elem is row array is ', rowArray[emailIndex]);
+          // var bdayFullAgain = invalidOrders[i][birthdayIndex]+ "," + invalidOrders[i][parseInt(birthdayIndex) + 1];
+          var realRowArray = rowArray[0];
+          console.log('row string is ', rowString.name);
+          // console.log('checking name ', nameIndex);
+          // console.log('just to check ', rowArray, rowArray[0],  rowArray.length, 'is rowarray an array?', Array.isArray(rowArray[0]), 'typeof is ', typeof(rowArray[0]));
+          // console.log('just for try', rowArray[0].name);
+          // console.log(rowArray[stateIndex]);
+          // console.log(rowArray[nameIndex]);
+          // console.log(rowArray[birthdayIndex]);
 
           var orderObj = {
          "order_id": parseInt(rowArray[idIndex]),
