@@ -4,6 +4,7 @@ angular.module('myApp')
       $scope.passingOrders = [];
       $scope.autoPassingOrders = [];
       $scope.arrayData = [];
+      $scope.invalidOrders = [];
 
       //init csvIndex to contain index for all data columns.
       var csvIndex = {
@@ -87,6 +88,9 @@ angular.module('myApp')
         if (stateRestrict.indexOf(state) < 0){
           passing.push(row);
         }
+        else {
+          $scope.invalidOrders.push(row);
+        };
       };
       return $scope.valZip(passing);
     };
@@ -101,6 +105,9 @@ angular.module('myApp')
         var rowArray = row.split("|");
         if (rowArray[zipIndex] && ((rowArray[zipIndex].length == 5) || (rowArray[zipIndex].length == 9)) ) {
            passing2.push(rowArray);
+        }
+        else {
+          $scope.invalidOrders.push(rowArray);
         };
       };
       return $scope.valAge(passing2);
@@ -117,6 +124,9 @@ angular.module('myApp')
         var rowArray = row.split(",");
         if (rowArray[yearIndex] < minBirthYear ) {
            passing3.push(rowArray);
+        }
+        else {
+          $scope.invalidOrders.push(rowArray);
         };
       };
       return $scope.valEmail(passing3);
@@ -133,6 +143,9 @@ angular.module('myApp')
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (re.test(email)) {
            passing4.push(rowArray);
+        }
+        else {
+          $scope.invalidOrders.push(rowArray);
         };
       };
       return $scope.valSumZip(passing4);
@@ -154,6 +167,9 @@ angular.module('myApp')
         };
         if (sum <= maxSumZip) {
             passing5.push(rowArray);
+        }
+        else {
+          $scope.invalidOrders.push(rowArray);
         };
       };
       return $scope.valRestrict(passing5);
@@ -171,6 +187,9 @@ angular.module('myApp')
         var email = rowArray[parseInt(emailIndex)];
         if (!(state == restrict['state']) && !(email.toString().includes(restrict['email']))) {
             passing6.push(rowArray);
+        }
+        else {
+          $scope.invalidOrders.push(rowArray);
         };
       };
       $scope.passingOrders = passing6;
@@ -201,12 +220,10 @@ angular.module('myApp')
   $scope.toJson = function(arr) {
     for (var i in arr) {
       var row = arr[i];
-      var validity = {'valid': true};
       var prettyJson = angular.toJson(arr[i], true);
       console.log(prettyJson);
-      // row.push(validity);
-      row.push("valid: true");
-      console.log('now it is ', row);
+      // row.push("valid: true");
+      // console.log('now it is ', row);
     }
   }
 
