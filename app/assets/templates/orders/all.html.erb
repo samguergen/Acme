@@ -1,6 +1,8 @@
 <h2>All Orders</h2>
 
-<button ng-click="save()"> Dave to Database </button>
+<!-- <button ng-click="save()"> Dave to Database </button> -->
+<%= button_to 'Save to DB', orders_path, method: :post %>
+
 {
 "results": [
   <div class="orders-list" ng-repeat="ord in allOrderz">
