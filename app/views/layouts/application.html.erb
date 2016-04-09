@@ -8,12 +8,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="myApp">
-  Previously saved orders: <br>
-  <% if @all_imports %>
- <% @all_imports.each do |import| %>
- <%= import["content"] %>
- <% end %>
- <% end %>
+
+<button ng-click="showSaved = true">View saved orders </button>
+  <div class="saved-orders" ng-show="showSaved">
+    Previously saved orders: <br>
+    <% if @all_imports %>
+      <% @all_imports.each do |import| %>
+      <%= import["content"] %>
+      <% end %>
+    <% end %>
+  </div>
+
 <%= yield %>
 
 </body>
