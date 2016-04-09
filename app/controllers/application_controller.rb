@@ -11,12 +11,20 @@ class ApplicationController < ActionController::Base
     def create
       puts "inside create method, params are "
       puts params
-      @new_order = Order.create(params)
+      @new_order = Order.create(orders_params)
       if @new_order
         render :text => "orders saved to db"
       else
         render :text => "there was an error saving your records to the db"
       end
     end
+
+  private
+    # Using a private method to encapsulate the permissible parameters
+
+    def orders_params
+      params.require(:listid).permit(:order_id, :name, :email, :validity, :zipcode, :state, :birthday)
+    end
+
 
 end
