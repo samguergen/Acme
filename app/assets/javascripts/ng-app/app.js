@@ -41,11 +41,10 @@ angular
             templateUrl: 'orders/invalid.html',
         })
 
-        // .state('orders.order', {
-        //     templateUrl: function ($stateParams){
-        //       return 'orders/order.' + $stateParams.filterBy + '.html';
-        //     }
-        // });
+        .state('orders.saved', {
+            url: '/saved',
+            templateUrl: 'orders/saved.html',
+        })
 
         .state('orders.order', {
             url: '/:orderID',
