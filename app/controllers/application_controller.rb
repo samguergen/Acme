@@ -11,15 +11,10 @@ class ApplicationController < ActionController::Base
     end
 
     def create
-      # puts request.raw_post
-      # puts "inside create method"
-      # puts 'params are'
-      # puts params
-      # new_order = Orders.create(favorite_properties_params)
-      # redirect_to "/properties/#{property.z_id}"
-      # respond_with Orders.create(orders_params)
-      new_order = params[:postid]
-      puts new_order
+      puts "inside create method"
+      puts 'params are'
+      puts params
+      puts params[:listid]
     end
 
       private
