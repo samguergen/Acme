@@ -43,6 +43,7 @@ angular.module('myApp')
     var orderObj = {
      "order_id": 2075,
      "name": "Vinton Cerf",
+     "email" : "nina@cool.com",
      "state": "NJ",
      "zipcode": 08999,
      "birthday": "June 23, 1943",
@@ -255,6 +256,7 @@ angular.module('myApp')
           var orderObj = {
            "order_id": parseInt(orders[i][idIndex]),
            "name": orders[i][nameIndex],
+           "email": orders[i][emailIndex],
            "state": orders[i][stateIndex],
            "zipcode": parseInt(orders[i][zipcodeIndex]),
            "birthday": bdayFullAgain,
@@ -275,6 +277,7 @@ angular.module('myApp')
           var orderObj = {
          "order_id": parseInt(rowArray[idIndex]),
          "name": rowArray[nameIndex],
+         "email": rowArray[emailIndex],
          "state": rowArray[stateIndex],
          "zipcode": parseInt(rowArray[zipcodeIndex]),
          "birthday": rowArray[birthdayIndex],
