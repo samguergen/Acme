@@ -1,7 +1,7 @@
 //service for sending order json to database
 
 angular.module('myApp')
-.service('ToServer', function ($http) {
+.service('ToServer', function ($http, $location) {
     this.saveToDB = function(ordersJson) {
         var response = [];
         // console.log('orders in json are ', ordersJson);
@@ -39,6 +39,7 @@ angular.module('myApp')
         $http.post('http://localhost:3000/orders', {listid : ordersJson}).then(function (result) {
             console.log('result from http post is ', result);
             response = result;
+            $location.path('/');
         });
 
     };
