@@ -1,13 +1,15 @@
-class AddOrdersTable < ActiveRecord::Migration
+class CreateOrders < ActiveRecord::Migration
   def change
     create_table :orders do |t|
       t.integer :order_id
       t.string :name
-      t.string :state
       t.string :email
-      t.integer :zipcode
+      t.string :state
       t.string :birthday
-      t.string :valid
+      t.integer :zipcode
+      t.boolean :valid
+
+      t.timestamps null: false
     end
   end
 end
