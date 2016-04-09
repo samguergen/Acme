@@ -17,19 +17,6 @@ angular.module('myApp')
       $scope.validOrderzJson = Validations.validOrdersJson;
       $scope.invalidOrderzJson = Validations.invalidOrdersJson;
 
-        // $resource("http://www.localhost:3000/orders"){};
-        // $http({
-        //   method: "POST",
-        //   url: "/orders",
-        //   cache: $templateCache
-        //   })
-        //     .then(function(response) {
-        //       $scope.status = response.status;
-        //       $scope.data = response.data;
-        //       }, function(response) {
-        //       $scope.data = response.data || "Request failed";
-        //       $scope.status = response.status;
-        //   });
       $scope.saveDB = function() {
           $http({
             url: 'http://localhost:3000/orders',

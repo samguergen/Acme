@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root 'application#index', anchor: false
   get '*path' => 'application#index'
 
+  resources :orders, only: [:show, :index, :create]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
