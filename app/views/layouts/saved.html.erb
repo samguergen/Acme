@@ -1,19 +1,14 @@
 
 <html>
 <head>
-  <base href="/">
+  <base href="/saved">
   <title>AcmeWine</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body ng-app="myApp">
-  Previously saved orders: <br>
-  <% if @all_imports %>
- <% @all_imports.each do |import| %>
- <%= import["content"] %>
- <% end %>
- <% end %>
+<body>
+
 <%= yield %>
 
 </body>
