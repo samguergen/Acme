@@ -21,34 +21,12 @@ angular.module('myApp')
         $scope.invalidOrderzJson = Validations.invalidOrdersJson;
       };
 
-      // $scope.allOrderzJson = Validations.allOrdersJson;
-      // $scope.validOrderzJson = Validations.validOrdersJson;
-      // $scope.invalidOrderzJson = Validations.invalidOrdersJson;
+        $scope.loc = $location.absUrl();
 
-      // $scope.saveDB = function() {
-      //     $http({
-      //       url: 'http://localhost:3000/orders',
-      //       dataType: 'json',
-      //       method: 'POST',
-      //       data: {
-      //           orders: $scope.allOrderzJson,
-      //       },
-      //       headers: {
-      //           "Content-Type": "application/json"
-      //       }
-
-      //       }).success(function(response){
-      //           console.log('response is ', response);
-      //       }).error(function(error){
-      //           console.log('error is ', error);
-      //       });
-      //   };
-
-      $scope.orderURL = $stateParams.orderID;
-
-      var objForURL = $stateParams;
-      console.log('what', $stateParams.orderID);
-      $scope.idForURL = parseInt(objForURL['orderId']);
+        $scope.orderURL = $stateParams.orderID;
+        var objForURL = $stateParams;
+        console.log('what', $stateParams.orderID);
+        $scope.idForURL = parseInt(objForURL['orderId']);
 
 console.log('path in ctrl is ', $location.path());
 });

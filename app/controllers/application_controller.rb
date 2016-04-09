@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
       puts 'params are'
       puts params
       puts params[:listid]
+      render layout: "orders/saved.html.erb"
     end
 
       private
