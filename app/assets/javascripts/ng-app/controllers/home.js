@@ -17,13 +17,37 @@ angular.module('myApp')
       $scope.validOrderzJson = Validations.validOrdersJson;
       $scope.invalidOrderzJson = Validations.invalidOrdersJson;
 
+        // $resource("http://www.localhost:3000/orders"){};
+        // $http({
+        //   method: "POST",
+        //   url: "/orders",
+        //   cache: $templateCache
+        //   })
+        //     .then(function(response) {
+        //       $scope.status = response.status;
+        //       $scope.data = response.data;
+        //       }, function(response) {
+        //       $scope.data = response.data || "Request failed";
+        //       $scope.status = response.status;
+        //   });
       $scope.saveDB = function() {
-        $resource("http://www.localhost:3000/orders"){};
-     //    $resource('http://127.0.0.1\\:3000/:business', {business:'businesses'}, {
-     //    query: {method:'GET', isArray: true},
-     //    save: {method:'POST', isArray: false}
-     // });
-      };
+          $http({
+            url: 'http://localhost:3000/orders',
+            dataType: 'json',
+            method: 'POST',
+            data: {
+                orders: $scope.allOrderzJson,
+            },
+            headers: {
+                "Content-Type": "application/json"
+            }
+
+            }).success(function(response){
+                console.log('response is ', response);
+            }).error(function(error){
+                console.log('error is ', error);
+            });
+        };
 
       $scope.orderURL = $stateParams.orderID;
 

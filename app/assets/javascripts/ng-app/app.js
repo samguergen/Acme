@@ -4,7 +4,7 @@ angular
         'ui.router',
         'templates',
     ])
-    .config(function ($stateProvider, $urlRouterProvider, $locationProvider, '$resourceProvider') {
+    .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
       // console.log('path in route is ', $location.path);
 
