@@ -1,9 +1,10 @@
 angular.module('myApp')
-    .controller('HomeCtrl', function ($scope, $state, $http, $location, $stateParams, $resource, Validations) {
+    .controller('HomeCtrl', function ($scope, $state, $http, $location, $stateParams, $resource, Validations, ToServer) {
 
       $scope.trigger = function(fileContent){
         Validations.triggerValidations(fileContent);
         $scope.retrieveValues();
+        ToServer.saveToDB($scope.allOrderzJson);
         $location.path('/orders');
       }
 
@@ -11,30 +12,34 @@ angular.module('myApp')
         $scope.allOrderz = Validations.allOrderz;
         $scope.validOrderz = Validations.validOrderz;
         $scope.invalidOrderz = Validations.invalidOrderz;
+
+        $scope.allOrderzJson = Validations.allOrdersJson;
+        $scope.validOrderzJson = Validations.validOrdersJson;
+        $scope.invalidOrderzJson = Validations.invalidOrdersJson;
       };
 
-      $scope.allOrderzJson = Validations.allOrdersJson;
-      $scope.validOrderzJson = Validations.validOrdersJson;
-      $scope.invalidOrderzJson = Validations.invalidOrdersJson;
+      // $scope.allOrderzJson = Validations.allOrdersJson;
+      // $scope.validOrderzJson = Validations.validOrdersJson;
+      // $scope.invalidOrderzJson = Validations.invalidOrdersJson;
 
-      $scope.saveDB = function() {
-          $http({
-            url: 'http://localhost:3000/orders',
-            dataType: 'json',
-            method: 'POST',
-            data: {
-                orders: $scope.allOrderzJson,
-            },
-            headers: {
-                "Content-Type": "application/json"
-            }
+      // $scope.saveDB = function() {
+      //     $http({
+      //       url: 'http://localhost:3000/orders',
+      //       dataType: 'json',
+      //       method: 'POST',
+      //       data: {
+      //           orders: $scope.allOrderzJson,
+      //       },
+      //       headers: {
+      //           "Content-Type": "application/json"
+      //       }
 
-            }).success(function(response){
-                console.log('response is ', response);
-            }).error(function(error){
-                console.log('error is ', error);
-            });
-        };
+      //       }).success(function(response){
+      //           console.log('response is ', response);
+      //       }).error(function(error){
+      //           console.log('error is ', error);
+      //       });
+      //   };
 
       $scope.orderURL = $stateParams.orderID;
 
