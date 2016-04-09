@@ -249,6 +249,7 @@ angular.module('myApp')
         for (var i in orders) {
           var rowArray = orders[i];
           var bdayFullAgain = orders[i][birthdayIndex]+ "," + orders[i][parseInt(birthdayIndex) + 1];
+
           var orderObj = {
            "order_id": parseInt(orders[i][idIndex]),
            "name": orders[i][nameIndex],
@@ -257,6 +258,7 @@ angular.module('myApp')
            "birthday": bdayFullAgain,
            "valid": true,
         };
+
         this.validOrders.push(orderObj);
        };
       }
@@ -267,6 +269,7 @@ angular.module('myApp')
         for (var i in invOrders) {
           var row = invOrders[i].toString();
           var rowArray = row.split("|");
+
           var orderObj = {
          "order_id": parseInt(rowArray[idIndex]),
          "name": rowArray[nameIndex],
@@ -275,6 +278,7 @@ angular.module('myApp')
          "birthday": rowArray[birthdayIndex],
          "valid": false,
           };
+
         //double checks for any badly structured objs
         if (typeof(orderObj['name']) == 'undefined' ) {
           continue
