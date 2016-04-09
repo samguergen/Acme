@@ -18,6 +18,8 @@ angular.module('myApp')
       $scope.invalidOrderzJson = Validations.invalidOrdersJson;
 
       var objForURL = $stateParams
+      console.log('what', objForURL);
+      console.log($stateParams);
       $scope.idForURL = parseInt(objForURL['order_id']);
 
 console.log('state paramzz are ', $stateParams);
