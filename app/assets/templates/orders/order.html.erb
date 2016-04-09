@@ -1,9 +1,11 @@
 Hellooooo there
 
 
-<div class="order-list" ng-repeat="order in allOrderz" >
+<div class="order-list" ng-repeat="order in allOrderz" ng-show="order['order_id'] == idForUrl">
   {{ order }}
 
 
-{{ ord['order_id'] }}
+<!-- {{ ord['order_id'] }} -->
 </div>
+
+<!-- {{allOrderz[idForURL]}} -->
