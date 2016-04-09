@@ -1,5 +1,5 @@
 angular.module('myApp')
-    .controller('HomeCtrl', function ($scope, $state, $http, $location, $stateParams, $resource, Validations, ToServer) {
+    .controller('HomeCtrl', function ($scope, $state, $http, $location, $stateParams, Validations, ToServer) {
 
       $scope.trigger = function(fileContent){
         Validations.triggerValidations(fileContent);

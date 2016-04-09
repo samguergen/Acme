@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
     def index
+      # @orders = Orders.all
+      render layout: "application"
+    end
+
+    def create
+      puts request.post?
+      # new_order = Orders.create(favorite_properties_params)
+      # redirect_to "/properties/#{property.z_id}"
     end
 
 end
