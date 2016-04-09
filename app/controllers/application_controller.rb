@@ -5,15 +5,18 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
 
     def index
-      # @orders = Orders.all
       render layout: "application"
-      # respond_with Orders.all
     end
 
     def create
       puts "inside create method, params are "
       puts params
-      render :text => "orders saved to db"
+      @new_order = Order.create(params)
+      if @new_order
+        render :text => "orders saved to db"
+      else
+        render :text => "there was an error saving your records to the db"
+      end
     end
 
 end
