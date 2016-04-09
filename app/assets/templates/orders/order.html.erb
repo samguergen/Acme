@@ -3,11 +3,11 @@
 
 
 <div class="order" ng-repeat="order in allOrderz" ng-show="order['order_id']">
-  {{ order }}
 
       { <br>
       "order_id": {{ order['order_id'] | json }} , <br>
       "name": {{ order['name'] | json }} , <br>
+      "email": {{ order['email'] | json }} , <br>
       "state": {{ order['state'] | json }} , <br>
       "birthday": {{ order['birthday'] | json }} , <br>
       "zipcode": {{ order['zipcode'] | json }} , <br>
