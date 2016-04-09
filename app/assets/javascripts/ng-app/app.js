@@ -6,8 +6,6 @@ angular
     ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-      // console.log('path in route is ', $location.path);
-
       $stateProvider
         .state('home', {
             url: '/',
