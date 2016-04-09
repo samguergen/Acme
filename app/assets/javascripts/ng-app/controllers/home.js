@@ -20,10 +20,12 @@ angular.module('myApp')
       var objForURL = $stateParams
       console.log('what', objForURL);
       console.log($stateParams);
-      $scope.idForURL = parseInt(objForURL['order_id']);
+      $scope.idForURL = parseInt(objForURL['orderId']);
+      var paramValue = $location.search().orderId;
+      console.log(paramValue);
 
 console.log('state paramzz are ', $stateParams);
-// console.log('state issss ', $state.params);
+console.log('state issss ', $state.params);
 });
 
 

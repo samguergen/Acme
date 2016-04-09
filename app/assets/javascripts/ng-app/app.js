@@ -46,7 +46,7 @@ angular
         // });
 
         .state('orders.order', {
-            url: '/:order_id',
+            url: '/:id',
             templateUrl: 'orders/order.html',
         });
 
