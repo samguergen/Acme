@@ -35,7 +35,7 @@ angular.module('myApp')
       //       console.log('error is ', error);
       //   });
 
-        $http.post('http://localhost:3000/orders', ordersJson).then(function (result) {
+        $http.post('http://localhost:3000/orders/:listid', {listid : ordersJson}).then(function (result) {
             console.log('result from http post is ', result);
             $scope.result = result;
         });
