@@ -9,9 +9,9 @@
 </head>
 <body ng-app="myApp">
 
-<button ng-click="showSaved = true" ng-hide="showSaved">View Orders Saved to Database</button>
-  <div class="saved-orders" ng-show="showSaved">
-    <button ng-click="showSaved = false">Return to Home </button>
+<button class="saved-orders" ng-click="showSaved = true" ng-hide="showSaved">View Orders Saved to Database</button>
+  <div ng-show="showSaved">
+    <button class="saved-orders" ng-click="showSaved = false">Return to Home </button>
 
     <p>
       Previously saved orders: <br>
