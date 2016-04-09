@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     def create
       puts "inside create method, params are "
       puts params
-      @new_order = Import.create({content: orders_params})
+      @new_order = Import.create({content: params[:l]})
       if @new_order
         render :text => "orders saved to db"
       else
@@ -19,10 +19,10 @@ class ApplicationController < ActionController::Base
       end
     end
 
-  private
-    # Using a private method to encapsulate the permissible parameters
-    def orders_params
-      params.require(:listid).permit(:order_id, :name, :email, :validity, :zipcode, :state, :birthday)
-    end
+  # private
+  #   # Using a private method to encapsulate the permissible parameters
+  #   def orders_params
+  #     params.require(:l).permit(:order_id, :name, :email, :validity, :zipcode, :state, :birthday)
+  #   end
 
 end
