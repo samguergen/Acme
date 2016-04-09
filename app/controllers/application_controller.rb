@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
     end
 
     def create
-      puts "inside create method, params are "
-      puts params
-      @new_order = Import.create({content: params[:l]})
+      puts 'commands are '
+      puts params[:commandes]
+      @new_order = Import.create({content: params[:commandes]})
       if @new_order
         render :text => "orders saved to db"
       else

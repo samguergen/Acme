@@ -36,10 +36,10 @@ angular.module('myApp')
       //       console.log('error is ', error);
       //   });
 
-        $http.post('http://localhost:3000/orders', {l : ordersJson.toString()}).then(function (result) {
+        $http.post('http://localhost:3000/orders', {commandes : ordersJson.toString()}).then(function (result) {
             console.log('result from http post is ', result);
             response = result;
-            $location.path('/');
+            $location.path('/saved');
         });
 
     };
