@@ -23,17 +23,23 @@ angular.module('myApp')
       //   });
 
 //without json format req
-      $http({
-        url: 'http://localhost:3000/backend',
-        method: 'POST',
-        data: {
-            commandes: ordersJson,
-        }
-        }).success(function(response){
-            console.log('response is ', response);
-        }).error(function(error){
-            console.log('error is ', error);
+      // $http({
+      //   url: 'http://localhost:3000/orders',
+      //   method: 'POST',
+      //   data: {
+      //       commandes: ordersJson,
+      //   }
+      //   }).success(function(response){
+      //       console.log('response is ', response);
+      //   }).error(function(error){
+      //       console.log('error is ', error);
+      //   });
+
+        $http.post('http://localhost:3000/orders', ordersJson).then(function (result) {
+            console.log('result from http post is ', result);
+            $scope.result = result;
         });
+
     };
 
 
