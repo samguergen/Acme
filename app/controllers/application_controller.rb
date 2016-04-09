@@ -11,18 +11,9 @@ class ApplicationController < ActionController::Base
     end
 
     def create
-      puts "inside create method"
-      puts 'params are'
+      puts "inside create method, params are "
       puts params
-      puts params[:listid]
-      render layout: "orders/saved.html.erb"
+      render :text => "orders saved to db"
     end
-
-      private
-
-  # def orders_params
-  #   logger.info "orders_params entered..."
-  #   params.require(:post).permit(:commandes)
-  # end
 
 end

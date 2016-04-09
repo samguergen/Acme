@@ -28,7 +28,10 @@ angular.module('myApp')
         console.log('what', $stateParams.orderID);
         $scope.idForURL = parseInt(objForURL['orderId']);
 
-console.log('path in ctrl is ', $location.path());
+      $scope.disp = function() {
+        $scope.peeker = $location.path();
+        return $scope.peeker
+      }
 });
 
 

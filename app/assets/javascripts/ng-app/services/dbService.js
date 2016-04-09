@@ -3,6 +3,7 @@
 angular.module('myApp')
 .service('ToServer', function ($http) {
     this.saveToDB = function(ordersJson) {
+        var response = [];
         // console.log('orders in json are ', ordersJson);
 
       // $http({
@@ -37,7 +38,7 @@ angular.module('myApp')
 
         $http.post('http://localhost:3000/orders', {listid : ordersJson}).then(function (result) {
             console.log('result from http post is ', result);
-            $scope.result = result;
+            response = result;
         });
 
     };
