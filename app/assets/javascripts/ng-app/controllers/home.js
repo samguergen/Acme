@@ -8,7 +8,7 @@ angular.module('myApp')
       }
 
       $scope.save = function() {
-        ToServer.saveToDB($scope.allOrderzJson);
+        ToServer.saveToDB($scope.allOrderz);
       }
 
       $scope.retrieveValues = function() {
