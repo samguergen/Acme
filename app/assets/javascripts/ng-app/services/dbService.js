@@ -24,10 +24,10 @@ angular.module('myApp')
 
 //without json format req
       $http({
-        url: 'http://localhost:3000/orders',
+        url: 'http://localhost:3000/backend',
         method: 'POST',
         data: {
-            orders: ordersJson,
+            commandes: ordersJson,
         }
         }).success(function(response){
             console.log('response is ', response);

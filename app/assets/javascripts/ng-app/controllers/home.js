@@ -4,8 +4,11 @@ angular.module('myApp')
       $scope.trigger = function(fileContent){
         Validations.triggerValidations(fileContent);
         $scope.retrieveValues();
-        ToServer.saveToDB($scope.allOrderzJson);
         $location.path('/orders');
+      }
+
+      $scope.save = function() {
+        ToServer.saveToDB($scope.allOrderzJson);
       }
 
       $scope.retrieveValues = function() {

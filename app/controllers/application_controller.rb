@@ -10,7 +10,10 @@ class ApplicationController < ActionController::Base
     end
 
     def create
-      puts request.post?
+      puts request.raw_post
+      puts "inside create method"
+      puts 'params are'
+      puts params
       # new_order = Orders.create(favorite_properties_params)
       # redirect_to "/properties/#{property.z_id}"
     end
