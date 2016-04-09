@@ -1,5 +1,5 @@
 angular.module('myApp')
-    .controller('HomeCtrl', function ($scope, $http, $location, Validations) {
+    .controller('HomeCtrl', function ($scope, $http, $location, $stateParams, Validations) {
 
       $scope.trigger = function(fileContent){
         Validations.triggerValidations(fileContent);
@@ -18,6 +18,7 @@ angular.module('myApp')
       $scope.invalidOrderzJson = Validations.invalidOrdersJson;
 
 
+console.log('state paramzz are ', $stateParams);
 });
 
 

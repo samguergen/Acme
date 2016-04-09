@@ -50,6 +50,7 @@ angular
             templateUrl: 'orders/order.html',
         });
 
+        console.log('state prov is', $stateProvider);
     // default fall back route
     $urlRouterProvider.otherwise('/');
 
