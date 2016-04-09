@@ -1,5 +1,5 @@
 angular.module('myApp')
-    .controller('HomeCtrl', function ($scope, $http, $location, $stateParams, Validations) {
+    .controller('HomeCtrl', function ($scope, $state, $http, $location, $stateParams, Validations) {
 
       $scope.trigger = function(fileContent){
         Validations.triggerValidations(fileContent);
@@ -19,6 +19,7 @@ angular.module('myApp')
 
 
 console.log('state paramzz are ', $stateParams);
+console.log('state issss ', $state.params);
 });
 
 
