@@ -1,8 +1,8 @@
 
 <h2> Order Detail </h2>
-
-
-<div class="order" ng-repeat="order in allOrderz" ng-show="order['order_id']">
+                    <em>Sam: "I wanted to add ng-show="order['order_id' == loc ]" to the below div to filter the relevant order inside ng-repeat, but I could not capture $stateParams correctly" </em>
+                    <!-- wanted to add ng-show="order['order_id' == loc ]" to the below div but could not capture $stateParams correctly-->
+<div class="order" ng-repeat="order in allOrderz">
 
       { <br>
       "order_id": {{ order['order_id'] | json }} , <br>
@@ -16,3 +16,5 @@
 
 </div>
 
+
+{{ loc }}

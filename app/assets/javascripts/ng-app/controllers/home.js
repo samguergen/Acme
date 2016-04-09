@@ -21,17 +21,7 @@ angular.module('myApp')
         $scope.invalidOrderzJson = Validations.invalidOrdersJson;
       };
 
-        $scope.loc = $location.absUrl();
-
-        $scope.orderURL = $stateParams.orderID;
-        var objForURL = $stateParams;
-        console.log('what', $stateParams.orderID);
-        $scope.idForURL = parseInt(objForURL['orderId']);
-
-      $scope.disp = function() {
-        $scope.peeker = $location.path();
-        return $scope.peeker
-      }
+        $scope.loc = $stateParams.orderID;
 });
 
 

@@ -49,6 +49,7 @@ angular
         .state('orders.order', {
             url: '/:orderID',
             templateUrl: 'orders/order.html',
+            params: {oid: null}
         });
 
     // default fall back route
