@@ -1,10 +1,11 @@
 <h2>All Orders</h2>
 
+<button ng-click="saveDB()"> Dave to Database </button>
 {
 "results": [
   <div class="orders-list" ng-repeat="ord in allOrderz">
     <!-- <a ui-sref="/orders/{{ord['order_id']}}"> -->
-    <a ui-sref="orders.order({ id: {{ ord['order_id'] }}, tester: {{ ord['order_id'] }} })">
+    <a ui-sref="orders.order({ orderID: {{ ord['order_id'] }} })">
     {
       "order_id": {{ ord['order_id'] | json }} ,
       "name": {{ ord['name'] | json }} ,
@@ -14,5 +15,7 @@
   </div>
  ] <br>
 }
+
+
 
 {{idForURL}}

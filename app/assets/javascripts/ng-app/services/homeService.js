@@ -1,9 +1,6 @@
 angular.module('myApp')
 .service('Validations', function ($state) {
 
-   this.state = $state.current.name;
-   console.log('stateee is ', this.state);
-
     var arrayData = [];
     var passingOrders = [];
     var invalidOrders = [];

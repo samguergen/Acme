@@ -4,7 +4,9 @@ angular
         'ui.router',
         'templates',
     ])
-    .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $locationProvider, '$resourceProvider') {
+
+      // console.log('path in route is ', $location.path);
 
       $stateProvider
         .state('home', {
@@ -46,7 +48,7 @@ angular
         // });
 
         .state('orders.order', {
-            url: '/:id',
+            url: '/:orderID',
             templateUrl: 'orders/order.html',
         });
 

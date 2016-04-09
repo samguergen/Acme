@@ -3,7 +3,7 @@
 {
 "results": [
   <div ng-repeat="val in validOrderz">
-    <a ui-sref="">
+    <a ui-sref="orders.order({ orderID: {{ ord['order_id'] }} })">
     {
       "order_id": {{ val['order_id'] | json }} ,
       "name": {{ val['name'] | json }} ,
