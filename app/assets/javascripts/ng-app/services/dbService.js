@@ -3,11 +3,7 @@
 angular.module('myApp')
 .service('ToServer', function ($http) {
     this.saveToDB = function(ordersJson) {
-        console.log('orders in json are ', ordersJson);
-        //double checks that the order is correct JSON format
-        // var ordersValidJson = JSON.parse(ordersJson);
-
-        // console.log('valid json now ', JSON.parse(ordersJson));
+        // console.log('orders in json are ', ordersJson);
 
       // $http({
       //   url: 'http://localhost:3000/orders',
