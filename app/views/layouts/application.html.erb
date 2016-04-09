@@ -9,8 +9,9 @@
 </head>
 <body ng-app="myApp">
 
-<button ng-click="showSaved = true">View saved orders </button>
+<button ng-click="showSaved = true">View Previously Saved Orders </button>
   <div class="saved-orders" ng-show="showSaved">
+    <button ng-click="showSaved = false">Return to Home </button>
     Previously saved orders: <br>
     <% if @all_imports %>
       <% @all_imports.each do |import| %>
