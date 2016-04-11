@@ -13,12 +13,12 @@ angular
             controller: 'HomeCtrl'
         })
 
-        .state('orders', {
-            url: '/orders',
-            templateUrl: 'orders/layout.html'
-        })
+        // .state('orders', {
+        //     url: '/orders',
+        //     templateUrl: 'orders/layout.html'
+        // })
 
-        .state('all', {
+        .state('orders', {
             url: '/orders',
             templateUrl: 'orders/all.html',
         })
