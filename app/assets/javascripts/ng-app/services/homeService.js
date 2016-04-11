@@ -306,7 +306,8 @@ angular.module('myApp')
       for (var i in this.validOrders) {
         this.validOrderz.push(this.validOrders[i]) }
       for (var i in this.nonValidOrders) {
-        this.invalidOrderz.push(this.nonValidOrders[i]) }
+        this.invalidOrderz.push(this.nonValidOrders[i]) };
+        console.log('validation returning');
     };
 
   };
