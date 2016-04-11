@@ -13,11 +13,6 @@ angular
             controller: 'HomeCtrl'
         })
 
-        // .state('orders', {
-        //     url: '/orders',
-        //     templateUrl: 'orders/layout.html'
-        // })
-
         .state('orders', {
             url: '/orders',
             templateUrl: 'orders/all.html',
@@ -25,27 +20,58 @@ angular
 
         .state('import', {
             url: '/import',
-            templateUrl: 'orders/import.html',
+            parent: '/orders',
+            // templateUrl: 'orders/import.html',
+            views : {
+              '@': {
+                templateUrl: 'orders/import.html',
+              },
+            }
         })
 
         .state('valid', {
             url: '/valid',
-            templateUrl: 'orders/valid.html',
+            parent: '/orders',
+            // templateUrl: 'orders/valid.html',
+           views : {
+              '@': {
+                templateUrl: 'orders/valid.html',
+              },
+            }
+
         })
 
         .state('invalid', {
             url: '/invalid',
-            templateUrl: 'orders/invalid.html',
+            parent: '/orders',
+            // templateUrl: 'orders/invalid.html',
+           views : {
+              '@': {
+                templateUrl: 'orders/invalid.html',
+              },
+            }
         })
 
         .state('saved', {
             url: '/saved',
-            templateUrl: 'orders/saved.html',
+            parent: '/orders',
+            // templateUrl: 'orders/saved.html',
+           views : {
+              '@': {
+                templateUrl: 'orders/saved.html',
+              },
+            }
         })
 
         .state('order', {
             url: '/:orderID',
-            templateUrl: 'orders/order.html',
+            parent: '/orders',
+            // templateUrl: 'orders/order.html',
+           views : {
+              '@': {
+                templateUrl: 'orders/order.html',
+              },
+            }
         });
 
     // default fall back route
