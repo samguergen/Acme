@@ -20,26 +20,8 @@ angular.module('myApp')
         $scope.validOrderzJson = Validations.validOrdersJson;
         $scope.invalidOrderzJson = Validations.invalidOrdersJson;
       };
-    //   console.log($stateParams);
-    //   if ((Object.keys($stateParams).length === 0) && (JSON.stringify($stateParams) === JSON.stringify({}))) {
-    //     console.log('the obj is empty');
-    //   }
-    //   else {
-    //     console.log('the obj isnt empty');
-    //   }
-
-
-    //   $scope.$watchCollection(function(){
-    //   return $state.params;
-    //   }, function(){
-    //   $log.info("State params have been updated", $scope.$stateParams);
-    // });
-
 
   $scope.currentURL = $stateParams;
-  // $scope.test2 = $stateParams.orderID;
-
-
 
 });
 
