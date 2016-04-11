@@ -21,6 +21,7 @@ angular.module('myApp')
         $scope.invalidOrderzJson = Validations.invalidOrdersJson;
       };
 
+      console.log($stateParams);
         $scope.loc = $stateParams.orderID;
 });
 
