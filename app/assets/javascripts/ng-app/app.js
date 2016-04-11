@@ -14,51 +14,39 @@ angular
         })
 
         .state('orders', {
-            abstract: true,
             url: '/orders',
             templateUrl: 'orders/layout.html'
         })
 
-        .state('orders.all', {
-            url: '',
+        .state('all', {
+            url: '/orders',
             templateUrl: 'orders/all.html',
         })
 
-        .state('orders.import', {
+        .state('import', {
             url: '/import',
             templateUrl: 'orders/import.html',
         })
 
-        .state('orders.valid', {
+        .state('valid', {
             url: '/valid',
             templateUrl: 'orders/valid.html',
         })
 
-        .state('orders.invalid', {
+        .state('invalid', {
             url: '/invalid',
             templateUrl: 'orders/invalid.html',
         })
 
-        .state('orders.saved', {
+        .state('saved', {
             url: '/saved',
             templateUrl: 'orders/saved.html',
         })
 
-        .state('orders.order', {
+        .state('order', {
             url: '/:orderID',
             templateUrl: 'orders/order.html',
-            params: {oid: null},
-            resolve: {
-                        orderID: ['$stateParams', function ($stateParams) {
-                                return $stateParams.orderID; //By putting this here... (STEP 1)
-                            }]
-                    }
-        })
-        .run(['$rootScope', '$stateParams',
-      function ($rootScope,  $stateParams) {
-        // $rootScope.$stateParams2 = $stateParams;
-        // console.log($rootScope.$stateParams2);
-      }]);
+        });
 
     // default fall back route
     $urlRouterProvider.otherwise('/');

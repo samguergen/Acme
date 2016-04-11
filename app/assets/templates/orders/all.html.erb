@@ -5,7 +5,7 @@
 {
 "results": [
   <div class="orders-list" ng-repeat="ord in allOrderz">
-    <a ui-sref="orders.order({ orderID: {{ ord['order_id'] }} })">
+    <a ui-sref="order({ orderID: {{ ord['order_id'] }} })">
     {
       "order_id": {{ ord['order_id'] | json }} ,
       "name": {{ ord['name'] | json }} ,

@@ -35,9 +35,6 @@ angular.module('myApp')
     //   $log.info("State params have been updated", $scope.$stateParams);
     // });
 
-  console.log($stateParams2);
-
-  $stateParams.orderID;
   console.log('the state params are ');
   console.log($stateParams.orderID);
 
