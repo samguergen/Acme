@@ -1,5 +1,5 @@
 angular.module('myApp')
-    .controller('HomeCtrl', function ($scope, $state, $http, $location, $stateParams, Validations, ToServer) {
+    .controller('HomeCtrl', function ($scope, $rootScope, $http, $stateParams, $state, $location, $log, Validations, ToServer) {
 
       $scope.trigger = function(fileContent){
         Validations.triggerValidations(fileContent);
@@ -20,9 +20,27 @@ angular.module('myApp')
         $scope.validOrderzJson = Validations.validOrdersJson;
         $scope.invalidOrderzJson = Validations.invalidOrdersJson;
       };
+    //   console.log($stateParams);
+    //   if ((Object.keys($stateParams).length === 0) && (JSON.stringify($stateParams) === JSON.stringify({}))) {
+    //     console.log('the obj is empty');
+    //   }
+    //   else {
+    //     console.log('the obj isnt empty');
+    //   }
 
-      console.log($stateParams);
-        $scope.loc = $stateParams.orderID;
+
+    //   $scope.$watchCollection(function(){
+    //   return $state.params;
+    //   }, function(){
+    //   $log.info("State params have been updated", $scope.$stateParams);
+    // });
+
+  console.log($stateParams2);
+
+  $stateParams.orderID;
+  console.log('the state params are ');
+  console.log($stateParams.orderID);
+
 });
 
 

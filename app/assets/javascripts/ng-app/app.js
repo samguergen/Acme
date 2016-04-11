@@ -47,8 +47,18 @@ angular
         .state('orders.order', {
             url: '/:orderID',
             templateUrl: 'orders/order.html',
-            params: {oid: null}
-        });
+            params: {oid: null},
+            resolve: {
+                        orderID: ['$stateParams', function ($stateParams) {
+                                return $stateParams.orderID; //By putting this here... (STEP 1)
+                            }]
+                    }
+        })
+        .run(['$rootScope', '$stateParams',
+      function ($rootScope,  $stateParams) {
+        // $rootScope.$stateParams2 = $stateParams;
+        // console.log($rootScope.$stateParams2);
+      }]);
 
     // default fall back route
     $urlRouterProvider.otherwise('/');
