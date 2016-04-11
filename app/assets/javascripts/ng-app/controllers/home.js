@@ -36,10 +36,10 @@ angular.module('myApp')
     // });
 
 
-  $scope.test = $stateParams;
-  $scope.test2 = $stateParams.orderID;
-  console.log('the state params are ');
-  console.log($stateParams.orderID);
+  $scope.currentURL = $stateParams;
+  // $scope.test2 = $stateParams.orderID;
+
+
 
 });
 
