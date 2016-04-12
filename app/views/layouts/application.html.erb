@@ -17,7 +17,15 @@
       Previously saved orders: <br>
       <% if @orders %>
         <% @orders.each do |order| %>
-        <%= order %>
+        <p>
+          order id: <%= order.order_id %> <br>
+          customer name: <%= order.name %> <br>
+          email: <%= order.email %> <br>
+          state: <%= order.state %> <br>
+          birthday: <%= order.birthday %> <br>
+          zipcode: <%= order.zipcode %> <br>
+          valid order? <%= order.validity %> <br>
+        </p>
         <% end %>
       <% end %>
     </p>
