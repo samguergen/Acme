@@ -15,9 +15,9 @@
 
     <p>
       Previously saved orders: <br>
-      <% if @all_imports %>
-        <% @all_imports.each do |import| %>
-        <%= import["content"] %>
+      <% if @orders %>
+        <% @orders.each do |order| %>
+        <%= order %>
         <% end %>
       <% end %>
     </p>
