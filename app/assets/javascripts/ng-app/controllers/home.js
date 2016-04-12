@@ -18,7 +18,6 @@ angular.module('myApp')
         $scope.allOrderz = Validations.allOrderz;
         $scope.validOrderz = Validations.validOrderz;
         $scope.invalidOrderz = Validations.invalidOrderz;
-
         $scope.allOrderzJson = Validations.allOrdersJson;
         $scope.validOrderzJson = Validations.validOrdersJson;
         $scope.invalidOrderzJson = Validations.invalidOrdersJson;
