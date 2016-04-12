@@ -5,14 +5,11 @@ class ApplicationController < ActionController::Base
 
     def index
       @orders = Order.all
-
       render layout: "application"
     end
 
     def create
       @order = Order.create({order_id: params[:commandes]['order_id'], name: params[:commandes]['name'], email: params[:commandes]['email'], birthday: params[:commandes]['birthday'], zipcode: params[:commandes]['zipcode'], state: params[:commandes]['state'], validity: params[:commandes]['valid']})
-      puts 'single order is '
-      puts @order
       if @order
         render :text => "orders was saved"
       else
