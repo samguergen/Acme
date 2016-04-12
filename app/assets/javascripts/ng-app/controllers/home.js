@@ -1,6 +1,7 @@
 angular.module('myApp')
     .controller('HomeCtrl', function ($scope, $rootScope, $http, $stateParams, $state, $location, $log, Validations, ToServer) {
 
+
       $scope.trigger = function(fileContent){
         Validations.triggerValidations(fileContent);
         $scope.retrieveValues();

@@ -16,12 +16,6 @@ angular.module('myApp')
           });
         };
 
-        // $http.post('http://localhost:3000/orders', {commandes : ordersJson.toString()}).then(function (result) {
-        //     console.log('result from http post is ', result);
-        //     response = result;
-        //     $location.path('/saved');
-        // });
-
     };
 
 
