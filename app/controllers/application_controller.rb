@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     # end
 
     def create
-      @order = Order.create({order_id: params[:commandes]['order_id'], name: params[:commandes]['name'], email: params[:commandes]['email'], birthday: params[:commandes]['birthday'], zipcode: params[:commandes]['zipcode'], validity: params[:commandes]['valid']})
+      @order = Order.create({order_id: params[:commandes]['order_id'], name: params[:commandes]['name'], email: params[:commandes]['email'], birthday: params[:commandes]['birthday'], zipcode: params[:commandes]['zipcode'], state: params[:commandes]['state'], validity: params[:commandes]['valid']})
       puts 'single order is '
       puts @order
       if @order
