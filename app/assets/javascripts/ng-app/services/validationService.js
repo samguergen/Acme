@@ -6,7 +6,6 @@ angular.module('myApp')
     var invalidOrders = [];
     var validOrders = [];
     var autoPassingOrders = [];
-    this.nonValidOrders = [];
     this.allOrders = [];
 
     this.validOrdersJson = [];
@@ -236,6 +235,7 @@ angular.module('myApp')
 
     //actually builds the order obj with required structure, to prepare for json conversion
     this.buildOrderObj = function(orders, invOrders) {
+      invalidOrders = [];
       var idIndex = csvIndex['id'];
       var nameIndex = csvIndex['name'];
       var emailIndex = csvIndex['email'];
@@ -284,25 +284,25 @@ angular.module('myApp')
         if (typeof(orderObj['name']) == 'undefined' ) {
           continue
         };
-        this.nonValidOrders.push(orderObj);
+        invalidOrders.push(orderObj);
       };
 
       //concats valid and invalid orders to store all orders with good structure.
-      this.allOrders = validOrders.concat(this.nonValidOrders);
+      this.allOrders = validOrders.concat(invalidOrders);
 
       for (var i in this.allOrders) {
         this.allOrdersJson.push(angular.toJson(this.allOrders[i])) }
       for (var i in validOrders) {
         this.validOrdersJson.push(angular.toJson(validOrders[i])) }
-      for (var i in this.nonValidOrders) {
-        this.invalidOrdersJson.push(angular.toJson(this.nonValidOrders[i])) }
+      for (var i in invalidOrders) {
+        this.invalidOrdersJson.push(angular.toJson(invalidOrders[i])) }
 
       for (var i in this.allOrders) {
         this.allOrderz.push(this.allOrders[i]) }
       for (var i in validOrders) {
         this.validOrderz.push(validOrders[i]) }
-      for (var i in this.nonValidOrders) {
-        this.invalidOrderz.push(this.nonValidOrders[i]) };
+      for (var i in invalidOrders) {
+        this.invalidOrderz.push(invalidOrders[i]) };
         console.log('validation returning');
     };
 
