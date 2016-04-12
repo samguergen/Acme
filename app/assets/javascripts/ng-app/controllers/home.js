@@ -1,17 +1,19 @@
 angular.module('myApp')
-    .controller('HomeCtrl', function ($scope, $rootScope, $http, $stateParams, $state, $location, $log, Validations, ToServer) {
+    .controller('HomeCtrl', function ($scope, $rootScope, $http, $stateParams, $state, $location, Validations, ToServer) {
 
-
+      //triggers validation inside validationService.js
       $scope.trigger = function(fileContent){
         Validations.triggerValidations(fileContent);
         $scope.retrieveValues();
         $location.path('/orders');
       }
 
+      //saves orders from service and saves them to database
       $scope.save = function() {
         ToServer.saveToDB($scope.allOrderz);
       }
 
+      //retrieves valid and invalid orders and binds them to scope so that they can display in the DOM
       $scope.retrieveValues = function() {
         $scope.allOrderz = Validations.allOrderz;
         $scope.validOrderz = Validations.validOrderz;
@@ -22,7 +24,8 @@ angular.module('myApp')
         $scope.invalidOrderzJson = Validations.invalidOrdersJson;
       };
 
-  $scope.currentURL = $stateParams;
+      //captures relevant ID from URL to filter from list of orders and display in DOM
+      $scope.currentURL = $stateParams;
 
 });
 
