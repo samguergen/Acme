@@ -1,15 +1,10 @@
-
-
 @import 'bootstrap-sass-official/assets/stylesheets/bootstrap';
-
-
 
 nav {
   ul li {
     display: inline;
   }
 }
-
 
 html {
   background-color: #e5ffec
@@ -51,4 +46,9 @@ button.saved-orders {
 
 .order {
   width: 65%
+}
+
+.order-keys {
+  font-weight: bold;
+  font-style: italic;
 }
