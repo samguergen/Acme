@@ -1,7 +1,7 @@
 //service for running validations on orders
 
 angular.module('myApp')
-.service('Validations', function ($state) {
+.service('Validations', function () {
 
     var arrayData = [];
     var passingOrders = [];

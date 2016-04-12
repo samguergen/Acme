@@ -1,7 +1,7 @@
 //service for sending order json to database
 
 angular.module('myApp')
-.service('ToServer', function ($http, $location) {
+.service('ToServer', function ($http) {
     this.saveToDB = function(ordersJson) {
         var response = [];
 
