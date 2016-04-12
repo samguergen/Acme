@@ -3,10 +3,10 @@
 angular.module('myApp')
 .service('Validations', function () {
 
-    var invalidOrders = [];
     var validOrders = [];
+    var invalidOrders = [];
     var autoPassingOrders = [];
-    this.allOrders = [];
+    var allOrders = [];
 
     this.validOrdersJson = [];
     this.invalidOrdersJson = [];
@@ -15,7 +15,6 @@ angular.module('myApp')
     this.allOrderz = [];
     this.validOrderz = [];
     this.invalidOrderz = [];
-
 
     //init csvIndex to contain index for all data columns.
     var csvIndex = {

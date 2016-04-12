@@ -4,7 +4,7 @@ angular.module('myApp')
       //triggers validation inside validationService.js
       $scope.trigger = function(fileContent){
         Validations.triggerValidations(fileContent);
-        $scope.retrieveValues();
+        $scope.bindToScope();
         $location.path('/orders');
       }
 
@@ -14,7 +14,7 @@ angular.module('myApp')
       }
 
       //retrieves valid and invalid orders and binds them to scope so that they can display in the DOM
-      $scope.retrieveValues = function() {
+      $scope.bindToScope = function() {
         $scope.allOrderz = Validations.allOrderz;
         $scope.validOrderz = Validations.validOrderz;
         $scope.invalidOrderz = Validations.invalidOrderz;
