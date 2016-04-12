@@ -3,11 +3,9 @@
 angular.module('myApp')
 .service('Validations', function () {
 
-    var arrayData = [];
-    var passingOrders = [];
     var invalidOrders = [];
+    var validOrders = [];
     var autoPassingOrders = [];
-    this.validOrders = [];
     this.nonValidOrders = [];
     this.allOrders = [];
 
@@ -77,7 +75,6 @@ angular.module('myApp')
           }
           arrData[arrData.length - 1].push(strMatchedValue);
       }
-      arrayData = arrData;
 
       var header = arrData.shift();
       this.locateColumns(header, arrData);
@@ -210,7 +207,6 @@ angular.module('myApp')
           invalidOrders.push(rowArray);
         };
       };
-      passingOrders = passing6;
       return this.toJson(passing6);
     };
 
@@ -263,7 +259,7 @@ angular.module('myApp')
            "valid": true,
         };
 
-        this.validOrders.push(orderObj);
+        validOrders.push(orderObj);
        };
       }
 
@@ -292,19 +288,19 @@ angular.module('myApp')
       };
 
       //concats valid and invalid orders to store all orders with good structure.
-      this.allOrders = this.validOrders.concat(this.nonValidOrders);
+      this.allOrders = validOrders.concat(this.nonValidOrders);
 
       for (var i in this.allOrders) {
         this.allOrdersJson.push(angular.toJson(this.allOrders[i])) }
-      for (var i in this.validOrders) {
-        this.validOrdersJson.push(angular.toJson(this.validOrders[i])) }
+      for (var i in validOrders) {
+        this.validOrdersJson.push(angular.toJson(validOrders[i])) }
       for (var i in this.nonValidOrders) {
         this.invalidOrdersJson.push(angular.toJson(this.nonValidOrders[i])) }
 
       for (var i in this.allOrders) {
         this.allOrderz.push(this.allOrders[i]) }
-      for (var i in this.validOrders) {
-        this.validOrderz.push(this.validOrders[i]) }
+      for (var i in validOrders) {
+        this.validOrderz.push(validOrders[i]) }
       for (var i in this.nonValidOrders) {
         this.invalidOrderz.push(this.nonValidOrders[i]) };
         console.log('validation returning');
