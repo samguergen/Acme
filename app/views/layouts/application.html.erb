@@ -18,13 +18,13 @@
       <% if @orders %>
         <% @orders.each do |order| %>
         <p>
-          <div class="order-keys">order id: </div> <%= order.order_id %> <br>
-          <div class="order-keys">customer name: </div><%= order.name %> <br>
-          <div class="order-keys">email: </div><%= order.email %> <br>
-          <div class="order-keys">state: </div><%= order.state %> <br>
-          <div class="order-keys">birthday: </div><%= order.birthday %> <br>
-          <div class="order-keys">zipcode: </div><%= order.zipcode %> <br>
-          <div class="order-keys">valid order? </div><%= order.validity %> <br>
+          <div class="order-keys">order id: </div> <%= order.order_id %>
+          <div class="order-keys">customer name: </div><%= order.name %>
+          <div class="order-keys">email: </div><%= order.email %>
+          <div class="order-keys">state: </div><%= order.state %>
+          <div class="order-keys">birthday: </div><%= order.birthday %>
+          <div class="order-keys">zipcode: </div><%= order.zipcode %>
+          <div class="order-keys">valid order? </div><%= order.validity %>
         </p>
         <% end %>
       <% end %>
