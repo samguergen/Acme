@@ -288,25 +288,23 @@ angular.module('myApp')
       };
 
       //concats valid and invalid orders to store all orders with good structure.
-      this.allOrders = validOrders.concat(invalidOrders);
+      allOrders = validOrders.concat(invalidOrders);
 
-      for (var i in this.allOrders) {
-        this.allOrdersJson.push(angular.toJson(this.allOrders[i])) }
+      for (var i in allOrders) {
+        this.allOrdersJson.push(angular.toJson(allOrders[i])) }
       for (var i in validOrders) {
         this.validOrdersJson.push(angular.toJson(validOrders[i])) }
       for (var i in invalidOrders) {
         this.invalidOrdersJson.push(angular.toJson(invalidOrders[i])) }
 
-      for (var i in this.allOrders) {
-        this.allOrderz.push(this.allOrders[i]) }
+      for (var i in allOrders) {
+        this.allOrderz.push(allOrders[i]) }
       for (var i in validOrders) {
         this.validOrderz.push(validOrders[i]) }
       for (var i in invalidOrders) {
         this.invalidOrderz.push(invalidOrders[i]) };
         console.log('validation returning');
     };
-
   };
-
 
 });
