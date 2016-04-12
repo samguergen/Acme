@@ -5,11 +5,22 @@ angular.module('myApp')
     this.saveToDB = function(ordersJson) {
         var response = [];
 
-        $http.post('http://localhost:3000/orders', {commandes : ordersJson.toString()}).then(function (result) {
+        var orders = ordersJson.toString();
+        console.log('length of orders is ', orders.length);
+
+        for (var i in ordersJson) {
+          console.log(ordersJson[i]);
+          $http.post('http://localhost:3000/orders', {commandes : ordersJson[i]}).then(function (result) {
             console.log('result from http post is ', result);
             response = result;
-            $location.path('/saved');
-        });
+          });
+        };
+
+        // $http.post('http://localhost:3000/orders', {commandes : ordersJson.toString()}).then(function (result) {
+        //     console.log('result from http post is ', result);
+        //     response = result;
+        //     $location.path('/saved');
+        // });
 
     };
 
